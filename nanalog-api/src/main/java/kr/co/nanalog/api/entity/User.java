@@ -11,18 +11,17 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private long id;
     @Column(nullable = false)
     private String uid;
+    @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String password;
     private String registrationDate;
-
-    @OneToOne
-    @JoinColumn(name = "userStatus_id")
-    private UserStatus userStatus;
+    private String permission;
+    private boolean active;
 
     public long getId() {
         return id;
@@ -64,12 +63,20 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
-    public UserStatus getUserStatus() {
-        return userStatus;
+    public String getPermission() {
+        return permission;
     }
 
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
+    public void setPermission(String permission) {
+        this.permission = permission;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override
@@ -80,7 +87,8 @@ public class User {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", registrationDate='" + registrationDate + '\'' +
-                ", userStatus=" + userStatus +
+                ", permission='" + permission + '\'' +
+                ", active=" + active +
                 '}';
     }
 }
