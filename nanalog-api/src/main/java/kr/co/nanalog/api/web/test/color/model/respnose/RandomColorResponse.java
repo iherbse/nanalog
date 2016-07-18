@@ -1,4 +1,4 @@
-package kr.co.nanalog.test.color.model.respnose;
+package kr.co.nanalog.api.web.test.color.model.respnose;
 
 /**
  * Created by lcw on 7/17/16.

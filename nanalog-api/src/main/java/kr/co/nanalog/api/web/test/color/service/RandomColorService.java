@@ -1,6 +1,6 @@
-package kr.co.nanalog.test.color.service;
+package kr.co.nanalog.api.web.test.color.service;
 
-import kr.co.nanalog.test.color.model.respnose.RandomColorResponse;
+import kr.co.nanalog.api.web.test.color.model.respnose.RandomColorResponse;
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,8 +1,6 @@
-package kr.co.nanalog.test.color.service;
+package kr.co.nanalog.api.web.test.color.service;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by lcw on 7/18/16.

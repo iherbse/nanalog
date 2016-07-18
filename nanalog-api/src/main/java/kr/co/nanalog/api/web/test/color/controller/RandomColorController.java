@@ -1,8 +1,8 @@
-package kr.co.nanalog.test.color.controller;
+package kr.co.nanalog.api.web.test.color.controller;
 
-import kr.co.nanalog.test.color.model.request.RandomColorRequest;
-import kr.co.nanalog.test.color.model.respnose.RandomColorResponse;
-import kr.co.nanalog.test.color.service.RandomColorService;
+import kr.co.nanalog.api.web.test.color.model.request.RandomColorRequest;
+import kr.co.nanalog.api.web.test.color.model.respnose.RandomColorResponse;
+import kr.co.nanalog.api.web.test.color.service.RandomColorService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

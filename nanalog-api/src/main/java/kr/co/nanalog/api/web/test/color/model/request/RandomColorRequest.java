@@ -1,4 +1,4 @@
-package kr.co.nanalog.test.color.model.request;
+package kr.co.nanalog.api.web.test.color.model.request;
 
 import javax.validation.constraints.NotNull;
 
