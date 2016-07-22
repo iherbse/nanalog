@@ -1,6 +1,7 @@
 package kr.co.nanalog.api.web.user.controller;
 
 import kr.co.nanalog.api.domain.ApiResponseBody;
+import kr.co.nanalog.api.entity.UserDeleteQueue;
 import kr.co.nanalog.api.web.user.model.request.UserCreateRequest;
 import kr.co.nanalog.api.web.user.model.request.UserDeleteRequest;
 import kr.co.nanalog.api.web.user.model.request.UserUpdateRequest;
@@ -72,9 +73,9 @@ public class UserController {
     }
 
     @RequestMapping(value="/active", method = RequestMethod.GET)
-    public ResponseEntity updateUserActive(@RequestParam(required = true) String uid){
+    public ResponseEntity updateUserActiveState(@RequestParam(required = true) String uid){
 
-        int result = this.userService.updateUserActive(uid);
+        int result = this.userService.updateUserActiveState(uid);
 
         if(result == -1){
             return new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -82,4 +83,18 @@ public class UserController {
 
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @RequestMapping(value="/deactivation", method = RequestMethod.GET)
+    public ApiResponseBody<UserDeleteQueue> readUserActiveState(@RequestParam(required = true) String uid){
+
+        UserDeleteQueue userDeleteQueue = this.userService.readUserActiveState(uid);
+
+        if(userDeleteQueue == null){
+            return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
+        }
+
+        return new ApiResponseBody<UserDeleteQueue>(userDeleteQueue);
+    }
+
+
 }
