@@ -10,3 +10,20 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
+
+spring.h2.console:
+  enabled: true
+  path: /h2-console
+
+security:
+  user:
+    name: admin
+    password: admin
+  oauth2:
+    client:
+      client-id: foo
+      client-secret: bar
+    resource:
+#      token-info-uri: http://localhost:8081/oauth/check_token
+      jwt:
+        key-uri: http://localhost:8081/oauth/token_key
