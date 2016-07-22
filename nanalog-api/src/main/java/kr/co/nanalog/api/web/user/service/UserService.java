@@ -18,4 +18,6 @@ public interface UserService {
     Integer deleteUser(UserDeleteRequest userDeleteRequest);
 
     UserResponse readUser(String uid);
+
+    Integer updateUserActive(String uid);
 }

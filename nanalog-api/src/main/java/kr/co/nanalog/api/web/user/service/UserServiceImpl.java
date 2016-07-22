@@ -72,7 +72,11 @@ public class UserServiceImpl implements UserService {
             return 0;
         }
 
-        this.userRepository.setUserByUid(name, password, uid);
+        user.setUid(uid);
+        user.setName(name);
+        user.setPassword(password);
+
+        this.userRepository.save(user);
 
         return 1;
     }
@@ -120,5 +124,27 @@ public class UserServiceImpl implements UserService {
         userResponse.setRegistrationDate(user.getRegistrationDate());
 
         return userResponse;
+    }
+
+    @Override
+    public Integer updateUserActive(String uid) {
+        User user = this.userRepository.findByUid(uid);
+
+        if(user == null){
+            return -1;
+        }
+
+        boolean active = user.isActive();
+
+        if(active == true){
+            user.setActive(false);
+        }
+        else{
+            user.setActive(true);
+        }
+
+        this.userRepository.setUserActiveByUid(user.isActive(), uid);
+
+        return 1;
     }
 }

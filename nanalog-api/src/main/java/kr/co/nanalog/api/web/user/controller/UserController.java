@@ -70,4 +70,16 @@ public class UserController {
 
         return new ApiResponseBody<>(userResponse);
     }
+
+    @RequestMapping(value="/active", method = RequestMethod.GET)
+    public ResponseEntity updateUserActive(@RequestParam(required = true) String uid){
+
+        int result = this.userService.updateUserActive(uid);
+
+        if(result == -1){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
