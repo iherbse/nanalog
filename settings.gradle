@@ -1,3 +1,5 @@
 rootProject.name = 'nanalog'
 
 include 'nanalog-api'
+include 'nanalog-oatuh2'
+
