@@ -1,7 +1,10 @@
 package kr.co.nanalog.api.web.user.controller;
 
+import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.web.user.model.request.UserCreateRequest;
 import kr.co.nanalog.api.web.user.model.request.UserDeleteRequest;
+import kr.co.nanalog.api.web.user.model.request.UserUpdateRequest;
+import kr.co.nanalog.api.web.user.model.response.UserResponse;
 import kr.co.nanalog.api.web.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -34,6 +38,17 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @RequestMapping(method= RequestMethod.PUT)
+    public ResponseEntity updateUser(@Valid UserUpdateRequest userUpdateRequest, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        int resultCode = userService.updateUser(userUpdateRequest);
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @RequestMapping(method= RequestMethod.DELETE)
     public ResponseEntity deleteUser(@Valid UserDeleteRequest userDeleteRequest, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
@@ -43,5 +58,16 @@ public class UserController {
         int resultCode = userService.deleteUser(userDeleteRequest);
 
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(method= RequestMethod.GET)
+    public ApiResponseBody<UserResponse> readUser(@RequestParam(required = true) String uid) {
+        UserResponse userResponse = userService.readUser(uid);
+
+        if(userResponse == null){
+            return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
+        }
+
+        return new ApiResponseBody<>(userResponse);
     }
 }

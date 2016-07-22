@@ -6,8 +6,11 @@ import kr.co.nanalog.api.repository.UserDeleteQueueRepository;
 import kr.co.nanalog.api.repository.UserRepository;
 import kr.co.nanalog.api.web.user.model.request.UserCreateRequest;
 import kr.co.nanalog.api.web.user.model.request.UserDeleteRequest;
+import kr.co.nanalog.api.web.user.model.request.UserUpdateRequest;
+import kr.co.nanalog.api.web.user.model.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +20,7 @@ import java.time.format.DateTimeFormatter;
  * Email : eenan@sk.com
  */
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -53,6 +57,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Integer updateUser(UserUpdateRequest userUpdateRequest) {
+
+        String uid = userUpdateRequest.getUid();
+        String name = userUpdateRequest.getName();
+        String password = userUpdateRequest.getPassword();
+
+        User user = this.userRepository.findByUid(uid);
+
+        if(user != null && !(user.getPassword().equals(password))){
+            return -1;
+        }
+        else if(user == null){
+            return 0;
+        }
+
+        this.userRepository.setUserByUid(name, password, uid);
+
+        return 1;
+    }
+
+    @Override
     public Integer deleteUser(UserDeleteRequest userDeleteRequest) {
 
         String uid = userDeleteRequest.getUid();
@@ -76,5 +101,24 @@ public class UserServiceImpl implements UserService {
         this.userDeleteQueueRepository.save(userDeleteQueue);
 
         return 1;
+    }
+
+    @Override
+    public UserResponse readUser(String uid) {
+
+        User user = this.userRepository.findByUid(uid);
+
+        if(user == null){
+            return null;
+        }
+
+        UserResponse userResponse = new UserResponse();
+        userResponse.setUid(uid);
+        userResponse.setName(user.getName());
+        userResponse.setPermission(user.getPermission());
+        userResponse.setActive(user.isActive());
+        userResponse.setRegistrationDate(user.getRegistrationDate());
+
+        return userResponse;
     }
 }
