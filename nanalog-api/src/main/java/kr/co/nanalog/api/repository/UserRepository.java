@@ -17,6 +17,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByUid(String uid);
 
     @Modifying
-    @Query("update User u set u.name = ?1, u.password = ?2 where u.uid = ?3")
-    void setUserByUid(String name, String password, String uid);
+    @Query("update User u set u.active = ?1 where u.uid = ?2")
+    void setUserActiveByUid(boolean active, String uid);
 }
