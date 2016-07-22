@@ -24,7 +24,7 @@ public class NanalogApiApplication extends ResourceServerConfigurerAdapter {
 			@Override
 			public void configure(HttpSecurity http) throws Exception {
 				http.headers().frameOptions().disable();
-				http.authorizeRequests().antMatchers("/v1*//**").authenticated();
+				http.authorizeRequests().antMatchers("/api/**").authenticated();
 			}
 		};
 	}
