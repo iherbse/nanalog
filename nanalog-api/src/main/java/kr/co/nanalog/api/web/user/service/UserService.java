@@ -23,4 +23,6 @@ public interface UserService {
     Integer updateUserActiveState(String uid);
 
     UserDeleteQueue readUserActiveState(String uid);
+
+    Integer deleteUserDeleteQueue(String uid);
 }

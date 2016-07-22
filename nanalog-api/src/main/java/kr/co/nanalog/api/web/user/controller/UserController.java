@@ -96,5 +96,14 @@ public class UserController {
         return new ApiResponseBody<UserDeleteQueue>(userDeleteQueue);
     }
 
+    @RequestMapping(value="/deactivation", method = RequestMethod.DELETE)
+    public ResponseEntity deleteUserDeleteQueue(@RequestParam(required = true) String uid){
+        int result = this.userService.deleteUserDeleteQueue(uid);
 
+        if(result < 0){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

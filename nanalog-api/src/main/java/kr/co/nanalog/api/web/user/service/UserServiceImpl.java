@@ -179,6 +179,26 @@ public class UserServiceImpl implements UserService {
         return userDeleteQueue;
     }
 
+    @Override
+    public Integer deleteUserDeleteQueue(String uid) {
+
+        User user = this.userRepository.findByUid(uid);
+
+        if(user == null){
+            return -1;
+        }
+
+        UserDeleteQueue userDeleteQueue = this.userDeleteQueueRepository.findOne(user.getId());
+
+        if(userDeleteQueue == null) {
+            return -2;
+        }
+
+        this.userDeleteQueueRepository.delete(userDeleteQueue);
+
+        return 1;
+    }
+
     private String getCurrentDate(){
         return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
