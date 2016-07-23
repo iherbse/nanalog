@@ -36,6 +36,11 @@ public class UserController {
 
         int resultCode = userService.createUser(userCreateRequest);
 
+        if(resultCode == -1){
+            return new ResponseEntity("에러 메시지", HttpStatus.UNAUTHORIZED);
+        }
+
+
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -47,6 +52,15 @@ public class UserController {
 
         int resultCode = userService.updateUser(userUpdateRequest);
 
+        if(resultCode == 0){
+            // 없는 사용자인 경우
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+        else if(resultCode == -1){
+            // 패스워드가 틀린 경우
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_ACCEPTABLE);
+        }
+
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -57,6 +71,16 @@ public class UserController {
         }
 
         int resultCode = userService.deleteUser(userDeleteRequest);
+
+        if(resultCode == 0){
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+        else if(resultCode == -1){
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_ACCEPTABLE);
+        }
+        else if(resultCode == -2){
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_ACCEPTABLE);
+        }
 
         return new ResponseEntity(HttpStatus.OK);
     }

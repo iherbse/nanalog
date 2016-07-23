@@ -1,16 +1,9 @@
-def entityProjects = [project(':nanalog-api'), project(':nanalog-oauth2')]
+group 'kr.co.nanalog'
+version '1.0-SNAPSHOT'
 
-buildscript {
-    ext {
-        springBootVersion = '1.3.6.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
-}
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
