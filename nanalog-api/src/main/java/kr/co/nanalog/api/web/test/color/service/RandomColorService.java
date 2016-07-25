@@ -20,7 +20,7 @@ public class RandomColorService {
                     color += valuableCharacter;
                 } else {
                     int order = (int) (Math.random() * 16);
-                    color += Integer.toHexString(order).toUpperCase();
+                    color += Integer.toHexString(order).toLowerCase();
                 }
 
             }
