@@ -1,63 +1,50 @@
 package kr.co.nanalog.api.entity;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
- * Created by choijinjoo on 2016. 7. 26..
+ * Created by lcw on 7/26/16.
  */
 @Entity
-@Table(name = "board_tb")
+@Table(name = "board_db")
 public class Board {
-
     @Id
     @GeneratedValue
-    private long id;
-    private String boardId;
-    private String diaryId;
-    private String createdDate;
+    private long boardId;
+    @Column(nullable = false)
+    private long diaryId;
+    private Date createdDate;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getBoardId() {
+    public long getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(String boardId) {
+    public void setBoardId(long boardId) {
         this.boardId = boardId;
     }
 
-    public String getDiaryId() {
+    public long getDiaryId() {
         return diaryId;
     }
 
-    public void setDiaryId(String diaryId) {
+    public void setDiaryId(long diaryId) {
         this.diaryId = diaryId;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
     @Override
     public String toString() {
         return "Board{" +
-                "id=" + id +
-                ", boardId='" + boardId + '\'' +
-                ", diaryId='" + diaryId + '\'' +
-                ", createdDate='" + createdDate + '\'' +
+                "boardId=" + boardId +
+                ", diaryId=" + diaryId +
+                ", createdDate=" + createdDate +
                 '}';
     }
 }

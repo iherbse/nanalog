@@ -1,55 +1,58 @@
 package kr.co.nanalog.api.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 
 /**
- * Created by choijinjoo on 2016. 7. 26..
+ * Created by lcw on 7/26/16.
  */
+
 @Entity
-@Table(name = "component_tb")
+@Table(name = "component_db")
 public class Component {
+    // 정의 요망
+    private enum ComponentType {SENTENCE, IMAGE;}
+    // 정의 요망
+    private enum ComponentPreference {TOP, MID, BOTTOM;}
 
     @Id
     @GeneratedValue
-    private long id;
-    private String componentId;
-    private Integer componentType;
-    //private  ?? componentPreference;
+    private long componentId;
+    @Column(nullable = false)
+    private ComponentType componentType;
+    @Column(nullable = false)
+    private ComponentPreference componentPreference;
 
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getComponentId() {
+    public long getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(String componentId) {
+    public void setComponentId(long componentId) {
         this.componentId = componentId;
     }
 
-    public Integer getComponentType() {
+    public ComponentType getComponentType() {
         return componentType;
     }
 
-    public void setComponentType(Integer componentType) {
+    public void setComponentType(ComponentType componentType) {
         this.componentType = componentType;
+    }
+
+    public ComponentPreference getComponentPreference() {
+        return componentPreference;
+    }
+
+    public void setComponentPreference(ComponentPreference componentPreference) {
+        this.componentPreference = componentPreference;
     }
 
     @Override
     public String toString() {
         return "Component{" +
-                "id=" + id +
-                ", componentId='" + componentId + '\'' +
+                "componentId=" + componentId +
                 ", componentType=" + componentType +
+                ", componentPreference=" + componentPreference +
                 '}';
     }
 }

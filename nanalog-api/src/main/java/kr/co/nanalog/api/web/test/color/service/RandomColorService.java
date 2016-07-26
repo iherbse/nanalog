@@ -17,7 +17,7 @@ public class RandomColorService {
             for (int i = 1; i < 7; i++) {
                 String valuableCharacter = wantedColor.charAt(i) + "";
                 if (valuableCharacter.matches("([0-9A-Fa-f])")) {
-                    color += valuableCharacter;
+                    color += valuableCharacter.toUpperCase();
                 } else {
                     int order = (int) (Math.random() * 16);
                     color += Integer.toHexString(order).toUpperCase();

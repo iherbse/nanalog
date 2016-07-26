@@ -1,82 +1,74 @@
 package kr.co.nanalog.api.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.Date;
 
 /**
- * Created by choijinjoo on 2016. 7. 27..
+ * Created by lcw on 7/26/16.
  */
 @Entity
-@Table(name = "createdcomponent_tb")
-public class CreatedComponent {
+@Table(name = "createdComponent_db")
+public class CreatedComponent<T> {
+
     @Id
     @GeneratedValue
-    private long id;
-    private String createdComponentId;
-    private String componentId;
-    private String componentData;
-    private String createdDate;
-    private String modifiedDate;
+    private long createdComponentId;
+    @Column(nullable = false)
+    private long componentId;
+    private T componentData;
+    @Column(nullable = false)
+    private Date createdDate;
+    private Date modifiedDate;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getCreatedComponentId() {
+    public long getCreatedComponentId() {
         return createdComponentId;
     }
 
-    public void setCreatedComponentId(String createdComponentId) {
+    public void setCreatedComponentId(long createdComponentId) {
         this.createdComponentId = createdComponentId;
     }
 
-    public String getComponentId() {
+    public long getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(String componentId) {
+    public void setComponentId(long componentId) {
         this.componentId = componentId;
     }
 
-    public String getComponentData() {
+    public T getComponentData() {
         return componentData;
     }
 
-    public void setComponentData(String componentData) {
+    public void setComponentData(T componentData) {
         this.componentData = componentData;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(String createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    public String getModifiedDate() {
+    public Date getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(String modifiedDate) {
+    public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
     @Override
     public String toString() {
         return "CreatedComponent{" +
-                "id=" + id +
-                ", createdComponentId='" + createdComponentId + '\'' +
-                ", componentId='" + componentId + '\'' +
+                "createdComponentId=" + createdComponentId +
+                ", componentId=" + componentId +
                 ", componentData='" + componentData + '\'' +
-                ", createdDate='" + createdDate + '\'' +
-                ", modifiedDate='" + modifiedDate + '\'' +
+                ", createdDate=" + createdDate +
+                ", modifiedDate=" + modifiedDate +
                 '}';
     }
 }

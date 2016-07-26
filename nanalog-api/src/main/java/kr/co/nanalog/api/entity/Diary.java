@@ -2,50 +2,52 @@ package kr.co.nanalog.api.entity;
 
 import javax.persistence.*;
 
+import java.util.Date;
+
 /**
- * Created by choijinjoo on 2016. 7. 26..
+ * Created by lcw on 7/26/16.
  */
 @Entity
-@Table(name = "diary_tb")
+@Table(name = "diary_db")
 public class Diary {
+
     @Id
     @GeneratedValue
-    private long id;
+    private long diaryId;
     @Column(nullable = false)
-    private String uid;
-    private String createdAt;
+    private String userId;
+    private Date createdDate;
 
-
-    public long getId() {
-        return id;
+    public long getDiaryId() {
+        return diaryId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setDiaryId(long diaryId) {
+        this.diaryId = diaryId;
     }
 
-    public String getUid() {
-        return uid;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override
     public String toString() {
         return "Diary{" +
-                "id=" + id +
-                ", uid='" + uid + '\'' +
-                ", createdAt='" + createdAt + '\'' +
+                "diaryId=" + diaryId +
+                ", userId='" + userId + '\'' +
+                ", createdDate=" + createdDate +
                 '}';
     }
 }
