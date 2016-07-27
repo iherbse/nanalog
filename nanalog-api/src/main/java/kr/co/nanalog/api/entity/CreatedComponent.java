@@ -1,5 +1,6 @@
 package kr.co.nanalog.api.entity;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,39 +9,40 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "createdComponent_db")
-public class CreatedComponent<T> {
+public class CreatedComponent {
 
     @Id
     @GeneratedValue
-    private long createdComponentId;
+    private Long createdComponentId;
     @Column(nullable = false)
-    private long componentId;
-    private T componentData;
+    private Long componentId;
+    private String componentData;
+    private Long boardId;
     @Column(nullable = false)
     private Date createdDate;
     private Date modifiedDate;
 
-    public long getCreatedComponentId() {
+    public Long getCreatedComponentId() {
         return createdComponentId;
     }
 
-    public void setCreatedComponentId(long createdComponentId) {
+    public void setCreatedComponentId(Long createdComponentId) {
         this.createdComponentId = createdComponentId;
     }
 
-    public long getComponentId() {
+    public Long getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(long componentId) {
+    public void setComponentId(Long componentId) {
         this.componentId = componentId;
     }
 
-    public T getComponentData() {
+    public String getComponentData() {
         return componentData;
     }
 
-    public void setComponentData(T componentData) {
+    public void setComponentData(String componentData) {
         this.componentData = componentData;
     }
 
@@ -58,6 +60,14 @@ public class CreatedComponent<T> {
 
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public Long getBoardId() {
+        return boardId;
+    }
+
+    public void setBoardId(Long boardId) {
+        this.boardId = boardId;
     }
 
     @Override

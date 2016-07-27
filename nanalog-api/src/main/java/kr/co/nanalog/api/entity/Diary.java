@@ -1,6 +1,7 @@
 package kr.co.nanalog.api.entity;
 
 import javax.persistence.*;
+
 import java.util.Date;
 
 /**
@@ -12,16 +13,16 @@ public class Diary {
 
     @Id
     @GeneratedValue
-    private long diaryId;
+    private Long diaryId;
     @Column(nullable = false)
     private String userId;
     private Date createdDate;
 
-    public long getDiaryId() {
+    public Long getDiaryId() {
         return diaryId;
     }
 
-    public void setDiaryId(long diaryId) {
+    public void setDiaryId(Long diaryId) {
         this.diaryId = diaryId;
     }
 

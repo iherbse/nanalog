@@ -10,33 +10,33 @@ import javax.persistence.*;
 public class Contents {
     @Id
     @GeneratedValue
-    private long contentsId;
+    private Long contentsId;
     @Column(nullable = false)
-    private long boardId;
+    private Long boardId;
     @Column(nullable = false)
-    private long componentId;
+    private Long componentId;
 
-    public long getContentsId() {
+    public Long getContentsId() {
         return contentsId;
     }
 
-    public void setContentsId(long contentsId) {
+    public void setContentsId(Long contentsId) {
         this.contentsId = contentsId;
     }
 
-    public long getBoardId() {
+    public Long getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(long boardId) {
+    public void setBoardId(Long boardId) {
         this.boardId = boardId;
     }
 
-    public long getComponentId() {
+    public Long getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(long componentId) {
+    public void setComponentId(Long componentId) {
         this.componentId = componentId;
     }
 

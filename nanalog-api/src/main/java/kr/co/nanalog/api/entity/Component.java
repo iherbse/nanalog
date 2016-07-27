@@ -1,5 +1,6 @@
 package kr.co.nanalog.api.entity;
 
+
 import javax.persistence.*;
 
 /**
@@ -16,17 +17,17 @@ public class Component {
 
     @Id
     @GeneratedValue
-    private long componentId;
+    private Long componentId;
     @Column(nullable = false)
     private ComponentType componentType;
     @Column(nullable = false)
     private ComponentPreference componentPreference;
 
-    public long getComponentId() {
+    public Long getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(long componentId) {
+    public void setComponentId(Long componentId) {
         this.componentId = componentId;
     }
 

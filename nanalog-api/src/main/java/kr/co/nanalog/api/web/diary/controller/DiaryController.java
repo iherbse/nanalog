@@ -1,5 +1,6 @@
 package kr.co.nanalog.api.web.diary.controller;
 
+
 import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.entity.Board;
 import kr.co.nanalog.api.web.diary.service.DiaryListService;
