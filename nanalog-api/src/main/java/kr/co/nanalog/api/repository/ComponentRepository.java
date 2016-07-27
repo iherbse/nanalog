@@ -8,8 +8,4 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface ComponentRepository {
 
-    @Query("select * " +
-            "from Contents c " +
-            "where c.cid = ?1 ")
-    Component findByComponentId(String cid);
 }

@@ -8,8 +8,4 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface CreatedComponentRepository {
 
-    @Query("select * " +
-            "from CreatedComponent c " +
-            "where c.createdComponentId = ?1 ")
-    Diary findByCreatedComponentId(String cid);
 }
