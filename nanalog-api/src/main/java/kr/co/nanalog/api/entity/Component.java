@@ -6,22 +6,21 @@ import javax.persistence.*;
 /**
  * Created by lcw on 7/26/16.
  */
-
 @Entity
-@Table(name = "component_db")
+@Table(name = "Component_tb")
 public class Component {
-    // 정의 요망
-    private enum ComponentType {SENTENCE, IMAGE;}
-    // 정의 요망
-    private enum ComponentPreference {TOP, MID, BOTTOM;}
 
     @Id
     @GeneratedValue
     private Long componentId;
     @Column(nullable = false)
+    private Long pageId;
+    @Column(nullable = false)
     private ComponentType componentType;
     @Column(nullable = false)
-    private ComponentPreference componentPreference;
+    private ComponentPosition componentPosition;
+    @Column(nullable = false)
+    private String componentData;
 
     public Long getComponentId() {
         return componentId;
@@ -29,6 +28,14 @@ public class Component {
 
     public void setComponentId(Long componentId) {
         this.componentId = componentId;
+    }
+
+    public Long getPageId() {
+        return pageId;
+    }
+
+    public void setPageId(Long pageId) {
+        this.pageId = pageId;
     }
 
     public ComponentType getComponentType() {
@@ -39,20 +46,30 @@ public class Component {
         this.componentType = componentType;
     }
 
-    public ComponentPreference getComponentPreference() {
-        return componentPreference;
+    public ComponentPosition getComponentPosition() {
+        return componentPosition;
     }
 
-    public void setComponentPreference(ComponentPreference componentPreference) {
-        this.componentPreference = componentPreference;
+    public void setComponentPosition(ComponentPosition componentPosition) {
+        this.componentPosition = componentPosition;
+    }
+
+    public String getComponentData() {
+        return componentData;
+    }
+
+    public void setComponentData(String componentData) {
+        this.componentData = componentData;
     }
 
     @Override
     public String toString() {
         return "Component{" +
                 "componentId=" + componentId +
+                ", pageId=" + pageId +
                 ", componentType=" + componentType +
-                ", componentPreference=" + componentPreference +
+                ", componentPosition=" + componentPosition +
+                ", componentData='" + componentData + '\'' +
                 '}';
     }
 }

@@ -6,21 +6,23 @@ import java.util.Date;
  * Created by lcw on 7/26/16.
  */
 @Entity
-@Table(name = "board_db")
-public class Board {
+@Table(name = "page_tb")
+public class Page {
     @Id
     @GeneratedValue
-    private Long boardId;
+    private Long pageId;
     @Column(nullable = false)
     private Long diaryId;
+    @Column(nullable = false)
     private Date createdDate;
+    private Date modifiedDate;
 
-    public Long getBoardId() {
-        return boardId;
+    public Long getPageId() {
+        return pageId;
     }
 
-    public void setBoardId(Long boardId) {
-        this.boardId = boardId;
+    public void setPageId(Long pageId) {
+        this.pageId = pageId;
     }
 
     public Long getDiaryId() {
@@ -39,12 +41,21 @@ public class Board {
         this.createdDate = createdDate;
     }
 
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
     @Override
     public String toString() {
-        return "Board{" +
-                "boardId=" + boardId +
+        return "Page{" +
+                "pageId=" + pageId +
                 ", diaryId=" + diaryId +
                 ", createdDate=" + createdDate +
+                ", modifiedDate=" + modifiedDate +
                 '}';
     }
 }

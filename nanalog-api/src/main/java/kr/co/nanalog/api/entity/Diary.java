@@ -1,5 +1,7 @@
 package kr.co.nanalog.api.entity;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -8,7 +10,7 @@ import java.util.Date;
  * Created by lcw on 7/26/16.
  */
 @Entity
-@Table(name = "diary_db")
+@Table(name = "diary_tb")
 public class Diary {
 
     @Id
@@ -16,6 +18,10 @@ public class Diary {
     private Long diaryId;
     @Column(nullable = false)
     private String userId;
+    @Column(nullable = false)
+    @ColumnDefault("basic")
+    private String diaryOption;
+    @Column(nullable = false)
     private Date createdDate;
 
     public Long getDiaryId() {
@@ -34,6 +40,14 @@ public class Diary {
         this.userId = userId;
     }
 
+    public String getDiaryOption() {
+        return diaryOption;
+    }
+
+    public void setDiaryOption(String diaryOption) {
+        this.diaryOption = diaryOption;
+    }
+
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -47,6 +61,7 @@ public class Diary {
         return "Diary{" +
                 "diaryId=" + diaryId +
                 ", userId='" + userId + '\'' +
+                ", diaryOption='" + diaryOption + '\'' +
                 ", createdDate=" + createdDate +
                 '}';
     }

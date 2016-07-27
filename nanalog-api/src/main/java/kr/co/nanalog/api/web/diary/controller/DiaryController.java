@@ -2,7 +2,7 @@ package kr.co.nanalog.api.web.diary.controller;
 
 
 import kr.co.nanalog.api.domain.ApiResponseBody;
-import kr.co.nanalog.api.entity.Board;
+import kr.co.nanalog.api.entity.Page;
 import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
 import kr.co.nanalog.api.web.diary.service.DiaryListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +27,13 @@ public class DiaryController {
     private DiaryListService diaryListService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ApiResponseBody<ArrayList<Board>> getDiaryList(@RequestParam(required = true) String uid){
-        ArrayList<Board> list = diaryListService.getDiaryList(uid);
+    public ApiResponseBody<ArrayList<Page>> getDiaryList(@RequestParam(required = true) String uid){
+        ArrayList<Page> list = diaryListService.getDiaryList(uid);
 
         if(list.size()==0){
             return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
         }
-        return new ApiResponseBody<ArrayList<Board>>(list);
+        return new ApiResponseBody<ArrayList<Page>>(list);
     }
 
     @RequestMapping(method= RequestMethod.DELETE)

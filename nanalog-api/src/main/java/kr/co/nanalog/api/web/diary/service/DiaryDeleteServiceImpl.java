@@ -1,8 +1,7 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.repository.BoardRepository;
-import kr.co.nanalog.api.repository.ContentsRepository;
-import kr.co.nanalog.api.repository.CreatedComponentRepository;
+import kr.co.nanalog.api.repository.PageRepository;
+import kr.co.nanalog.api.repository.ComponentRepository;
 import kr.co.nanalog.api.repository.DiaryRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +13,22 @@ public class DiaryDeleteServiceImpl implements DiaryDeleteService {
     @Autowired
     private DiaryRepository diaryRepository;
     @Autowired
-    private BoardRepository boardRepository;
+    private PageRepository pageRepository;
     @Autowired
-    private CreatedComponentRepository createdComponentRepository;
+    private ComponentRepository componentRepository;
     @Autowired
-    private ContentsRepository contentsRepository;
+    //private ContentsRepository contentsRepository;
 
 
     public Integer deleteDiary(DiaryDeleteRequest diaryDeleteRequest){
 
         Long deletboardid = diaryDeleteRequest.getDeleteBoardId();
 
-        createdComponentRepository.deleteCreatedComponentByBoardId(deletboardid);
+        componentRepository.deleteCreatedComponentByBoardId(deletboardid);
 
-        contentsRepository.deleteContentsByBoardId(deletboardid);
+      //  contentsRepository.deleteContentsByBoardId(deletboardid);
 
-        boardRepository.deleteByBoardId(deletboardid);
+        pageRepository.deleteByBoardId(deletboardid);
 
 
         return null;
