@@ -8,4 +8,8 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface CreatedComponentRepository {
 
+    @Query("delete from CreatedComponent c " +
+            "where c.boardId = ?1")
+    void deleteCreatedComponentByBoardId(Long boardId);
+
 }

@@ -1,0 +1,34 @@
+# gradle
+target
+activemq-data
+h2-data
+build
+.gradle
+# idea
+out
+classes
+.idea
+*.iml
+*.ipr
+*.iws
+*.pyc
+# etc
+*.tsv
+*.chk
+*.swp
+*.rdb
+#*.txt
+*.tsv
+rebel.xml
+.DS_Store
+npm-debug.log
+access_logs.db
+node_modules/
+temp/
+deploysvn.conf
+.svn/
+# sql
+mysql-ddl.sql
+# private env
+*.log
+metastore_db

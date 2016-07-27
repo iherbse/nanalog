@@ -3,14 +3,18 @@ package kr.co.nanalog.api.web.diary.controller;
 
 import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.entity.Board;
+import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
 import kr.co.nanalog.api.web.diary.service.DiaryListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 /**
@@ -31,4 +35,11 @@ public class DiaryController {
         }
         return new ApiResponseBody<ArrayList<Board>>(list);
     }
+
+    @RequestMapping(method= RequestMethod.DELETE)
+    public ResponseEntity deleteDiary(@Valid DiaryDeleteRequest userDeleteRequest, BindingResult bindingResult){
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

@@ -13,4 +13,10 @@ public interface ContentsRepository {
 
     @Query("select c from Contents c where c.boardId=?1")
     ArrayList<Component> getMyDiaryByBoardId(Long boardId);
+
+    @Query("delete from Contents c" +
+            "where c.boardId = ?1")
+    void deleteContentsByBoardId(Long boardId);
+
+
 }
