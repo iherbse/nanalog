@@ -15,4 +15,8 @@ public interface DiaryRepository extends JpaRepository<Diary, Long> {
     @Query("select d from Diary d where d.userId=?1")
     Diary getMyDiaryByUid(String uid);
 
+    @Query("update Diary d " +
+            "set d.diaryOption = ?2 where d.diaryId = ?1")
+    void updatePageBy(Long diaryId, String diaryOption);
+
 }

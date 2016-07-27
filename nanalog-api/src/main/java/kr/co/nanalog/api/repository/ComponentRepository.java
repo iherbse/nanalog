@@ -1,6 +1,6 @@
 package kr.co.nanalog.api.repository;
 
-import kr.co.nanalog.api.entity.Diary;
+import kr.co.nanalog.api.entity.ComponentPosition;
 import org.springframework.data.jpa.repository.Query;
 
 /**
@@ -9,7 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 public interface ComponentRepository {
 
     @Query("delete from Component c " +
-            "where c.boardId = ?1")
-    void deleteCreatedComponentByBoardId(Long boardId);
+            "where c.pageId = ?1")
+    void deleteComponentBypageId(Long pageId);
+
+    // deleteComponentByComponentId도 필요할 것 같네요!! -진주
+
+    @Query("update Component c " +
+            "set c.componentPosition = ?2 c.componentData =?3 where c.pageId = ?1")
+    void updateComponentByComponentId(Long pageId, ComponentPosition componentPosition, String componentData);
 
 }
