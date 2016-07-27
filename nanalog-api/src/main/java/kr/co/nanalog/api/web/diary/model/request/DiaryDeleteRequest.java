@@ -4,13 +4,13 @@ package kr.co.nanalog.api.web.diary.model.request;
  * Created by Leegain on 2016-07-27.
  */
 public class DiaryDeleteRequest {
-    private Long deleteBoardId;
+    private Long deletePageId;
 
-    public Long getDeleteBoardId() {
-        return deleteBoardId;
+    public Long getDeletePageId() {
+        return deletePageId;
     }
 
-    public void setDeleteBoardId(Long deleteBoardId) {
-        this.deleteBoardId = deleteBoardId;
+    public void setDeletePageId(Long deletePageId) {
+        this.deletePageId = deletePageId;
     }
 }

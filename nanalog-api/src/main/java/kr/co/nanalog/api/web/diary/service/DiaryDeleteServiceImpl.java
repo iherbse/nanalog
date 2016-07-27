@@ -22,13 +22,13 @@ public class DiaryDeleteServiceImpl implements DiaryDeleteService {
 
     public Integer deleteDiary(DiaryDeleteRequest diaryDeleteRequest){
 
-        Long deletboardid = diaryDeleteRequest.getDeleteBoardId();
+        Long deletePageId = diaryDeleteRequest.getDeletePageId();
 
-        componentRepository.deleteCreatedComponentByBoardId(deletboardid);
+        componentRepository.deleteComponentBypageId(deletePageId);
 
       //  contentsRepository.deleteContentsByBoardId(deletboardid);
 
-        pageRepository.deleteByBoardId(deletboardid);
+      //  pageRepository.deleteByBoardId(deletboardid);
 
 
         return null;
