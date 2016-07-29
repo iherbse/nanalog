@@ -1,5 +1,8 @@
 package kr.co.nanalog.api.web.diary.model.response;
 
+import kr.co.nanalog.api.entity.Diary;
+import kr.co.nanalog.api.entity.Page;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,40 +11,46 @@ import java.util.Date;
  */
 public class DiaryListResponse {
 
-    private Long boardId;
-    private Long diaryId;
-    private ArrayList<Date> createdDate;
+    private ArrayList<Diary> diaries;
+    private ArrayList<ArrayList<Page>> pages;
+    private ArrayList<Integer> totalPagesOfDiaries;
 
-    public Long getBoardId() {
-        return boardId;
+    public DiaryListResponse() {
+        diaries = new ArrayList<>();
+        pages = new ArrayList<>();
+        totalPagesOfDiaries = new ArrayList<>();
     }
 
-    public void setBoardId(Long boardId) {
-        this.boardId = boardId;
+    public ArrayList<Diary> getDiaries() {
+        return diaries;
     }
 
-    public Long getDiaryId() {
-        return diaryId;
+    public void setDiaries(ArrayList<Diary> diaries) {
+        this.diaries = diaries;
     }
 
-    public void setDiaryId(Long diaryId) {
-        this.diaryId = diaryId;
+    public ArrayList<ArrayList<Page>> getPages() {
+        return pages;
     }
 
-    public ArrayList<Date> getCreatedDate() {
-        return createdDate;
+    public void setPages(ArrayList<ArrayList<Page>> pages) {
+        this.pages = pages;
     }
 
-    public void setCreatedDate(ArrayList<Date> createdDate) {
-        this.createdDate = createdDate;
+    public ArrayList<Integer> getTotalPagesOfDiaries() {
+        return totalPagesOfDiaries;
+    }
+
+    public void setTotalPagesOfDiaries(ArrayList<Integer> totalPagesOfDiaries) {
+        this.totalPagesOfDiaries = totalPagesOfDiaries;
     }
 
     @Override
     public String toString() {
         return "DiaryListResponse{" +
-                "boardId=" + boardId +
-                ", diaryId=" + diaryId +
-                ", createdDate=" + createdDate +
+                "diaries=" + diaries +
+                ", pages=" + pages +
+                ", totalPagesOfDiaries=" + totalPagesOfDiaries +
                 '}';
     }
 }

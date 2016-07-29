@@ -4,7 +4,11 @@ package kr.co.nanalog.api.web.diary.controller;
 import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.entity.Page;
 import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
-import kr.co.nanalog.api.web.diary.service.DiaryListService;
+import kr.co.nanalog.api.web.diary.model.request.DiaryListRequest;
+import kr.co.nanalog.api.web.diary.model.request.DiaryViewRequest;
+import kr.co.nanalog.api.web.diary.model.response.DiaryListResponse;
+import kr.co.nanalog.api.web.diary.model.response.DiaryViewResponse;
+import kr.co.nanalog.api.web.diary.service.DiaryGetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,24 +28,40 @@ import java.util.ArrayList;
 @RequestMapping("/v1/diary")
 public class DiaryController {
     @Autowired
-    private DiaryListService diaryListService;
+    private DiaryGetService diaryGetService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ApiResponseBody<ArrayList<Page>> getDiaryList(@RequestParam(required = true) String uid){
-        ArrayList<Page> list = diaryListService.getDiaryList(uid);
+    public ApiResponseBody<DiaryListResponse> getDiaryList(@RequestParam(required = true) String uid, @RequestParam(required = true) Integer month) {
+        DiaryListRequest diaryListRequest = new DiaryListRequest();
+        diaryListRequest.setUid(uid);
+        diaryListRequest.setDate(month);
 
-        if(list.size()==0){
+        DiaryListResponse diaryListResponse = diaryGetService.getDiaryList(diaryListRequest);
+
+        if (diaryListResponse == null) {
             return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
         }
-        return new ApiResponseBody<ArrayList<Page>>(list);
+        return new ApiResponseBody<DiaryListResponse>(diaryListResponse);
     }
 
-    @RequestMapping(method= RequestMethod.DELETE)
-    public ResponseEntity deleteDiary(@Valid DiaryDeleteRequest userDeleteRequest, BindingResult bindingResult){
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ApiResponseBody<DiaryViewResponse> getDiaryView(@RequestParam(required = true) Long pageId) {
+        DiaryViewRequest diaryViewRequest = new DiaryViewRequest();
+        diaryViewRequest.setPageId(pageId);
+
+        DiaryViewResponse diaryViewResponse = diaryGetService.getDiaryView(diaryViewRequest);
+
+        if (diaryViewResponse == null) {
+            return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
+        }
+        return new ApiResponseBody<DiaryViewResponse>(diaryViewResponse);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public ResponseEntity deleteDiary(@Valid DiaryDeleteRequest userDeleteRequest, BindingResult bindingResult) {
 
         return new ResponseEntity(HttpStatus.OK);
     }
-
 
 
 }
