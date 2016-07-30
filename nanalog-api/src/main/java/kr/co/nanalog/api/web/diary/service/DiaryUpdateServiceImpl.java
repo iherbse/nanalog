@@ -35,7 +35,7 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
         ArrayList<Component> deletedComponents = new ArrayList<>();
 
         if (page == null) {
-            return 0;
+            return -1;
         }
         // delete될 컴포넌트 find
         for (Component component : components) {
