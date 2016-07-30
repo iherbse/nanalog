@@ -1,4 +1,4 @@
-package kr.co.nanalog.api.web.user.controller;
+package kr.co.nanalog.api.web;
 
 import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.entity.UserDeleteQueue;

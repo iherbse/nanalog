@@ -1,9 +1,10 @@
-package kr.co.nanalog.api.web.test.weather.model.request;
+package kr.co.nanalog.api.web.util.model.request;
 
 /**
  * Created by Leegain on 2016-07-30.
  */
 public class WeatherRequest {
+
     private String city;
     private String country;
     private String village;

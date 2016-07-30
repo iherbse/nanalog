@@ -1,4 +1,4 @@
-package kr.co.nanalog.api.web.test.date.model.response;
+package kr.co.nanalog.api.web.util.model.respnose;
 
 public class DateResponse {
 

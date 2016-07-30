@@ -1,9 +1,9 @@
-package kr.co.nanalog.api.web.test.date.model.request;
-
+package kr.co.nanalog.api.web.util.model.request;
 
 public class DateRequest {
-    String formatter;
-    Integer type;
+
+    private String formatter;
+    private Integer type;
 
     public String getFormatter() {
         return formatter;
@@ -19,5 +19,13 @@ public class DateRequest {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "DateRequest{" +
+                "formatter='" + formatter + '\'' +
+                ", type=" + type +
+                '}';
     }
 }
