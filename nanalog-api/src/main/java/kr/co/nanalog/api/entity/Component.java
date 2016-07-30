@@ -7,7 +7,7 @@ import javax.persistence.*;
  * Created by lcw on 7/26/16.
  */
 @Entity
-@Table(name = "Component_tb")
+@Table(name = "component_tb")
 public class Component {
 
     @Id

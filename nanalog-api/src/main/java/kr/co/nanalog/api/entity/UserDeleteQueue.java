@@ -1,15 +1,13 @@
 package kr.co.nanalog.api.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by 1002731 on 2016. 7. 17..
  * Email : eenan@sk.com
  */
 @Entity
+@Table(name = "user_delete_queue_tb")
 public class UserDeleteQueue {
     @Id
     @GeneratedValue
