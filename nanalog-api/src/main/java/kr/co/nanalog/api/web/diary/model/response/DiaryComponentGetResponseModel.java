@@ -1,6 +1,6 @@
 package kr.co.nanalog.api.web.diary.model.response;
 
-import kr.co.nanalog.api.entity.ComponentPosition;
+import kr.co.nanalog.api.entity.Component;
 import org.hibernate.validator.constraints.CompositionType;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -18,7 +18,7 @@ public class DiaryComponentGetResponseModel {
     private CompositionType compositionType;
     @NotNull
     @NotEmpty
-    private ComponentPosition componentPosition;
+    private Component.ComponentPosition componentPosition;
     @NotNull
     private String componentData;
 
@@ -38,11 +38,11 @@ public class DiaryComponentGetResponseModel {
         this.compositionType = compositionType;
     }
 
-    public ComponentPosition getComponentPosition() {
+    public Component.ComponentPosition getComponentPosition() {
         return componentPosition;
     }
 
-    public void setComponentPosition(ComponentPosition componentPosition) {
+    public void setComponentPosition(Component.ComponentPosition componentPosition) {
         this.componentPosition = componentPosition;
     }
 
