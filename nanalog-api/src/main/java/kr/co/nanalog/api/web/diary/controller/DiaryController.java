@@ -6,6 +6,7 @@ import kr.co.nanalog.api.entity.Page;
 import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryListResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryViewResponse;
+import kr.co.nanalog.api.web.diary.service.DiaryDeleteService;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
 import kr.co.nanalog.api.web.diary.service.DiaryUpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class DiaryController {
 
     @Autowired
     private DiaryUpdateService diaryUpdateService;
+
+    @Autowired
+    private DiaryDeleteService diaryDeleteService;
 
 
     @RequestMapping(method = RequestMethod.GET)
@@ -86,10 +90,27 @@ public class DiaryController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity deleteDiary(@Valid DiaryDeleteRequest userDeleteRequest, BindingResult bindingResult) {
+    public ResponseEntity deleteDiary(@Valid DiaryDeleteRequest diaryDeleteRequest, BindingResult bindingResult) {
+
+        int resultCode = diaryDeleteService.deleteDiary(diaryDeleteRequest);
+
+        if(resultCode == -1){
+            return  new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/component", method = RequestMethod.DELETE)
+    public ResponseEntity deletecomponent1(@Valid ComponentDeleteRequest componentDeleteRequest){
+
+        int resultCode = diaryDeleteService.deleteComponent(componentDeleteRequest);
+
+        if(resultCode == -1){
+            return  new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
 }

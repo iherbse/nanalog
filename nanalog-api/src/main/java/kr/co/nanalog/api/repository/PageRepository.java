@@ -24,7 +24,9 @@ public interface PageRepository extends JpaRepository<Page, Long> {
     ArrayList<Page> getPageByDiaryId(Long diaryId, Integer month);
 
     @Query("delete from Page p" +
-            "where p.diaryId = ?1")
-    void deleteByDiaryId(Long diaryId);
+            "where p.pageId = ?1")
+    void deleteByPageId(Long pageId);
+
+
 
 }

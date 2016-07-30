@@ -5,6 +5,7 @@ package kr.co.nanalog.api.web.diary.model.request;
  */
 public class DiaryDeleteRequest {
     private Long deletePageId;
+    private String userId;
 
     public Long getDeletePageId() {
         return deletePageId;
@@ -13,4 +14,13 @@ public class DiaryDeleteRequest {
     public void setDeletePageId(Long deletePageId) {
         this.deletePageId = deletePageId;
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
 }
