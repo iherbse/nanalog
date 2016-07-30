@@ -3,7 +3,7 @@ package kr.co.nanalog.api.web.diary.model.request;
 /**
  * Created by Leegain on 2016-07-27.
  */
-public class DiaryDeleteRequest {
+public class DiaryPageDeleteRequest {
     private Long deletePageId;
     private String userId;
 
