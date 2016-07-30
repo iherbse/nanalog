@@ -9,6 +9,8 @@ import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryPageUpdateRequest;
 import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +18,8 @@ import java.util.Date;
 /**
  * Created by choijinjoo on 2016. 7. 30..
  */
+@Service
+@Transactional
 public class DiaryUpdateServiceImpl implements DiaryUpdateService {
     @Autowired
     DiaryRepository diaryRepository;
