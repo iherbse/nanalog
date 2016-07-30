@@ -59,54 +59,54 @@ public class UserControllerTest {
         userCreateRequest.setPassword("1234");
         userService.createUser(userCreateRequest);
     }
-//
-//    @Test
-//    public void 사용자_회원가입_테스트() throws Exception {
-//        mockMvc.perform(post("/v1/user/")
-//                .param("uid", "create@test.com")
-//                .param("name", "CREATE")
-//                .param("password", "3434"))
-//                .andExpect(status().isOk());
-//    }
-//
-//    @Test
-//    public void 사용자_정보수정_테스트() throws Exception {
-//        mockMvc.perform(put("/v1/user/")
-//                .param("uid", "test@test.com")
-//                .param("name", "MODIFY")
-//                .param("password", "1234"))
-//                .andExpect(status().isOk());
-//    }
-//
-//    @Test
-//    public void 사용자_정보조회_테스트() throws Exception {
-//        mockMvc.perform(get("/v1/user/")
-//                .param("uid", "test@test.com"))
-//                .andExpect(status().isOk());
-//    }
-//
-//    @Test
-//    public void 사용자_정보삭제_테스트() throws Exception {
-//        mockMvc.perform(delete("/v1/user/")
-//                .param("uid", "test@test.com")
-//                .param("password", "1234"))
-//                .andExpect(status().isOk());
-//
-//        UserDeleteQueue userDeleteQueue = userDeleteQueueRepository.findByUid("test@test.com");
-//
-//        ApiResponseBody<UserDeleteQueue> apiResponseBody = new ApiResponseBody<UserDeleteQueue>(userDeleteQueue);
-//        mockMvc.perform(get("/v1/user/deactivation/")
-//                .param("uid", "test@test.com"))
-//                .andExpect(status().isOk())
-//                .andExpect(content().string(jsonStringFromObject(apiResponseBody)));
-//    }
-//
-//    @Test
-//    public void 사용자_상태업데이트_테스트() throws Exception {
-//        mockMvc.perform(get("/v1/user/active/")
-//                .param("uid", "test@test.com"))
-//                .andExpect(status().isOk());
-//    }
+
+    @Test
+    public void 사용자_회원가입_테스트() throws Exception {
+        mockMvc.perform(post("/v1/user/")
+                .param("uid", "create@test.com")
+                .param("name", "CREATE")
+                .param("password", "3434"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void 사용자_정보수정_테스트() throws Exception {
+        mockMvc.perform(put("/v1/user/")
+                .param("uid", "test@test.com")
+                .param("name", "MODIFY")
+                .param("password", "1234"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void 사용자_정보조회_테스트() throws Exception {
+        mockMvc.perform(get("/v1/user/")
+                .param("uid", "test@test.com"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void 사용자_정보삭제_테스트() throws Exception {
+        mockMvc.perform(delete("/v1/user/")
+                .param("uid", "test@test.com")
+                .param("password", "1234"))
+                .andExpect(status().isOk());
+
+        UserDeleteQueue userDeleteQueue = userDeleteQueueRepository.findByUid("test@test.com");
+
+        ApiResponseBody<UserDeleteQueue> apiResponseBody = new ApiResponseBody<UserDeleteQueue>(userDeleteQueue);
+        mockMvc.perform(get("/v1/user/deactivation/")
+                .param("uid", "test@test.com"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(jsonStringFromObject(apiResponseBody)));
+    }
+
+    @Test
+    public void 사용자_상태업데이트_테스트() throws Exception {
+        mockMvc.perform(get("/v1/user/active/")
+                .param("uid", "test@test.com"))
+                .andExpect(status().isOk());
+    }
 
     private String jsonStringFromObject(Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
