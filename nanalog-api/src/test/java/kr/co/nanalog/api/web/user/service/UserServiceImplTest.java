@@ -28,6 +28,8 @@ public class UserServiceImplTest {
 
     @Test
     public void createUser() throws Exception {
+
+        System.out.println(getCurrentDate());
         User user = new User();
         user.setUid("test@test.com");
         user.setName("test name");
@@ -39,5 +41,9 @@ public class UserServiceImplTest {
         Mockito.when(userRepository.save(user)).thenReturn(user);
 
         System.out.println(user.toString());
+    }
+
+    private String getCurrentDate(){
+        return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 }

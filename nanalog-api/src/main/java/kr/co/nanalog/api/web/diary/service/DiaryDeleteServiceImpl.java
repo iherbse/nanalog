@@ -2,17 +2,21 @@ package kr.co.nanalog.api.web.diary.service;
 
 import kr.co.nanalog.api.entity.Component;
 import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.repository.ComponentRepository;
+import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.ComponentDeleteRequest;
 import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
 /**
  * Created by Leegain on 2016-07-27.
  */
+@Service
+@Transactional
 public class DiaryDeleteServiceImpl implements DiaryDeleteService {
     @Autowired
     private PageRepository pageRepository;
@@ -37,7 +41,7 @@ public class DiaryDeleteServiceImpl implements DiaryDeleteService {
 
         componentRepository.deleteComponentBypageId(deletePageId);
 
-        pageRepository.deleteByPageId(deletePageId);
+        pageRepository.delete(deletePageId);
 
 
         return 1;

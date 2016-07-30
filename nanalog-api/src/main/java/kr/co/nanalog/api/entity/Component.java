@@ -16,8 +16,10 @@ public class Component {
     @Column(nullable = false)
     private Long pageId;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private ComponentType componentType;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private ComponentPosition componentPosition;
     @Column(nullable = false)
     private String componentData;
@@ -71,5 +73,17 @@ public class Component {
                 ", componentPosition=" + componentPosition +
                 ", componentData='" + componentData + '\'' +
                 '}';
+    }
+
+    public enum ComponentPosition {
+        TOP,
+        MID,
+        BOTTOM;
+    }
+
+    public enum ComponentType {
+        TITLE,
+        SENTENCE,
+        IMAGE;
     }
 }
