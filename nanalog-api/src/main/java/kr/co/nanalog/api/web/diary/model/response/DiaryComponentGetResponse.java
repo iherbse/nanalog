@@ -3,7 +3,7 @@ package kr.co.nanalog.api.web.diary.model.response;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lcw on 7/29/16.
@@ -15,7 +15,7 @@ public class DiaryComponentGetResponse {
     @NotEmpty
     @NotNull
     private Long pageId;
-    private ArrayList<DiaryComponentGetResponseModel> diaryComponentGetResponseModels;
+    private List<DiaryComponentGetResponseModel> diaryComponentGetResponseModels;
 
     public String getUid() {
         return uid;
@@ -33,11 +33,11 @@ public class DiaryComponentGetResponse {
         this.pageId = pageId;
     }
 
-    public ArrayList<DiaryComponentGetResponseModel> getDiaryComponentGetResponseModels() {
+    public List<DiaryComponentGetResponseModel> getDiaryComponentGetResponseModels() {
         return diaryComponentGetResponseModels;
     }
 
-    public void setDiaryComponentGetResponseModels(ArrayList<DiaryComponentGetResponseModel> diaryComponentGetResponseModels) {
+    public void setDiaryComponentGetResponseModels(List<DiaryComponentGetResponseModel> diaryComponentGetResponseModels) {
         this.diaryComponentGetResponseModels = diaryComponentGetResponseModels;
     }
 

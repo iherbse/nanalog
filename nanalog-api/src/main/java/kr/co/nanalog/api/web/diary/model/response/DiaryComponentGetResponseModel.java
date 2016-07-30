@@ -15,7 +15,7 @@ public class DiaryComponentGetResponseModel {
     private Long componentId;
     @NotNull
     @NotEmpty
-    private CompositionType compositionType;
+    private Component.ComponentType componentType;
     @NotNull
     @NotEmpty
     private Component.ComponentPosition componentPosition;
@@ -30,12 +30,12 @@ public class DiaryComponentGetResponseModel {
         this.componentId = componentId;
     }
 
-    public CompositionType getCompositionType() {
-        return compositionType;
+    public Component.ComponentType getComponentType() {
+        return componentType;
     }
 
-    public void setCompositionType(CompositionType compositionType) {
-        this.compositionType = compositionType;
+    public void setComponentType(Component.ComponentType componentType) {
+        this.componentType = componentType;
     }
 
     public Component.ComponentPosition getComponentPosition() {
@@ -58,7 +58,7 @@ public class DiaryComponentGetResponseModel {
     public String toString() {
         return "DiaryComponentGetResponseModel{" +
                 "componentId=" + componentId +
-                ", compositionType=" + compositionType +
+                ", componentType=" + componentType +
                 ", componentPosition=" + componentPosition +
                 ", componentData='" + componentData + '\'' +
                 '}';

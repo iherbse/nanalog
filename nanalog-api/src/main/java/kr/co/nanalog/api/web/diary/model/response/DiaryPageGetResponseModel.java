@@ -1,5 +1,8 @@
 package kr.co.nanalog.api.web.diary.model.response;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -7,7 +10,11 @@ import java.util.Date;
  */
 public class DiaryPageGetResponseModel {
 
+    @NotNull
+    @NotEmpty
     private Long pageId;
+    @NotNull
+    @NotEmpty
     private Date createdDate;
     private Date modifiedDate;
 
