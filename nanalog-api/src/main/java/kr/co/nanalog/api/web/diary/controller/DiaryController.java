@@ -73,9 +73,9 @@ public class DiaryController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity deleteDiary(@Valid DiaryDeleteRequest diaryDeleteRequest, BindingResult bindingResult) {
+    public ResponseEntity deletePage(@Valid DiaryPageDeleteRequest diaryPageDeleteRequest, BindingResult bindingResult) {
 
-        int resultCode = diaryDeleteService.deleteDiary(diaryDeleteRequest);
+        int resultCode = diaryDeleteService.deletePage(diaryPageDeleteRequest);
 
         if(resultCode == -1){
             return  new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -85,13 +85,20 @@ public class DiaryController {
     }
 
     @RequestMapping(value = "/component", method = RequestMethod.DELETE)
-    public ResponseEntity deletecomponent1(@Valid ComponentDeleteRequest componentDeleteRequest){
+    public ResponseEntity deleteComponent(@Valid ComponentDeleteRequest componentDeleteRequest){
 
         int resultCode = diaryDeleteService.deleteComponent(componentDeleteRequest);
 
         if(resultCode == -1){
             return  new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
         }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.DELETE)
+    public ResponseEntity deleteUser(@Valid DiaryUserDeleteRequest diaryUserDeleteRequest){
+        int resultCode = diaryDeleteService.deleteUser(diaryUserDeleteRequest);
 
         return new ResponseEntity(HttpStatus.OK);
     }
