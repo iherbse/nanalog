@@ -1,6 +1,7 @@
 package kr.co.nanalog.api.web.diary.service;
 
 import kr.co.nanalog.api.web.diary.model.request.DiaryComponentGetRequest;
+import kr.co.nanalog.api.web.diary.model.request.DiaryPageGetRequest;
 import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
 
@@ -9,6 +10,6 @@ import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
  */
 public interface DiaryGetService {
 
-    DiaryPageGetResponse getDiaryPages(DiaryComponentGetRequest diaryComponentGetRequest);
+    DiaryPageGetResponse getDiaryPages(DiaryPageGetRequest diaryPageGetRequest);
     DiaryComponentGetResponse getDiaryCompoents(DiaryComponentGetRequest diaryComponentGetRequest);
 }

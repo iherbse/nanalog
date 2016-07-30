@@ -1,7 +1,10 @@
 package kr.co.nanalog.api.web.diary.controller;
 
 
+import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.web.diary.model.request.*;
+import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
+import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
 import kr.co.nanalog.api.web.diary.service.DiaryDeleteService;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
 import kr.co.nanalog.api.web.diary.service.DiaryUpdateService;
@@ -31,32 +34,29 @@ public class DiaryController {
     private DiaryDeleteService diaryDeleteService;
 
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public ApiResponseBody<DiaryGetResponse> getDiaryList(@RequestParam(required = true) String uid, @RequestParam(required = true) Integer month) {
-//        DiaryGetRequest diaryListRequest = new DiaryGetRequest();
-//        diaryListRequest.setUid(uid);
-//        diaryListRequest.setDate(month);
-//
-//        DiaryGetResponse diaryListResponse = diaryGetService.getDiaryList(diaryListRequest);
-//
-//        if (diaryListResponse == null) {
-//            return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
-//        }
-//        return new ApiResponseBody<DiaryGetResponse>(diaryListResponse);
-//    }
-//
-//    @RequestMapping(value = "/view", method = RequestMethod.GET)
-//    public ApiResponseBody<DiaryComponentGetResponse> getDiaryView(@RequestParam(required = true) Long pageId) {
-//        DiaryComponentGetRequest diaryViewRequest = new DiaryComponentGetRequest();
-//        diaryViewRequest.setPageId(pageId);
-//
-//        DiaryComponentGetResponse diaryViewResponse = diaryGetService.getDiaryView(diaryViewRequest);
-//
-//        if (diaryViewResponse == null) {
-//            return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
-//        }
-//        return new ApiResponseBody<DiaryComponentGetResponse>(diaryViewResponse);
-//    }
+    @RequestMapping(method = RequestMethod.GET)
+    public ApiResponseBody<DiaryPageGetResponse> getDiaryPages(@Valid DiaryPageGetRequest diaryPageGetRequest){
+
+        DiaryPageGetResponse diaryPageGetResponse = diaryGetService.getDiaryPages(diaryPageGetRequest);
+
+        if(diaryPageGetResponse == null){
+            return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
+        }
+
+        return new ApiResponseBody<DiaryPageGetResponse>(diaryPageGetResponse);
+    }
+
+    @RequestMapping(value = "/page", method = RequestMethod.GET)
+    public ApiResponseBody<DiaryComponentGetResponse> getPageComponents(@Valid DiaryComponentGetRequest diaryComponentGetRequest){
+
+        DiaryComponentGetResponse diaryComponentGetResponse = diaryGetService.getDiaryCompoents(diaryComponentGetRequest);
+
+        if(diaryComponentGetResponse == null){
+            return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
+        }
+
+        return new ApiResponseBody<DiaryComponentGetResponse>(diaryComponentGetResponse);
+    }
 
 
 
