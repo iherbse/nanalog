@@ -29,22 +29,13 @@ public class DiaryGetServiceImpl implements DiaryGetService {
     @Autowired
     private ComponentRepository componentRepository;
 
-    @Autowired
-    DiaryPageGetResponseModel diaryPageGetResponseModel;
-
-    @Autowired
-    DiaryPageGetResponse diaryPageGetResponse;
-
-    @Autowired
-    DiaryComponentGetResponseModel diaryComponentGetResponseModel;
-
-    @Autowired
-    DiaryComponentGetResponse diaryComponentGetResponse;
-
     @Override
     public DiaryPageGetResponse getDiaryPages(DiaryPageGetRequest diaryPageGetRequest) {
 
         List<Page> pages = pageRepository.getPagesByUid(diaryPageGetRequest.getUid());
+
+        DiaryPageGetResponseModel diaryPageGetResponseModel = new DiaryPageGetResponseModel();
+        DiaryPageGetResponse diaryPageGetResponse = new DiaryPageGetResponse();
 
         for (Page page :
                 pages) {
@@ -65,6 +56,8 @@ public class DiaryGetServiceImpl implements DiaryGetService {
 
         List<Component> components = componentRepository.getComponentsByPageId(diaryComponentGetRequest.getPageId());
 
+        DiaryComponentGetResponseModel diaryComponentGetResponseModel = new DiaryComponentGetResponseModel();
+        DiaryComponentGetResponse diaryComponentGetResponse = new DiaryComponentGetResponse();
         for (Component component :
                 components) {
             diaryComponentGetResponseModel.setComponentId(component.getComponentId());
