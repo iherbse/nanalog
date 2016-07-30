@@ -22,9 +22,14 @@ public class DateServiceImpl implements DateService {
     @Override
     public DateResponse getYearAgoDate(YearAgoDateRequest dateRequest) {
 
+        if(dateRequest.getDate() == null || dateRequest.getTo() == null){
+            DateResponse dateResponse = new DateResponse();
+            dateResponse.setCode(-1);
+            return dateResponse;
+        }
         DateTimeFormatter transFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
         DateTime date = transFormat.parseDateTime(dateRequest.getDate());
-        date.minusYears(dateRequest.getTo());
+        date = date.minusYears(dateRequest.getTo()); 
 
         return getDate(dateRequest, date);
     }

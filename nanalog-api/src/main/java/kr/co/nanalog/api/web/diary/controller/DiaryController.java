@@ -58,18 +58,7 @@ public class DiaryController {
 //        return new ApiResponseBody<DiaryComponentGetResponse>(diaryViewResponse);
 //    }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity updateDiary(@Valid DiaryUpdateRequest updateRequest) {
-        int resultCode = diaryUpdateService.updateDiary(updateRequest);
 
-        if (resultCode == 0) {
-            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
-        }
-
-        //result Code = 1
-        return new ResponseEntity(HttpStatus.OK);
-
-    }
 
     @RequestMapping(value = "/page", method = RequestMethod.POST)
     public ResponseEntity updatePage(@Valid DiaryPageUpdateRequest updateRequest) {

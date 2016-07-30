@@ -5,7 +5,6 @@ import kr.co.nanalog.api.entity.Page;
 import kr.co.nanalog.api.repository.ComponentRepository;
 import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryPageUpdateRequest;
-import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,26 +18,12 @@ import java.util.Date;
 @Service
 @Transactional
 public class DiaryUpdateServiceImpl implements DiaryUpdateService {
-    //@Autowired
-  //  DiaryRepository diaryRepository;
+
     @Autowired
     PageRepository pageRepository;
     @Autowired
     ComponentRepository componentRepository;
 
-    @Override
-    public Integer updateDiary(DiaryUpdateRequest diaryUpdateRequest) {
-//        Diary diary = diaryRepository.findByDiaryId(diaryUpdateRequest.getDiaryId());
-//
-//        if (diary == null) {
-//            return 0;
-//        }
-//
-//        diary.setDiaryOption(diary.getDiaryOption());
-//        diaryRepository.save(diary);
-
-        return 1;
-    }
 
     //FIXME code review 필요!!
 
