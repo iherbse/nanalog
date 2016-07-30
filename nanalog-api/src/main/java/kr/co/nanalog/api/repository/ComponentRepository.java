@@ -23,6 +23,11 @@ public interface ComponentRepository extends JpaRepository<Component, Long> {
             "where c.pageId = ?1")
     void deleteComponentBypageId(Long pageId);
 
-    // deleteComponentByComponentId도 필요할 것 같네요!! -진주
+    @Query("delete from Component c " +
+            "where c.componentId =?1")
+    void deleteComponentByComponentId(Long componentId);
+
+    @Query("select c from Component c where c.componentId=?1")
+    Component getComponentByComponentId(Long ComponentId);
 
 }

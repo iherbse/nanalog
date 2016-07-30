@@ -1,5 +1,6 @@
 package kr.co.nanalog.api.web.diary.service;
 
+import kr.co.nanalog.api.web.diary.model.request.ComponentDeleteRequest;
 import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
 
 /**
@@ -8,4 +9,5 @@ import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
 
 public interface DiaryDeleteService {
     Integer deleteDiary(DiaryDeleteRequest diaryDeleteRequest);
+    Integer deleteComponent(ComponentDeleteRequest componentDeleteRequest);
 }

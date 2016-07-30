@@ -22,7 +22,9 @@ public interface PageRepository extends JpaRepository<Page, Long> {
     ArrayList<Page> getPageByDiaryId(String uid);
 
     @Query("delete from Page p" +
-            "where p.diaryId = ?1")
-    void deleteByDiaryId(Long diaryId);
+            "where p.pageId = ?1")
+    void deleteByPageId(Long pageId);
+
+
 
 }
