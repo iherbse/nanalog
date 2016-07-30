@@ -5,18 +5,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by lcw on 7/26/16.
  */
 public interface DiaryRepository extends JpaRepository<Diary, Long> {
 
+    @Query("select d " +
+            "from Diary d " +
+            "where d.diaryId = ?1 ")
+    Diary findByDiaryId(Long diaryId);
+
     @Query("select d from Diary d where d.userId=?1")
     ArrayList<Diary> getDiaryByUid(String uid);
 
-    @Query("update Diary d " +
-            "set d.diaryOption = ?2 where d.diaryId = ?1")
-    void updatePageBy(Long diaryId, String diaryOption);
 
 }

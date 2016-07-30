@@ -3,12 +3,11 @@ package kr.co.nanalog.api.web.diary.controller;
 
 import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
-import kr.co.nanalog.api.web.diary.model.request.DiaryListRequest;
-import kr.co.nanalog.api.web.diary.model.request.DiaryViewRequest;
+import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryListResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryViewResponse;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
+import kr.co.nanalog.api.web.diary.service.DiaryUpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +28,10 @@ import java.util.ArrayList;
 public class DiaryController {
     @Autowired
     private DiaryGetService diaryGetService;
+
+    @Autowired
+    private DiaryUpdateService diaryUpdateService;
+
 
     @RequestMapping(method = RequestMethod.GET)
     public ApiResponseBody<DiaryListResponse> getDiaryList(@RequestParam(required = true) String uid, @RequestParam(required = true) Integer month) {
@@ -55,6 +58,31 @@ public class DiaryController {
             return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
         }
         return new ApiResponseBody<DiaryViewResponse>(diaryViewResponse);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity updateDiary(@Valid DiaryUpdateRequest updateRequest) {
+        int resultCode = diaryUpdateService.updateDiary(updateRequest);
+
+        if (resultCode == 0) {
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        //result Code = 1
+        return new ResponseEntity(HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/page", method = RequestMethod.POST)
+    public ResponseEntity updatePage(@Valid DiaryPageUpdateRequest updateRequest) {
+        int resultCode = diaryUpdateService.updatePage(updateRequest);
+
+        if (resultCode == 0) {
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        //result Code = 1
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
