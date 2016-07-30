@@ -1,20 +1,13 @@
-package kr.co.nanalog.api.entity;
+package kr.co.nanalog.api.web.diary.model.response;
 
-import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by lcw on 7/26/16.
+ * Created by lcw on 7/30/16.
  */
-@Entity
-@Table(name = "page_tb")
-public class Page {
-    @Id
-    @GeneratedValue
+public class DiaryPageGetResponseModel {
+
     private Long pageId;
-    @Column(nullable = false)
-    private String uid;
-    @Column(nullable = false)
     private Date createdDate;
     private Date modifiedDate;
 
@@ -24,14 +17,6 @@ public class Page {
 
     public void setPageId(Long pageId) {
         this.pageId = pageId;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 
     public Date getCreatedDate() {
@@ -52,9 +37,8 @@ public class Page {
 
     @Override
     public String toString() {
-        return "Page{" +
+        return "DiaryPageGetResponseModel{" +
                 "pageId=" + pageId +
-                ", uid='" + uid + '\'' +
                 ", createdDate=" + createdDate +
                 ", modifiedDate=" + modifiedDate +
                 '}';

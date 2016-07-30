@@ -2,7 +2,6 @@ package kr.co.nanalog.api.web.diary.service;
 
 import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.DiaryRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryDeleteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 

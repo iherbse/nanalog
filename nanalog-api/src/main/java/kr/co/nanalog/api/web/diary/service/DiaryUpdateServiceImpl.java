@@ -1,10 +1,8 @@
 package kr.co.nanalog.api.web.diary.service;
 
 import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Diary;
 import kr.co.nanalog.api.entity.Page;
 import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.DiaryRepository;
 import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryPageUpdateRequest;
 import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
@@ -21,8 +19,8 @@ import java.util.Date;
 @Service
 @Transactional
 public class DiaryUpdateServiceImpl implements DiaryUpdateService {
-    @Autowired
-    DiaryRepository diaryRepository;
+    //@Autowired
+  //  DiaryRepository diaryRepository;
     @Autowired
     PageRepository pageRepository;
     @Autowired
@@ -30,14 +28,14 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
 
     @Override
     public Integer updateDiary(DiaryUpdateRequest diaryUpdateRequest) {
-        Diary diary = diaryRepository.findByDiaryId(diaryUpdateRequest.getDiaryId());
-
-        if (diary == null) {
-            return 0;
-        }
-
-        diary.setDiaryOption(diary.getDiaryOption());
-        diaryRepository.save(diary);
+//        Diary diary = diaryRepository.findByDiaryId(diaryUpdateRequest.getDiaryId());
+//
+//        if (diary == null) {
+//            return 0;
+//        }
+//
+//        diary.setDiaryOption(diary.getDiaryOption());
+//        diaryRepository.save(diary);
 
         return 1;
     }

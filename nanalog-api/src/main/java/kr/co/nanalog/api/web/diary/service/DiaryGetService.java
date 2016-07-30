@@ -1,19 +1,14 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.web.diary.model.request.DiaryListRequest;
-import kr.co.nanalog.api.web.diary.model.request.DiaryViewRequest;
-import kr.co.nanalog.api.web.diary.model.response.DiaryListResponse;
-import kr.co.nanalog.api.web.diary.model.response.DiaryViewResponse;
-
-import java.util.ArrayList;
+import kr.co.nanalog.api.web.diary.model.request.DiaryComponentGetRequest;
+import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
+import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
 
 /**
  * Created by lcw on 7/26/16.
  */
 public interface DiaryGetService {
 
-    DiaryListResponse getDiaryList(DiaryListRequest diaryListRequest);
-
-    DiaryViewResponse getDiaryView(DiaryViewRequest diaryViewRequest);
+    DiaryPageGetResponse getDiaryPages(DiaryComponentGetRequest diaryComponentGetRequest);
+    DiaryComponentGetResponse getDiaryCompoents(DiaryComponentGetRequest diaryComponentGetRequest);
 }

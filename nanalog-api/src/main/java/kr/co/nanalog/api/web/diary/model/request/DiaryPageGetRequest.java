@@ -6,14 +6,14 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
- * Created by lcw on 7/26/16.
+ * Created by lcw on 7/30/16.
  */
-public class DiaryListRequest {
+public class DiaryPageGetRequest {
 
-    @NotNull
     @NotEmpty
+    @NotNull
     private String uid;
-    private Integer date;
+    private Date date;
 
     public String getUid() {
         return uid;
@@ -23,17 +23,17 @@ public class DiaryListRequest {
         this.uid = uid;
     }
 
-    public Integer getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Integer date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
     @Override
     public String toString() {
-        return "DiaryListRequest{" +
+        return "DiaryPageGetRequest{" +
                 "uid='" + uid + '\'' +
                 ", date=" + date +
                 '}';

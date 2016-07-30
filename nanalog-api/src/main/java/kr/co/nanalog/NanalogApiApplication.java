@@ -1,7 +1,6 @@
 package kr.co.nanalog;
 
 import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.DiaryRepository;
 import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.repository.UserRepository;
 import org.springframework.boot.SpringApplication;
