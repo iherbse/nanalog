@@ -5,6 +5,9 @@ import kr.co.nanalog.api.entity.Page;
 import kr.co.nanalog.api.repository.ComponentRepository;
 import kr.co.nanalog.api.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +39,11 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
         componentRepository.save(component);
 
         Page page = pageRepository.findByPageId(diaryUpdateRequest.getPageId());
-        page.setModifiedDate(new Date());
+
+        DateTime dateTime = new DateTime();
+        DateTimeFormatter transFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
+      //  page.setModifiedDate(dateTime.toString(transFormat)
+       // );
 
         pageRepository.save(page);
 
