@@ -14,7 +14,7 @@ public class DiaryPageGetResponse {
     @NotEmpty
     @NotNull
     private String uid;
-    private Date date;
+    private String date;
     private List<DiaryPageGetResponseModel> diaryPageGetResponseModels;
 
     public String getUid() {
@@ -25,11 +25,11 @@ public class DiaryPageGetResponse {
         this.uid = uid;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

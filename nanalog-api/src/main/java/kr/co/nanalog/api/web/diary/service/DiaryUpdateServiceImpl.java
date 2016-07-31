@@ -93,7 +93,7 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
             }
         }
 
-        page.setModifiedDate(new Date());
+        page.setModifiedDate((new Date()).toString());
         pageRepository.save(page);
 
         return 1;

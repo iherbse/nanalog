@@ -72,7 +72,7 @@ public class DiaryDeleteServiceImpl implements DiaryDeleteService {
         }
 
         this.componentRepository.deleteComponentByComponentId(deleteComponentId);
-        page.setModifiedDate(new Date());
+        page.setModifiedDate((new Date()).toString());
 
         return 1;
     }

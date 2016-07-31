@@ -37,8 +37,8 @@ public class DiaryGetServiceImplTest {
         Page page = new Page();
         page.setUid("test@test.com");
         page.setPageId(new Long(123131));
-        page.setCreatedDate(Calendar.getInstance().getTime());
-        page.setModifiedDate(new Date(1231));
+        page.setCreatedDate(Calendar.getInstance().getTime().toString());
+        page.setModifiedDate((new Date(1231)).toString());
 
         Mockito.when(pageRepository.save(page)).thenReturn(page);
 
