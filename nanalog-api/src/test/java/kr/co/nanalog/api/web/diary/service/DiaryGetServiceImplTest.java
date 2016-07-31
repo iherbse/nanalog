@@ -16,8 +16,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by lcw on 7/31/16.
  */
@@ -26,7 +24,7 @@ public class DiaryGetServiceImplTest {
 
     @Mock
     private static PageRepository pageRepository;
-    
+
     @Mock
     private static ComponentRepository componentRepository;
 

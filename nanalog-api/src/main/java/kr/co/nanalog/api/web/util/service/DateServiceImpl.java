@@ -1,8 +1,8 @@
-package kr.co.nanalog.api.web.test.date.service;
+package kr.co.nanalog.api.web.util.service;
 
-import kr.co.nanalog.api.web.test.date.model.request.DateRequest;
-import kr.co.nanalog.api.web.test.date.model.request.YearAgoDateRequest;
-import kr.co.nanalog.api.web.test.date.model.response.DateResponse;
+import kr.co.nanalog.api.web.util.model.request.DateRequest;
+import kr.co.nanalog.api.web.util.model.request.YearAgoDateRequest;
+import kr.co.nanalog.api.web.util.model.respnose.DateResponse;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -29,7 +29,7 @@ public class DateServiceImpl implements DateService {
         }
         DateTimeFormatter transFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
         DateTime date = transFormat.parseDateTime(dateRequest.getDate());
-        date = date.minusYears(dateRequest.getTo()); 
+        date = date.minusYears(dateRequest.getTo());
 
         return getDate(dateRequest, date);
     }
@@ -76,9 +76,7 @@ public class DateServiceImpl implements DateService {
                     dateResponse.setTypedDate(date.getDayOfWeek());
                     dateResponse.setDateType(6);
                     break;
-
             }
-
         }
         dateResponse.setCode(1);
         return dateResponse;

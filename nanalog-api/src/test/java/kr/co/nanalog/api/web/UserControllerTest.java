@@ -1,4 +1,4 @@
-package kr.co.nanalog.api.web.user.controller;
+package kr.co.nanalog.api.web;
 
 import kr.co.nanalog.NanalogApiApplication;
 import kr.co.nanalog.api.domain.ApiResponseBody;
@@ -24,6 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.IOException;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -66,7 +67,8 @@ public class UserControllerTest {
                 .param("uid", "create@test.com")
                 .param("name", "CREATE")
                 .param("password", "3434"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 
     @Test
@@ -75,14 +77,16 @@ public class UserControllerTest {
                 .param("uid", "test@test.com")
                 .param("name", "MODIFY")
                 .param("password", "1234"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 
     @Test
     public void 사용자_정보조회_테스트() throws Exception {
         mockMvc.perform(get("/v1/user/")
                 .param("uid", "test@test.com"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 
     @Test
@@ -90,7 +94,8 @@ public class UserControllerTest {
         mockMvc.perform(delete("/v1/user/")
                 .param("uid", "test@test.com")
                 .param("password", "1234"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(print());
 
         UserDeleteQueue userDeleteQueue = userDeleteQueueRepository.findByUid("test@test.com");
 
@@ -98,14 +103,16 @@ public class UserControllerTest {
         mockMvc.perform(get("/v1/user/deactivation/")
                 .param("uid", "test@test.com"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(jsonStringFromObject(apiResponseBody)));
+                .andExpect(content().string(jsonStringFromObject(apiResponseBody)))
+                .andDo(print());
     }
 
     @Test
     public void 사용자_상태업데이트_테스트() throws Exception {
         mockMvc.perform(get("/v1/user/active/")
                 .param("uid", "test@test.com"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 
     private String jsonStringFromObject(Object object) throws IOException {
