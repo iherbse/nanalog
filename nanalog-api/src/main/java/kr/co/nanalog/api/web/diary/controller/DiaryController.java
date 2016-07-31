@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 /**
  * Created by lcw on 7/26/16.
@@ -57,12 +58,22 @@ public class DiaryController {
 
         return new ApiResponseBody<DiaryComponentGetResponse>(diaryComponentGetResponse);
     }
+    @RequestMapping(value = "/component", method = RequestMethod.PUT)
+    public ResponseEntity updateDiary(@Valid DiaryUpdateRequest updateRequest) {
+        int resultCode = diaryUpdateService.updateComponent(updateRequest);
+
+        if (resultCode == 0) {
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        //result Code = 1
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
 
-
-    @RequestMapping(value = "/page", method = RequestMethod.POST)
-    public ResponseEntity updatePage(@Valid DiaryPageUpdateRequest updateRequest) {
-        int resultCode = diaryUpdateService.updatePage(updateRequest);
+    @RequestMapping(value = "/page", method = RequestMethod.PUT)
+    public ResponseEntity updateDiary(@Valid ArrayList<DiaryUpdateRequest> updateRequest) {
+        int resultCode = diaryUpdateService.updateDiary(updateRequest);
 
         if (resultCode == 0) {
             return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);

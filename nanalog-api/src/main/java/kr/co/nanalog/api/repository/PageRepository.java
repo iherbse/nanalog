@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,4 +31,7 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 
     @Query("delete from Page p where p.uid = ?1")
     void deleteByUid(String uid);
+
+    @Query("update Page p set p.date = ?2 p.where p.pageId = ?1")
+    void updateByPageId(Long pageId,Date modifiedDate);
 }

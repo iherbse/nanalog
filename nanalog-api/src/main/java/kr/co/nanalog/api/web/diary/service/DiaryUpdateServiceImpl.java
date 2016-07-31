@@ -4,7 +4,7 @@ import kr.co.nanalog.api.entity.Component;
 import kr.co.nanalog.api.entity.Page;
 import kr.co.nanalog.api.repository.ComponentRepository;
 import kr.co.nanalog.api.repository.PageRepository;
-import kr.co.nanalog.api.web.diary.model.request.DiaryPageUpdateRequest;
+import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,14 +24,30 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
     @Autowired
     ComponentRepository componentRepository;
 
+    @Override
+    public Integer updateComponent(DiaryUpdateRequest diaryUpdateRequest) {
+        if (diaryUpdateRequest.getComponentId() == null || diaryUpdateRequest.getPageId() == null) {
+            return -1;
+        }
+        Component component = componentRepository.findByComponentId(diaryUpdateRequest.getComponentId());
+        component.setComponentPosition(diaryUpdateRequest.getComponentPosition());
+        component.setComponentData(diaryUpdateRequest.getComponentData());
 
-    //FIXME code review 필요!!
+        componentRepository.save(component);
+
+        Page page = pageRepository.findByPageId(diaryUpdateRequest.getPageId());
+        page.setModifiedDate(new Date());
+
+        pageRepository.save(page);
+
+        return 1;
+    }
 
     @Override
-    public Integer updatePage(DiaryPageUpdateRequest diaryPageUpdateRequest) {
-        Page page = pageRepository.findByPageId(diaryPageUpdateRequest.getPageId());
+    public Integer updateDiary(ArrayList<DiaryUpdateRequest> diaryUpdateRequest) {
+        Page page = pageRepository.findByPageId(diaryUpdateRequest.get(0).getPageId());
         ArrayList<Component> components = componentRepository.getComponentsByPageId(page.getPageId());
-        ArrayList<Component> updatedComponents = diaryPageUpdateRequest.getComponents();
+        // ArrayList<Component> updatedComponents = diaryUpdateRequest.getComponents();
         ArrayList<Component> deletedComponents = new ArrayList<>();
 
         if (page == null) {
@@ -39,10 +55,10 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
         }
         // delete될 컴포넌트 find
         for (Component component : components) {
-            for (int i = 0; i < updatedComponents.size(); i++) {
-                Component updatedComponent = updatedComponents.get(i);
+            for (int i = 0; i < diaryUpdateRequest.size(); i++) {
+                DiaryUpdateRequest updatedComponent = diaryUpdateRequest.get(i);
                 if (!component.getComponentId().equals(updatedComponent.getComponentId())) {
-                    if (i == updatedComponents.size() - 1) {
+                    if (i == diaryUpdateRequest.size() - 1) {
                         deletedComponents.add(component);
                     }
                     continue;
@@ -58,7 +74,7 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
             }
         }
         // update or create
-        for (Component updatedComponent : updatedComponents) {
+        for (DiaryUpdateRequest updatedComponent : diaryUpdateRequest) {
             Component component = componentRepository.findByComponentId(updatedComponent.getComponentId());
             //create
             if (component == null) {
@@ -72,7 +88,6 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
 
         page.setModifiedDate(new Date());
         pageRepository.save(page);
-
 
         return 1;
     }
