@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -72,7 +73,8 @@ public class DiaryDeleteServiceImpl implements DiaryDeleteService {
         }
 
         this.componentRepository.deleteComponentByComponentId(deleteComponentId);
-        page.setModifiedDate((new Date()).toString());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        page.setModifiedDate(format.format(new Date()));
 
         return 1;
     }

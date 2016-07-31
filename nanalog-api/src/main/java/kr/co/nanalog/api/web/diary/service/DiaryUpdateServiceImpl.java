@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,10 +41,8 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
 
         Page page = pageRepository.findByPageId(diaryUpdateRequest.getPageId());
 
-        DateTime dateTime = new DateTime();
-        DateTimeFormatter transFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
-      //  page.setModifiedDate(dateTime.toString(transFormat)
-       // );
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        page.setModifiedDate(format.format(new Date()));
 
         pageRepository.save(page);
 
@@ -93,7 +92,8 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
             }
         }
 
-        page.setModifiedDate((new Date()).toString());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        page.setModifiedDate(format.format(new Date()));
         pageRepository.save(page);
 
         return 1;
