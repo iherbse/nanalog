@@ -5,6 +5,7 @@ import kr.co.nanalog.api.domain.ApiResponseBody;
 import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
+import kr.co.nanalog.api.web.diary.service.DiaryCreateService;
 import kr.co.nanalog.api.web.diary.service.DiaryDeleteService;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
 import kr.co.nanalog.api.web.diary.service.DiaryUpdateService;
@@ -34,6 +35,8 @@ public class DiaryController {
     @Autowired
     private DiaryDeleteService diaryDeleteService;
 
+    @Autowired
+    private DiaryCreateService diaryCreateService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ApiResponseBody<DiaryPageGetResponse> getDiaryPages(@Valid DiaryPageGetRequest diaryPageGetRequest){
@@ -57,6 +60,27 @@ public class DiaryController {
         }
 
         return new ApiResponseBody<DiaryComponentGetResponse>(diaryComponentGetResponse);
+    }
+    @RequestMapping(value = "/page", method = RequestMethod.PUT)
+    public ResponseEntity createPage(@Valid DiaryPageCreateRequest diaryPageCreateRequest) {
+        int resultCode = diaryCreateService.createPage(diaryPageCreateRequest);
+
+        if(resultCode == -1) {
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/component", method = RequestMethod.PUT)
+    public ResponseEntity createComponent(@Valid ComponentCreateRequest componentCreateRequest) {
+        int resultCode = diaryCreateService.createComponent(componentCreateRequest);
+
+        if(resultCode == -1) {
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
     }
     @RequestMapping(value = "/component", method = RequestMethod.PUT)
     public ResponseEntity updateDiary(@Valid DiaryUpdateRequest updateRequest) {
