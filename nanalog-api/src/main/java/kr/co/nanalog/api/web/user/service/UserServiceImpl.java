@@ -1,9 +1,9 @@
 package kr.co.nanalog.api.web.user.service;
 
-import kr.co.nanalog.api.entity.User;
-import kr.co.nanalog.api.entity.UserDeleteQueue;
-import kr.co.nanalog.api.repository.UserDeleteQueueRepository;
-import kr.co.nanalog.api.repository.UserRepository;
+import kr.co.nanalog.api.web.user.model.entity.User;
+import kr.co.nanalog.api.web.user.model.entity.UserDeleteQueue;
+import kr.co.nanalog.api.web.user.repository.UserDeleteQueueRepository;
+import kr.co.nanalog.api.web.user.repository.UserRepository;
 import kr.co.nanalog.api.web.user.model.request.UserCreateRequest;
 import kr.co.nanalog.api.web.user.model.request.UserDeleteRequest;
 import kr.co.nanalog.api.web.user.model.request.UserUpdateRequest;

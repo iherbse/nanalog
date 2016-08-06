@@ -15,8 +15,8 @@ public class DiaryPageGetResponseModel {
     private Long pageId;
     @NotNull
     @NotEmpty
-    private Date createdDate;
-    private Date modifiedDate;
+    private String createdDate;
+    private String modifiedDate;
 
     public Long getPageId() {
         return pageId;
@@ -26,19 +26,19 @@ public class DiaryPageGetResponseModel {
         this.pageId = pageId;
     }
 
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Date getModifiedDate() {
+    public String getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(Date modifiedDate) {
+    public void setModifiedDate(String modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 

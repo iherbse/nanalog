@@ -1,9 +1,9 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.PageRepository;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
+import kr.co.nanalog.api.web.diary.repository.PageRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -37,8 +37,8 @@ public class DiaryGetServiceImplTest {
         Page page = new Page();
         page.setUid("test@test.com");
         page.setPageId(new Long(123131));
-        page.setCreatedDate(Calendar.getInstance().getTime());
-        page.setModifiedDate(new Date(1231));
+        page.setCreatedDate(Calendar.getInstance().getTime().toString());
+        page.setModifiedDate((new Date(1231)).toString());
 
         Mockito.when(pageRepository.save(page)).thenReturn(page);
 

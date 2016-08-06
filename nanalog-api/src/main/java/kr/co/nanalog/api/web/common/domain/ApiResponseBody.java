@@ -1,4 +1,4 @@
-package kr.co.nanalog.api.domain;
+package kr.co.nanalog.api.web.common.domain;
 
 import org.springframework.http.HttpStatus;
 

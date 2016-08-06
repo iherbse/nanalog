@@ -1,4 +1,4 @@
-package kr.co.nanalog.api.entity;
+package kr.co.nanalog.api.web.diary.model.entity;
 
 
 import javax.persistence.*;

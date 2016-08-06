@@ -6,9 +6,8 @@ import kr.co.nanalog.api.web.diary.model.entity.Component;
 import kr.co.nanalog.api.web.diary.model.entity.Page;
 import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
 import kr.co.nanalog.api.web.diary.repository.PageRepository;
-import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
+import kr.co.nanalog.api.web.diary.model.request.DiaryPageGetRequest;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
-import kr.co.nanalog.api.web.diary.service.DiaryUpdateService;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,33 +24,30 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Created by lcw on 7/31/16.
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = NanalogApiApplication.class)
 @WebAppConfiguration
-public class DiaryUpdateControllerTest {
+public class DiaryGetControllerTest {
 
     @Autowired
     private WebApplicationContext context;
-    @Autowired
-    private DiaryUpdateService diaryUpdateService;
     @Autowired
     private DiaryGetService diaryGetService;
     @Autowired
     private PageRepository pageRepository;
     @Autowired
     private ComponentRepository componentRepository;
-
-    private MockMvc mockMvc;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(DiaryUpdateControllerTest.class);
 
     @Before
     public void setup() {
@@ -83,46 +79,31 @@ public class DiaryUpdateControllerTest {
         title.setComponentType(Component.ComponentType.TITLE);
         title.setComponentPosition(Component.ComponentPosition.TOP);
         title.setComponentData("title!");
+    }
 
+    private MockMvc mockMvc;
+    private static final Logger LOGGER = LoggerFactory.getLogger(DiaryUpdateControllerTest.class);
 
-        //DiaryCreateService.createPage(page);
-        //DiaryCreateService.createComponent(image);
-        //DiaryCreateService.createComponent(sentence);
-        //DiaryCreateService.createComponent(title);
+    @Test
+    public void getDiaryPages() throws Exception {
+        DiaryPageGetRequest diaryPageGetRequest = new DiaryPageGetRequest();
+        diaryPageGetRequest.setUid("test@test.com");
 
-
+        Gson gson = new Gson();
+        String json = gson.toJson(diaryPageGetRequest);
+        mockMvc.perform(get("/v1/diary").contentType(MediaType.APPLICATION_JSON)
+                .content(json)).andExpect(status().isOk()).andDo(print());
     }
 
     @Test
-    public void 페이지_업데이트_테스트() throws Exception {
-        ArrayList<DiaryUpdateRequest> diaryUpdateRequests = new ArrayList<>();
-        DiaryUpdateRequest diaryUpdateRequest = new DiaryUpdateRequest();
-        diaryUpdateRequest.setPageId(new Long(1212));
-        diaryUpdateRequest.setComponentId(new Long(222223));
-        diaryUpdateRequest.setComponentPosition(Component.ComponentPosition.MID);
-        diaryUpdateRequest.setComponentData("업데이트된 title");
-        diaryUpdateRequests.add(diaryUpdateRequest);
+    public void getPageComponents() throws Exception {
 
-        DiaryUpdateRequest diaryUpdateRequest2 = new DiaryUpdateRequest();
-        diaryUpdateRequest2.setPageId(new Long(1212));
-        diaryUpdateRequest2.setComponentId(new Long(2222210));
-        diaryUpdateRequest2.setComponentPosition(Component.ComponentPosition.BOTTOM);
-        diaryUpdateRequest2.setComponentData("추가된이미지");
-        diaryUpdateRequests.add(diaryUpdateRequest2);
-
-
-        Gson gson = new Gson();
-        String json = gson.toJson(diaryUpdateRequests);
-
-        mockMvc.perform(post("/v1/page/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/v1/diary/page").param("uid","test@test.com")).andExpect(status().isOk()).andDo(print());
     }
-
 
     private String jsonStringFromObject(Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(object);
     }
+
 }

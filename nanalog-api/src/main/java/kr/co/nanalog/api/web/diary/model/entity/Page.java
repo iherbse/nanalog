@@ -1,7 +1,6 @@
-package kr.co.nanalog.api.entity;
+package kr.co.nanalog.api.web.diary.model.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by lcw on 7/26/16.
@@ -15,8 +14,8 @@ public class Page {
     @Column(nullable = false)
     private String uid;
     @Column(nullable = false)
-    private Date createdDate;
-    private Date modifiedDate;
+    private String createdDate;
+    private String modifiedDate;
 
     public Long getPageId() {
         return pageId;
@@ -34,19 +33,19 @@ public class Page {
         this.uid = uid;
     }
 
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Date getModifiedDate() {
+    public String getModifiedDate() {
         return modifiedDate;
     }
 
-    public void setModifiedDate(Date modifiedDate) {
+    public void setModifiedDate(String modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 

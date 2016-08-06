@@ -1,6 +1,6 @@
-package kr.co.nanalog.api.repository;
+package kr.co.nanalog.api.web.user.repository;
 
-import kr.co.nanalog.api.entity.User;
+import kr.co.nanalog.api.web.user.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

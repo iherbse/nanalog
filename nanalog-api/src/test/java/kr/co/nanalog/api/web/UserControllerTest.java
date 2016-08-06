@@ -1,10 +1,10 @@
 package kr.co.nanalog.api.web;
 
 import kr.co.nanalog.NanalogApiApplication;
-import kr.co.nanalog.api.domain.ApiResponseBody;
-import kr.co.nanalog.api.entity.UserDeleteQueue;
-import kr.co.nanalog.api.repository.UserDeleteQueueRepository;
-import kr.co.nanalog.api.repository.UserRepository;
+import kr.co.nanalog.api.web.common.domain.ApiResponseBody;
+import kr.co.nanalog.api.web.user.model.entity.UserDeleteQueue;
+import kr.co.nanalog.api.web.user.repository.UserDeleteQueueRepository;
+import kr.co.nanalog.api.web.user.repository.UserRepository;
 import kr.co.nanalog.api.web.user.model.request.UserCreateRequest;
 import kr.co.nanalog.api.web.user.service.UserService;
 import org.codehaus.jackson.map.ObjectMapper;

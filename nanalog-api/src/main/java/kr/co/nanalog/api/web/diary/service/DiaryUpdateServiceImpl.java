@@ -1,17 +1,15 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.PageRepository;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
+import kr.co.nanalog.api.web.diary.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,10 +38,8 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
 
         Page page = pageRepository.findByPageId(diaryUpdateRequest.getPageId());
 
-        DateTime dateTime = new DateTime();
-        DateTimeFormatter transFormat = DateTimeFormat.forPattern("yyyy-MM-dd");
-      //  page.setModifiedDate(dateTime.toString(transFormat)
-       // );
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        page.setModifiedDate(format.format(new Date()));
 
         pageRepository.save(page);
 
@@ -93,7 +89,8 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
             }
         }
 
-        page.setModifiedDate(new Date());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        page.setModifiedDate(format.format(new Date()));
         pageRepository.save(page);
 
         return 1;

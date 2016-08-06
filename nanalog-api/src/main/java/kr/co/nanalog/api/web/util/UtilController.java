@@ -1,4 +1,4 @@
-package kr.co.nanalog.api.web;
+package kr.co.nanalog.api.web.util;
 
 import kr.co.nanalog.api.web.util.model.request.DateRequest;
 import kr.co.nanalog.api.web.util.model.request.WeatherRequest;

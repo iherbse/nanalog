@@ -1,11 +1,10 @@
-package kr.co.nanalog.api.repository;
+package kr.co.nanalog.api.web.diary.repository;
 
-import kr.co.nanalog.api.entity.Page;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,5 +30,5 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 
     @Query("delete from Page p where p.uid = ?1")
     void deleteByUid(String uid);
-    
+
 }

@@ -13,7 +13,7 @@ public class DiaryPageGetRequest {
     @NotEmpty
     @NotNull
     private String uid;
-    private Date date;
+    private String date;
 
     public String getUid() {
         return uid;
@@ -23,11 +23,11 @@ public class DiaryPageGetRequest {
         this.uid = uid;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -1,6 +1,6 @@
-package kr.co.nanalog.api.repository;
+package kr.co.nanalog.api.web.user.repository;
 
-import kr.co.nanalog.api.entity.UserDeleteQueue;
+import kr.co.nanalog.api.web.user.model.entity.UserDeleteQueue;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
