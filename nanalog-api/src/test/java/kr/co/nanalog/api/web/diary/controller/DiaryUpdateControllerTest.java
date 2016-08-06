@@ -2,10 +2,10 @@ package kr.co.nanalog.api.web.diary.controller;
 
 import com.google.gson.Gson;
 import kr.co.nanalog.NanalogApiApplication;
-import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.PageRepository;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
+import kr.co.nanalog.api.web.diary.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
 import kr.co.nanalog.api.web.diary.service.DiaryUpdateService;

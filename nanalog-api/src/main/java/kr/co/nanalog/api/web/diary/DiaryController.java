@@ -1,7 +1,7 @@
-package kr.co.nanalog.api.web;
+package kr.co.nanalog.api.web.diary;
 
 
-import kr.co.nanalog.api.domain.ApiResponseBody;
+import kr.co.nanalog.api.web.common.domain.ApiResponseBody;
 import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;

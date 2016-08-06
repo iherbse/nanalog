@@ -1,13 +1,10 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.PageRepository;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
+import kr.co.nanalog.api.web.diary.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryUpdateRequest;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,9 +1,9 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.PageRepository;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
+import kr.co.nanalog.api.web.diary.repository.PageRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

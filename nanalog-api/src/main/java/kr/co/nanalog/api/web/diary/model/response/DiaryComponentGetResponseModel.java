@@ -1,7 +1,6 @@
 package kr.co.nanalog.api.web.diary.model.response;
 
-import kr.co.nanalog.api.entity.Component;
-import org.hibernate.validator.constraints.CompositionType;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;

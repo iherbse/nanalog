@@ -2,11 +2,10 @@ package kr.co.nanalog.api.web.diary.controller;
 
 import com.google.gson.Gson;
 import kr.co.nanalog.NanalogApiApplication;
-import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.PageRepository;
-import kr.co.nanalog.api.web.diary.model.request.DiaryComponentGetRequest;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
+import kr.co.nanalog.api.web.diary.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryPageGetRequest;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -30,7 +29,6 @@ import java.util.Date;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**

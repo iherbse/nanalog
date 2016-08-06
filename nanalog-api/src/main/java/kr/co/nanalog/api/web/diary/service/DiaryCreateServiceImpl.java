@@ -1,11 +1,11 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.entity.Component;
-import kr.co.nanalog.api.entity.Page;
-import kr.co.nanalog.api.entity.User;
-import kr.co.nanalog.api.repository.ComponentRepository;
-import kr.co.nanalog.api.repository.PageRepository;
-import kr.co.nanalog.api.repository.UserRepository;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.user.model.entity.User;
+import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
+import kr.co.nanalog.api.web.diary.repository.PageRepository;
+import kr.co.nanalog.api.web.user.repository.UserRepository;
 import kr.co.nanalog.api.web.diary.model.request.ComponentCreateRequest;
 import kr.co.nanalog.api.web.diary.model.request.DiaryPageCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +68,4 @@ public class DiaryCreateServiceImpl implements DiaryCreateService {
 
         return 1;
     }
-
 }

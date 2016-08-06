@@ -1,6 +1,6 @@
 package kr.co.nanalog.api.web.diary.model.request;
 
-import kr.co.nanalog.api.entity.Component;
+import kr.co.nanalog.api.web.diary.model.entity.Component;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
