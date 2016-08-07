@@ -4,13 +4,16 @@ import kr.co.nanalog.api.web.diary.model.entity.Component;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by choijinjoo on 2016. 7. 31..
  */
 public class DiaryUpdateRequest {
 
+    @NotNull
     Long pageId;
+    @NotNull
     Long componentId;
     @Enumerated(EnumType.STRING)
     private Component.ComponentPosition componentPosition;

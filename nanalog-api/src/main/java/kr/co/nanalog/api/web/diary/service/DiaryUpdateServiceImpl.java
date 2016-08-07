@@ -27,21 +27,30 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
 
     @Override
     public Integer updateComponent(DiaryUpdateRequest diaryUpdateRequest) {
-        if (diaryUpdateRequest.getComponentId() == null || diaryUpdateRequest.getPageId() == null) {
+//        if (diaryUpdateRequest.getComponentId() == null || diaryUpdateRequest.getPageId() == null) {
+//            return -1;
+//        }
+        Page page = pageRepository.findByPageId(diaryUpdateRequest.getPageId());
+
+        if(page == null){
             return -1;
         }
-        Component component = componentRepository.findByComponentId(diaryUpdateRequest.getComponentId());
-        component.setComponentPosition(diaryUpdateRequest.getComponentPosition());
-        component.setComponentData(diaryUpdateRequest.getComponentData());
-
-        componentRepository.save(component);
-
-        Page page = pageRepository.findByPageId(diaryUpdateRequest.getPageId());
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         page.setModifiedDate(format.format(new Date()));
 
         pageRepository.save(page);
+
+
+        Component component = componentRepository.findByComponentId(diaryUpdateRequest.getComponentId());
+        if(component == null){
+            return -1;
+        }
+        component.setComponentPosition(diaryUpdateRequest.getComponentPosition());
+        component.setComponentData(diaryUpdateRequest.getComponentData());
+
+        componentRepository.save(component);
+
 
         return 1;
     }

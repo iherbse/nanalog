@@ -7,12 +7,7 @@ import rootReducer from '../reducer'
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
-    initialState,
-    compose(
-      applyMiddleware(thunk, api, createLogger()),
-      DevTools.instrument()
-
-    )
+    initialState
   )
 
   if (module.hot) {

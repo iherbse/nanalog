@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lcw on 7/26/16.
@@ -96,7 +97,7 @@ public class DiaryController {
 
 
     @RequestMapping(value = "/page", method = RequestMethod.PUT)
-    public ResponseEntity updateDiary(@Valid ArrayList<DiaryUpdateRequest> updateRequest) {
+    public ResponseEntity updateDiary(@Valid List<DiaryUpdateRequest> updateRequest) {
         int resultCode = diaryUpdateService.updateDiary(updateRequest);
 
         if (resultCode == 0) {

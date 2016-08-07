@@ -13,7 +13,7 @@ class App extends Component{
 
     return(
     <div>
-    hi!!!!!!!!!!!
+    히익!!!!!!! 늦어서 죄송합니당
     {children}
     </div>
     )
