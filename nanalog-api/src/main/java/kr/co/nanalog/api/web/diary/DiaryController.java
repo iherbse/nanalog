@@ -83,7 +83,7 @@ public class DiaryController {
 
         return new ResponseEntity(HttpStatus.OK);
     }
-    @RequestMapping(value = "/component", method = RequestMethod.PUT)
+    @RequestMapping(value = "/component", method = RequestMethod.POST)
     public ResponseEntity updateDiary(@Valid DiaryUpdateRequest updateRequest) {
         int resultCode = diaryUpdateService.updateComponent(updateRequest);
 
@@ -96,7 +96,7 @@ public class DiaryController {
     }
 
 
-    @RequestMapping(value = "/page", method = RequestMethod.PUT)
+    @RequestMapping(value = "/page", method = RequestMethod.POST)
     public ResponseEntity updateDiary(@Valid List<DiaryUpdateRequest> updateRequest) {
         int resultCode = diaryUpdateService.updateDiary(updateRequest);
 

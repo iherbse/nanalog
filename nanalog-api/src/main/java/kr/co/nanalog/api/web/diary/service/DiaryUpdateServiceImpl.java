@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by choijinjoo on 2016. 7. 30..
@@ -56,7 +57,7 @@ public class DiaryUpdateServiceImpl implements DiaryUpdateService {
     }
 
     @Override
-    public Integer updateDiary(ArrayList<DiaryUpdateRequest> diaryUpdateRequest) {
+    public Integer updateDiary(List<DiaryUpdateRequest> diaryUpdateRequest) {
         Page page = pageRepository.findByPageId(diaryUpdateRequest.get(0).getPageId());
         ArrayList<Component> components = componentRepository.getComponentsByPageId(page.getPageId());
         // ArrayList<Component> updatedComponents = diaryUpdateRequest.getComponents();
