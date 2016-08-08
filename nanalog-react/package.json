@@ -17,7 +17,6 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.1.1",
     "express": "^4.13.4",
-    "gulp": "^3.9.1",
     "hump": "0.0.4",
     "humps": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",
@@ -37,7 +36,6 @@
     "redux-devtools-log-monitor": "^1.0.11",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "semantic-ui": "^2.2.2",
     "webpack": "^1.12.13",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
