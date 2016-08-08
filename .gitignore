@@ -24,6 +24,10 @@ rebel.xml
 npm-debug.log
 access_logs.db
 node_modules/
+semantic/dist/
+semantic/examples/
+semantic/Semantic-UI-Docs/
+!semantic/tasks/build
 temp/
 deploysvn.conf
 .svn/
