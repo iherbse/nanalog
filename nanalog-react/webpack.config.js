@@ -7,8 +7,7 @@ module.exports = {
         'webpack-hot-middleware/client',
         'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
         './client/client.js',
-        './semantic/dist/semantic.min.css',
-        './semantic/dist/semantic.min.js',
+        './semantic/dist/semantic'
     ],
     output: {
         path: require('path').resolve("./dist"),
@@ -18,7 +17,13 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new ExtractTextPlugin("styles.css"),
+        new webpack.ProvidePlugin({
+           $: "jquery",
+           jQuery: "jquery"
+       })
+
     ],
     module: {
         loaders: [{
@@ -30,7 +35,19 @@ module.exports = {
             }
         }, {
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract('style', '!css!autoprefixer?browsers=last 2 version')
-        }, ]
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        },
+        {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file?name=public/fonts/[name].[ext]'
+            },
+            {
+    test: /\.png$/,
+    loader: "url-loader",
+    query: { mimetype: "image/png" }
+},
+{ test: require.resolve("jquery"), loader: "imports?jQuery=jquery" }
+
+      ]
     }
 }

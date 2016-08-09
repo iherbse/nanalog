@@ -11,7 +11,7 @@ class App extends Component {
         const {children} = this.props
 
         return (
-            <div className="ui labeled button" tabindex="0">
+            <div className="ui labeled button" >
                 <div className="ui button">
                     <i className="heart icon"></i>
                     Like
