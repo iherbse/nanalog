@@ -18,10 +18,8 @@
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
-    "gulp": "^3.9.1",
     "hump": "0.0.4",
     "humps": "^1.0.0",
-    "imports-loader": "^0.6.5",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
     "lodash": "^4.11.1",
@@ -41,11 +39,13 @@
     "redux-devtools-log-monitor": "^1.0.11",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "semantic-ui": "^2.2.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.13",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "webpack-hot-middleware": "^2.10.0",
+    "sass-loader": "^3.2.0",
+    "autoprefixer-loader": "^3.2.0",
+    "node-sass": "^3.7.0"
   },
   "devDependencies": {
     "babel-preset-stage-0": "^6.5.0",

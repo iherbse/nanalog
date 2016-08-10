@@ -6,8 +6,7 @@ module.exports = {
     entry: [
         'webpack-hot-middleware/client',
         'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-        './client/client.js',
-        './semantic/dist/semantic'
+        './client/client.js'
     ],
     output: {
         path: require('path').resolve("./dist"),
@@ -26,28 +25,36 @@ module.exports = {
 
     ],
     module: {
-        loaders: [{
+        loaders: [
+          {
             test: /\.js$/,
             loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
-                presets: ['react', 'es2015']
+              presets: ['react', 'es2015']
             }
-        }, {
+          },
+          {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
-        },
-        {
-                test: /\.(eot|svg|ttf|woff|woff2)$/,
-                loader: 'file?name=public/fonts/[name].[ext]'
-            },
-            {
-    test: /\.png$/,
-    loader: "url-loader",
-    query: { mimetype: "image/png" }
-},
-{ test: require.resolve("jquery"), loader: "imports?jQuery=jquery" }
-
+          },
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            loader: 'file?name=public/fonts/[name].[ext]'
+          },
+          {
+            test: /\.png$/,
+            loader: "url-loader",
+            query: { mimetype: "image/png" }
+          },
+          {
+            test: require.resolve("jquery"),
+            loader: "imports?jQuery=jquery"
+          },
+          {
+            test: /\.scss$/,
+            loaders: ['style', 'css', 'autoprefixer', 'sass']
+          },
       ]
     }
 }
