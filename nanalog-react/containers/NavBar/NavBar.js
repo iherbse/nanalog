@@ -6,21 +6,22 @@ class NavBar extends Component {
 
   render(){
     return (
-      <div>
-
-        <Link to="/" href="#" className="header item">
-          <img className="logo" src={require('../../images/logo.png')} style={styles.logoImage}/>
-        </Link>
+      <div className = "nav">
+        <ul>
+          <li>
+            <Link to="/" href="#" className="nav item">
+              <img className="logo" src={require('../../images/logo.png')} />
+            </Link>
+          </li>
+          <li>
+            <Link to="/Calender" className="nav item">
+              <img className="logo" src={require('../../images/nav-item.png')} />
+            </Link>
+          </li>
+        </ul>
       </div>
     )
   }
 }
-
-const styles = {
-  logoImage: {
-    marginRight: '1rem',
-    color: '#FF0000'
-  }
-};
 
 export default NavBar;
