@@ -19,7 +19,7 @@ app.use('/', function (req, res) {
 
 });
 
-var port = 8080;
+var port = 8000;
 
 app.listen(port, function(error) {
   if (error) throw error;
