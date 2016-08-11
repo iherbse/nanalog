@@ -1,12 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducer'
+import api from '../api/NanalogApi'
 
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
-    initialState
+    initialState,
+    applyMiddleware(thunk, api, createLogger())
+
   )
 
   if (module.hot) {
