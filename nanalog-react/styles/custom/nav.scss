@@ -1,5 +1,7 @@
-.nav{
-  height: 100%;
-  width: 100px;
-  background-color: #1E90FF;
+$nav_height:80px;
+.nav {
+    height: $nav_height;
+    width: 100%;
+    position: absolute;;
+    z-index: 9999;
 }

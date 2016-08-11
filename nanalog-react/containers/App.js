@@ -13,16 +13,17 @@ export default class App extends Component {
         const {children} = this.props
 
         return (
-          <div id="full-screen" className="fullscreen pushable">
-            <div id="main-app" className="main-app pusher">
-              <div id="wrap-content">
+
+            <div id="wrap-content">
+              
                 <NavBar/>
+                <div id="side-content"></div>
                 <main id="main-content">
-                {children}
+                    {children}
                 </main>
-              </div>
+
             </div>
-          </div>
+
         )
     }
 }

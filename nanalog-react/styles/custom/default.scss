@@ -1,7 +1,26 @@
-* {
-    margin: 0;
-    padding: 0;
+@import "nav.scss";
+
+html,body{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
-.main-content{
-  text-align: center;
+#wrap-content {
+    width: 100%;
+    height: 100vh;
+}
+#side-content {
+    width: 30%;
+    height: 100%;
+    position: relative;
+    float: left;
+    background-color: #1E90FF;
+}
+#main-content {
+    margin-top: $nav_height;
+    width: 70%;
+    height: 100%;
+    position: relative;
+    float: left;
+    text-align: center;
 }
