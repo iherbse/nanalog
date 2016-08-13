@@ -1,12 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 
-export default class App extends Component {
+class WeeklyIndicator extends Component {
 
     render() {
         return (
           <div >
-            다이어리 쓰는 네모 ㅁ_ㅁ
+            인디케이터
           </div>
         )
     }
 }
+export default WeeklyIndicator;
