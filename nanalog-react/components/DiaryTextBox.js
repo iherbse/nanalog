@@ -4,7 +4,6 @@ class DiaryTextBox extends Component {
 
     render() {
         return (
-            <div className="main-content-item">
               <div className="diary-textbox">
                 <img className="ic-current-time" src={require('../images/ic_test.png')}/>
                 <span className="text-current">2016.08.05 12:12AM</span>
@@ -25,8 +24,6 @@ class DiaryTextBox extends Component {
                 </span>
                 <div className="buttn-edit"><span>편집</span></div>
               </div>
-            </div>
-
         )
     };
 

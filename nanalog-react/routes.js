@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route ,IndexRoute } from 'react-router'
 import App from './containers/App'
-import DiaryPage from './components/DiaryPage'
+import DiaryPage from './containers/DiaryPage'
 import Calender from './components/Calender'
 
 

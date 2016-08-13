@@ -1,4 +1,3 @@
-
 body,
 html {
     margin: 0;
@@ -24,6 +23,12 @@ html {
     width: 100%;
     height: 87.5%;
     position: absolute;
-    float: left;
     text-align: center;
+}
+#main-content-item{
+  width: 70%;
+  height: 70%;
+  position: relative;
+  text-align: center;
+  margin: auto;
 }
