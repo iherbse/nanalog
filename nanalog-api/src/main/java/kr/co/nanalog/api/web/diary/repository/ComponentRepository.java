@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by choijinjoo on 2016. 7. 27..
@@ -28,6 +29,8 @@ public interface ComponentRepository extends JpaRepository<Component, Long> {
     void deleteComponentByComponentId(Long componentId);
 
     @Query("select c from Component c where c.componentId=?1")
-    Component getComponentByComponentId(Long ComponentId);
+    Component getComponentByComponentId(Long componentId);
 
+    @Query("select c from Component c where c.pageId=?1")
+    List<Component> findByPageId(Long pageId);
 }

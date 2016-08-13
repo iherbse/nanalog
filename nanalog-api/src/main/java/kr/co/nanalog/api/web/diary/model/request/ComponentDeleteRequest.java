@@ -6,15 +6,15 @@ package kr.co.nanalog.api.web.diary.model.request;
 public class ComponentDeleteRequest {
 
 
-    public String UserId;
+    public String userId;
     public Long componentId;
 
     public String getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(String userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public Long getComponentId() {
@@ -28,7 +28,7 @@ public class ComponentDeleteRequest {
     @Override
     public String toString() {
         return "ComponentDeleteRequest{" +
-                "UserId='" + UserId + '\'' +
+                "userId='" + userId + '\'' +
                 ", componentId=" + componentId +
                 '}';
     }

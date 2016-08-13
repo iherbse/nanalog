@@ -26,9 +26,11 @@ public interface PageRepository extends JpaRepository<Page, Long> {
     @Query("select p " +
             "from Page p " +
             "where p.uid = ?1 ")
-    ArrayList<Page> findByUid(String uid);
+    List<Page> findByUid(String uid);
 
     @Query("delete from Page p where p.uid = ?1")
     void deleteByUid(String uid);
 
+    @Query("select p from Page p where p.uid = ?1 AND p.createdDate = ?2")
+    Page findByUidAndDate(String uid, String date);
 }

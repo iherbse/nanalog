@@ -14,7 +14,6 @@ class App extends Component {
         const {children} = this.props
 
         return (
-
             <div id="wrap-content">
               <NavBar/>
                 <div id="side-content"></div>

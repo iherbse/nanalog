@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +37,7 @@ public class DiaryGetServiceImpl implements DiaryGetService {
 
         DiaryPageGetResponseModel diaryPageGetResponseModel = new DiaryPageGetResponseModel();
         DiaryPageGetResponse diaryPageGetResponse = new DiaryPageGetResponse();
+        diaryPageGetResponse.setDiaryPageGetResponseModels(new ArrayList());
 
         for (Page page :
                 pages) {
@@ -54,12 +56,15 @@ public class DiaryGetServiceImpl implements DiaryGetService {
     @Override
     public DiaryComponentGetResponse getDiaryCompoents(DiaryComponentGetRequest diaryComponentGetRequest) {
 
-        List<Component> components = componentRepository.getComponentsByPageId(diaryComponentGetRequest.getPageId());
+        List<Component> components = componentRepository.getComponentsByPageId(Long.valueOf(diaryComponentGetRequest.getPageId()));
 
         DiaryComponentGetResponseModel diaryComponentGetResponseModel = new DiaryComponentGetResponseModel();
         DiaryComponentGetResponse diaryComponentGetResponse = new DiaryComponentGetResponse();
+        diaryComponentGetResponse.setDiaryComponentGetResponseModels(new ArrayList());
+
         for (Component component :
                 components) {
+            diaryComponentGetResponseModel = new DiaryComponentGetResponseModel();
             diaryComponentGetResponseModel.setComponentId(component.getComponentId());
             diaryComponentGetResponseModel.setComponentType(component.getComponentType());
             diaryComponentGetResponseModel.setComponentPosition(component.getComponentPosition());
@@ -68,7 +73,7 @@ public class DiaryGetServiceImpl implements DiaryGetService {
             diaryComponentGetResponse.getDiaryComponentGetResponseModels().add(diaryComponentGetResponseModel);
         }
         diaryComponentGetResponse.setUid(diaryComponentGetRequest.getUid());
-        diaryComponentGetResponse.setPageId(diaryComponentGetRequest.getPageId());
+        diaryComponentGetResponse.setPageId(Long.valueOf(diaryComponentGetRequest.getPageId()));
 
         return diaryComponentGetResponse;
     }

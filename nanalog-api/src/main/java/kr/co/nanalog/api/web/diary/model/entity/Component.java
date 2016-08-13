@@ -15,10 +15,8 @@ public class Component {
     private Long componentId;
     @Column(nullable = false)
     private Long pageId;
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ComponentType componentType;
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ComponentPosition componentPosition;
     @Column(nullable = false)

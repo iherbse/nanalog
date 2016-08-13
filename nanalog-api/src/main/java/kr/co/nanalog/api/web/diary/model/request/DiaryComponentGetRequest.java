@@ -14,7 +14,7 @@ public class DiaryComponentGetRequest {
     private String uid;
     @NotEmpty
     @NotNull
-    private Long pageId;
+    private String pageId;
 
     public String getUid() {
         return uid;
@@ -24,11 +24,11 @@ public class DiaryComponentGetRequest {
         this.uid = uid;
     }
 
-    public Long getPageId() {
+    public String getPageId() {
         return pageId;
     }
 
-    public void setPageId(Long pageId) {
+    public void setPageId(String pageId) {
         this.pageId = pageId;
     }
 
@@ -36,7 +36,7 @@ public class DiaryComponentGetRequest {
     public String toString() {
         return "DiaryComponentGetRequest{" +
                 "uid='" + uid + '\'' +
-                ", pageId=" + pageId +
+                ", pageId='" + pageId + '\'' +
                 '}';
     }
 }

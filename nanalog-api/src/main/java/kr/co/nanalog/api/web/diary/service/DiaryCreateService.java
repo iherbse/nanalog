@@ -1,5 +1,6 @@
 package kr.co.nanalog.api.web.diary.service;
 
+import kr.co.nanalog.api.web.diary.model.DiaryCreateRequest;
 import kr.co.nanalog.api.web.diary.model.request.ComponentCreateRequest;
 import kr.co.nanalog.api.web.diary.model.request.DiaryPageCreateRequest;
 
@@ -10,4 +11,5 @@ public interface DiaryCreateService {
 
     Integer createPage(DiaryPageCreateRequest diaryPageCreateRequest);
     Integer createComponent(ComponentCreateRequest componentCreateRequest);
+    Integer createDiary(DiaryCreateRequest diaryCreateRequest);
 }

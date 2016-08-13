@@ -1,5 +1,7 @@
 package kr.co.nanalog.api.web.diary.service;
 
+import com.sun.tools.javac.comp.Todo;
+import kr.co.nanalog.api.web.diary.model.DiaryCreateRequest;
 import kr.co.nanalog.api.web.diary.model.entity.Component;
 import kr.co.nanalog.api.web.diary.model.entity.Page;
 import kr.co.nanalog.api.web.user.model.entity.User;
@@ -13,7 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by JUNG on 2016. 7. 29..
@@ -67,5 +72,55 @@ public class DiaryCreateServiceImpl implements DiaryCreateService {
         pageRepository.save(page);
 
         return 1;
+    }
+
+    @Override
+    public Integer createDiary(DiaryCreateRequest diaryCreateRequest) {
+
+        // 1. 이 유저가 오늘 다이어리 만들었나 봄
+        String uid = diaryCreateRequest.getUid();
+        String date = diaryCreateRequest.getDate();
+
+        Page page = this.pageRepository.findByUidAndDate(uid, date);
+        if(page == null){
+            Page createPage = new Page();
+            createPage.setUid(uid);
+            createPage.setCreatedDate(getCurrentDate());
+            createPage.setModifiedDate(getCurrentDate());
+            this.pageRepository.save(createPage);
+            page = this.pageRepository.findByUidAndDate(uid, date);
+        }
+        long pageId = page.getPageId();
+
+        List<Component> componentList = this.componentRepository.findByPageId(pageId);
+        if(componentList.size() > 5){
+            return -1;
+        }
+
+        String type = diaryCreateRequest.getType();
+        String data = diaryCreateRequest.getData();
+
+        Component component = new Component();
+        component.setPageId(pageId);
+        if(type.equals(Component.ComponentType.TITLE)){
+            component.setComponentType(Component.ComponentType.TITLE);
+        }
+        else if(type.equals(Component.ComponentType.IMAGE)){
+            component.setComponentType(Component.ComponentType.IMAGE);
+        }
+        else{
+            component.setComponentType(Component.ComponentType.SENTENCE);
+        }
+        // Todo 포지션 빠짐
+        component.setComponentPosition(Component.ComponentPosition.MID);
+        component.setComponentData(data);
+
+        this.componentRepository.save(component);
+
+        return 1;
+    }
+
+    private String getCurrentDate(){
+        return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 }

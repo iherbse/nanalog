@@ -2,6 +2,7 @@ package kr.co.nanalog.api.web.diary;
 
 
 import kr.co.nanalog.api.web.common.domain.ApiResponseBody;
+import kr.co.nanalog.api.web.diary.model.DiaryCreateRequest;
 import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
@@ -62,7 +63,7 @@ public class DiaryController {
 
         return new ApiResponseBody<DiaryComponentGetResponse>(diaryComponentGetResponse);
     }
-    @RequestMapping(value = "/page", method = RequestMethod.PUT)
+    @RequestMapping(value = "/page", method = RequestMethod.POST)
     public ResponseEntity createPage(@Valid DiaryPageCreateRequest diaryPageCreateRequest) {
         int resultCode = diaryCreateService.createPage(diaryPageCreateRequest);
 
@@ -73,7 +74,7 @@ public class DiaryController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/component", method = RequestMethod.PUT)
+    @RequestMapping(value = "/component", method = RequestMethod.POST)
     public ResponseEntity createComponent(@Valid ComponentCreateRequest componentCreateRequest) {
         int resultCode = diaryCreateService.createComponent(componentCreateRequest);
 
@@ -83,7 +84,19 @@ public class DiaryController {
 
         return new ResponseEntity(HttpStatus.OK);
     }
-    @RequestMapping(value = "/component", method = RequestMethod.POST)
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity createDiary(@Valid DiaryCreateRequest diaryCreateRequest) {
+        int resultCode = diaryCreateService.createDiary(diaryCreateRequest);
+
+        if(resultCode == -1) {
+            return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/component", method = RequestMethod.PUT)
     public ResponseEntity updateDiary(@Valid DiaryUpdateRequest updateRequest) {
         int resultCode = diaryUpdateService.updateComponent(updateRequest);
 
@@ -96,7 +109,7 @@ public class DiaryController {
     }
 
 
-    @RequestMapping(value = "/page", method = RequestMethod.POST)
+    @RequestMapping(value = "/page", method = RequestMethod.PUT)
     public ResponseEntity updateDiary(@Valid List<DiaryUpdateRequest> updateRequest) {
         int resultCode = diaryUpdateService.updateDiary(updateRequest);
 

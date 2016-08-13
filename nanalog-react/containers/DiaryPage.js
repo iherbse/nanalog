@@ -11,6 +11,7 @@ class DiaryPage extends Component {
               <div className="diarypage">
                   <DiaryTextBox/>
                   <DiaryPicture/>
+                  <WeeklyIndicator/>
               </div>
 
             </div>

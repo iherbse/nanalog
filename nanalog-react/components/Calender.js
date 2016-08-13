@@ -1,12 +1,16 @@
 import React, {Component, PropTypes} from 'react';
 
-export default class App extends Component {
-
+class Calender extends Component {
     render() {
         return (
           <div >
-            달력 페이지
+            <div id="main-content-item">
+              <div className="calender">
+                  달력!
+              </div>
+            </div>
           </div>
         )
     }
 }
+export default Calender;

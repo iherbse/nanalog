@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Leegain on 2016-07-27.
@@ -82,7 +83,7 @@ public class DiaryDeleteServiceImpl implements DiaryDeleteService {
     @Override
     public Integer deleteUser(DiaryUserDeleteRequest diaryUserDeleteRequest){
         String uid = diaryUserDeleteRequest.getUid();
-        ArrayList<Page> pageArrayList = this.pageRepository.findByUid(uid);
+        List<Page> pageArrayList = this.pageRepository.findByUid(uid);
 
         this.pageRepository.deleteByUid(uid);
 
