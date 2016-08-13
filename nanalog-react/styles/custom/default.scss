@@ -1,15 +1,15 @@
-@import "nav";
+
 body,
 html {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 #wrap-content {
     width: 100%;
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow-y: hidden;
 }
 #side-content {
     width: 30%;
@@ -17,12 +17,13 @@ html {
     position: relative;
     float: left;
     background-color: #1E90FF;
+    z-index: -1;
 }
 #main-content {
     margin-top: 12.5%;
-    width: 70%;
+    width: 100%;
     height: 87.5%;
-    position: relative;
+    position: absolute;
     float: left;
     text-align: center;
 }
