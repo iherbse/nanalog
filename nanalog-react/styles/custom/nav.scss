@@ -1,7 +1,16 @@
-$nav_height:80px;
+$nav_height: 12.5%;
+$side_margin: 6.8%;
 .nav {
     height: $nav_height;
-    width: 100%;
-    position: absolute;;
+    width: 87.5%;
+    margin: 6.25% $side_margin 0 $side_margin;
+    position: absolute;
     z-index: 9999;
+}
+.item{
+  float: left;
+}
+.item_test{
+  float: right;
+  display: none;
 }

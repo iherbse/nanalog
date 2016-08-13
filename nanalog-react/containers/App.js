@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import NavBar from './NavBar/NavBar';
+import SideBar from './SideBar/SideBar';
 
 export default class App extends Component {
     constructor(props) {
@@ -15,9 +16,9 @@ export default class App extends Component {
         return (
 
             <div id="wrap-content">
-              
+
                 <NavBar/>
-                <div id="side-content"></div>
+                <SideBar/>
                 <main id="main-content">
                     {children}
                 </main>
