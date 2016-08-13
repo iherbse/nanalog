@@ -19,10 +19,23 @@ html {
     background-color: #1E90FF;
 }
 #main-content {
+<<<<<<< HEAD
     margin-top: 12.5%;
     width: 70%;
     height: 87.5%;
+=======
+    margin-top: $nav_height;
+    width: 50%;
+    height: 100%;
+>>>>>>> 79dfe9d188abf3eeb024657d837d2f6dbec494fc
     position: relative;
     float: left;
     text-align: center;
+}
+#side-content-right{
+   width: 20%;
+   height: 80px;
+   position: relative;
+   float: right;
+   text-align: right;
 }
