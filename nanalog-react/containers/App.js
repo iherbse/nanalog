@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import NavBar from './NavBar/NavBar';
 import SideBar from './SideBar/SideBar';
+
 class App extends Component {
     constructor(props) {
         super(props)
@@ -13,16 +14,16 @@ class App extends Component {
         const {children} = this.props
 
         return (
-
             <div id="wrap-content">
                 <NavBar/>
-                <SideBar/>
                 <div id="side-content"></div>
                 <main id="main-content">
+                    <SideBar/>
+
                     {children}
+
                 </main>
             </div>
-
         )
     }
 }

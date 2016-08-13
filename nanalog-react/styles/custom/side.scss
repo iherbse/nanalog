@@ -1,11 +1,19 @@
-.side{
-  margin-top: 9%;
-  margin-left: 6.8%;
-  position: absolute;
+.side {
+    position: absolute;
+    max-width: 100px;
 }
-.month_btn{
-
+.side > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
-.week_btn{
-  
+.month {
+    padding-left: 0;
+    margin-top: 48px;
+    height: 30px;
+}
+.week {
+    padding-left: 0;
+    margin-top: 48px;
+    height: 30px;
 }

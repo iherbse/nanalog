@@ -7,18 +7,13 @@ class NavBar extends Component {
     render() {
         return (
             <div className="nav">
-                <div className="logo_btn">
-                    <Link to="/" href="#">
-                        <img src={require('../../images/logo.svg')}/>
-                    </Link>
-                </div>
-                <div className="setting_btn">
-                    <Link to="/" href="#">
-                        <img src={require('../../images/nav-item.png')}/>
-                    </Link>
-                </div>
+                <Link to="/" href="#">
+                    <img src={require('../../images/logo.svg')} className="logo"/>
+                </Link>
+                <Link to="/" href="#">
+                    <img src={require('../../images/btn_mypage.svg')} className="mypage"/>
+                </Link>
             </div>
-
         )
     };
 

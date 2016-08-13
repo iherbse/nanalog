@@ -3,38 +3,30 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
 }
 #root {
+    width: 100%;
     height: 100%;
 }
 #root > div {
+    width: 100%;
     height: 100%;
 }
 #wrap-content {
-    width: 100%;
-    margin: 0;
+    max-width: 1180px;
+    min-width: 768px;
+    margin: 0 auto;
     padding: 0;
-    height: 100%;
+    height: 800px;
 }
 #side-content {
     width: 30%;
     height: 100%;
-    position: relative;
-    float: left;
+    min-width: 230.4px;
+    position: absolute;
+    left: 0;
+    top: 0;
     background-image: linear-gradient(to top, #3859f6,#418cff), linear-gradient(#ffba43,#ffba43);
     z-index: -1;
-}
-#main-content {
-    margin-top: 9%;
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    border: solid 1px red;
-}
-#main-content-item{
-  width: 70%;
-  height: 70%;
-  position: relative;
-  text-align: center;
-  margin: auto;
 }

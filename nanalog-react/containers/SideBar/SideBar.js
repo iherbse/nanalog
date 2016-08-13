@@ -7,17 +7,18 @@ class SideBar extends Component {
     render() {
         return (
             <div className="side">
-                <div className="month_btn">
-                    <Link to="/" href="#">
-                        <img src={require('../../images/nav-item.png')}/>
-                    </Link>
-                </div>
-                <div className="week_btn">
-                    <Link to="/" href="#">
-                        <img src={require('../../images/nav-item.png')}/>
-                    </Link>
-                </div>
-
+                <ul>
+                    <li>
+                        <Link to="/" href="#">
+                            <img src={require('../../images/nav-item.png')} className="month"/>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/" href="#">
+                            <img src={require('../../images/nav-item.png')} className="week"/>
+                        </Link>
+                    </li>
+                </ul>
             </div>
 
         )

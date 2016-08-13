@@ -1,23 +1,18 @@
 .nav {
-    margin-left: 6.8%;
-    margin-right: 6.8%;
-    width: 87.4%;
-    padding-top: 3%;
-    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 3%;
+    height: 96px;
+    box-sizing: border-box;
 }
-.logo_btn {
+.logo {
     float: left;
+    margin-top:48px;
+    height: 30px;
 }
-.logo_btn>a>img{
-  width: 40%;
-  height: 40%;
-}
-.month_btn {
-    clear: both;
-}
-.week_btn {
-    clear: both;
-}
-.setting_btn {
+
+.mypage {
     float: right;
+    margin-top:48px;
+    height: 30px;
 }
