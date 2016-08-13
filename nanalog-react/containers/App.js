@@ -3,8 +3,7 @@ import {render} from 'react-dom';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import NavBar from './NavBar/NavBar';
-
-
+import SideBar from './SideBar/SideBar';
 class App extends Component {
     constructor(props) {
         super(props)
@@ -16,7 +15,8 @@ class App extends Component {
         return (
 
             <div id="wrap-content">
-              <NavBar/>
+                <NavBar/>
+                <SideBar/>
                 <div id="side-content"></div>
                 <main id="main-content">
                     {children}
@@ -27,7 +27,7 @@ class App extends Component {
     }
 }
 function mapStateToProps(state, ownProps) {
-  return {}
+    return {}
 }
 export default connect(mapStateToProps)(App)
 
