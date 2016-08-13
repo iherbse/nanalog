@@ -7,8 +7,8 @@ import Calender from './components/Calender'
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Calender}/>
-    <Route path="/DiaryPage"
-        component={DiaryPage}/>
+    <IndexRoute component={DiaryPage}/>
+    <Route path="/Calender"
+        component={Calender}/>
   </Route>
 )

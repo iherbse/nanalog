@@ -1,15 +1,17 @@
 .nav {
-    width: 23.2%;
-    height: 100%;
-    margin-left: 6.8%;
-    margin-top: 6%;
-    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 3%;
+    height: 96px;
+    box-sizing: border-box;
 }
-
-.item {
+.logo {
     float: left;
+    margin-top: 48px;
+    height: 30px;
 }
-.item_test {
+.mypage {
     float: right;
-    display: none;
+    margin-top: 48px;
+    height: 30px;
 }

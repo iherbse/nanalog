@@ -3,12 +3,12 @@ import {render} from 'react-dom';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import NavBar from './NavBar/NavBar';
-import fetchPageList from '../actions/diary'
+import SideBar from './SideBar/SideBar';
 
 class App extends Component {
     constructor(props) {
         super(props)
-        this.fetchPageList = this.fetchPageList.bind(this)
+
     }
 
     render() {
@@ -16,10 +16,11 @@ class App extends Component {
 
         return (
             <div id="wrap-content">
-            <button onClick = {this.fetchPageList}>click</button>
+
               <NavBar/>
                 <div id="side-content"></div>
                 <main id="main-content">
+                  <SideBar/>
                     {children}
                 </main>
             </div>
@@ -30,10 +31,10 @@ class App extends Component {
 function mapStateToProps(state, ownProps) {
   return {}
 }
-export default connect(mapStateToProps, fetchPageList)(App)
+export default connect(mapStateToProps)(App)
 
 App.propTypes = {
     // Injected by React Redux  // Injected by React Router
     children: PropTypes.node
-    fetchPageList: PropTypes.function
+
 }

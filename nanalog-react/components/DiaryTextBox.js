@@ -5,7 +5,7 @@ class DiaryTextBox extends Component {
     render() {
         return (
               <div className="diary-textbox">
-            
+
               </div>
         )
     };
