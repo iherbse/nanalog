@@ -12,16 +12,23 @@ export function fetchPageList(url) {
               response.status);
             return;
           }
-
-          // Examine the text in the response
-          response.json().then(function(data) {
-            console.log(data);
-          });
         }
-      )
-      .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-      });
+      ).then(response => response.json())
+      .then(json => {
+        let diaryPages = null;
+        let date = null;
+        if(json.diaryPageGetResponseModels){
+          diaryPages = json.diaryPageGetResponseModels;
+        }
+        if(json.date){
+          date = json.date;
+        }
+        return {
+          type: types.READ_ALL_DIARY,
+          date,
+          diaryPages
+        }
+      })
   }
 }
 export function fetchPage(url) {
