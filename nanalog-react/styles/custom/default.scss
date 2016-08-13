@@ -18,9 +18,16 @@ html,body{
 }
 #main-content {
     margin-top: $nav_height;
-    width: 70%;
+    width: 50%;
     height: 100%;
     position: relative;
     float: left;
     text-align: center;
+}
+#side-content-right{
+   width: 20%;
+   height: 80px;
+   position: relative;
+   float: right;
+   text-align: right;
 }

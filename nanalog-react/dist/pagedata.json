@@ -1,0 +1,12 @@
+{
+  "uid" : "test1",
+  "pageId" : "111111",
+  "diaryComponentGetResponseModels" :[
+   {
+    "componentId" : "99",
+    "componentType" : "type1",
+    "componentPosition" : "position1",
+    "componentData" : "abcdef"
+    }
+  ]
+}

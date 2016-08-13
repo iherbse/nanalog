@@ -5,11 +5,13 @@ class NavBar extends Component {
 
     render() {
         return (
-            <div className="nav">
-                <Link to="/" href="#" className="nav item">
-                    <img className="logo" src={require('../../images/logo.png')}/>
-                </Link>
-            </div>
+          <div>
+              <div className="nav">
+                  <Link to="/" href="#" className="nav item">
+                      <img className="logo" src={require('../../images/logo.png')}/>
+                  </Link>
+              </div>
+          </div>
         )
     }
 }
