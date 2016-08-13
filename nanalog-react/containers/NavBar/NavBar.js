@@ -6,7 +6,6 @@ class NavBar extends Component {
 
     render() {
         return (
-<<<<<<< HEAD
             <div className="nav">
                 <Link to="/" href="#" className="item">
                     <img className="logo" src={require('../../images/logo.png')}/>
@@ -16,15 +15,6 @@ class NavBar extends Component {
                 </Link>
             </div>
 
-=======
-          <div>
-              <div className="nav">
-                  <Link to="/" href="#" className="nav item">
-                      <img className="logo" src={require('../../images/logo.png')}/>
-                  </Link>
-              </div>
-          </div>
->>>>>>> 79dfe9d188abf3eeb024657d837d2f6dbec494fc
         )
     };
 
