@@ -1,16 +1,16 @@
-$nav_height: 12.5%;
-$side_margin: 6.8%;
+
 .nav {
-    height: $nav_height;
-    width: 87.5%;
-    margin: 6.25% $side_margin 0 $side_margin;
+    width: 23.2%;
+    height: 100%;
+    margin-left: 6.8%;
+    margin-top: 6%;
     position: absolute;
-    z-index: 9999;
 }
-.item{
-  float: left;
+
+.item {
+    float: left;
 }
-.item_test{
-  float: right;
-  display: none;
+.item_test {
+    float: right;
+    display: none;
 }
