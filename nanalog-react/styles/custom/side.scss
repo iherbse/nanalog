@@ -1,0 +1,19 @@
+.side {
+    position: absolute;
+    max-width: 100px;
+}
+.side > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.month {
+    padding-left: 0;
+    margin-top: 48px;
+    height: 30px;
+}
+.week {
+    padding-left: 0;
+    margin-top: 48px;
+    height: 30px;
+}

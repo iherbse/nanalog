@@ -5,7 +5,6 @@ class DiaryPicture extends Component {
     render() {
         return (
           <div className="diary-picture">
-            사진~~~~~~~~~
           </div>
         )
     }
