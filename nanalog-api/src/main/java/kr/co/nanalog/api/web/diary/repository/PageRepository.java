@@ -33,4 +33,5 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 
     @Query("select p from Page p where p.uid = ?1 AND p.createdDate = ?2")
     Page findByUidAndDate(String uid, String date);
+
 }

@@ -121,6 +121,6 @@ public class DiaryCreateServiceImpl implements DiaryCreateService {
     }
 
     private String getCurrentDate(){
-        return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        return LocalDateTime.now().plusMonths(0).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 }

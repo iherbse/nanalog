@@ -105,6 +105,7 @@ public class DiaryControllerTest {
         List<Component> componentList = this.componentRepository.findByPageId(page.getPageId());
         Long componentId = componentList.get(0).getComponentId();
 
+        //update test
         mockMvc.perform(put("/v1/diary/component/")
                 .param("pageId", pid)
                 .param("componentId", String.valueOf(componentId))
@@ -112,6 +113,7 @@ public class DiaryControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
 
+        //delete test
         mockMvc.perform(delete("/v1/diary/component/")
                 .param("userId", this.uid)
                 .param("componentId", String.valueOf(componentId)))
@@ -123,9 +125,6 @@ public class DiaryControllerTest {
                 .param("pageId", pid))
                 .andExpect(status().isOk())
                 .andDo(print());
-
-
-
     }
 
     @Test
@@ -148,8 +147,37 @@ public class DiaryControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+    @Test
+    public void 다이어리_preview_테스트() throws Exception {
+        mockMvc.perform(post("/v1/diary/")
+                .param("uid", this.uid)
+                .param("date", this.date)
+                .param("type", Component.ComponentType.SENTENCE.toString())
+                .param("data", "원래 이런건 최대한 의미있는 값이 들어가면 좋음"))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        mockMvc.perform(post("/v1/diary/")
+                .param("uid", this.uid)
+                .param("date", this.date)
+                .param("type", Component.ComponentType.SENTENCE.toString())
+                .param("data", "원래 이런건 최대한 의미있는 값이 들어가면 좋음"))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        Page page = this.pageRepository.findByUidAndDate(this.uid, this.date);
+
+
+        mockMvc.perform(get("/v1/diary/preview")
+                .param("uid", this.uid)
+                .param("startDate", "20160813")
+                .param("endDate","20160920"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
 
     private String getCurrentDate(){
-        return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 }

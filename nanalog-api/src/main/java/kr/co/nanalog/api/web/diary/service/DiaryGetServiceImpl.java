@@ -2,14 +2,13 @@ package kr.co.nanalog.api.web.diary.service;
 
 import kr.co.nanalog.api.web.diary.model.entity.Component;
 import kr.co.nanalog.api.web.diary.model.entity.Page;
+import kr.co.nanalog.api.web.diary.model.request.DiaryPreviewRequest;
+import kr.co.nanalog.api.web.diary.model.response.*;
 import kr.co.nanalog.api.web.diary.repository.ComponentRepository;
 import kr.co.nanalog.api.web.diary.repository.PageRepository;
 import kr.co.nanalog.api.web.diary.model.request.DiaryComponentGetRequest;
 import kr.co.nanalog.api.web.diary.model.request.DiaryPageGetRequest;
-import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
-import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponseModel;
-import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
-import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponseModel;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,5 +75,47 @@ public class DiaryGetServiceImpl implements DiaryGetService {
         diaryComponentGetResponse.setPageId(Long.valueOf(diaryComponentGetRequest.getPageId()));
 
         return diaryComponentGetResponse;
+    }
+
+    @Override
+    public List<DiaryPreviewResponse> getDiaryPreviewList(DiaryPreviewRequest diaryPreviewRequest) {
+        String uid = diaryPreviewRequest.getUid();
+        Integer startDate = Integer.valueOf(diaryPreviewRequest.getStartDate());
+        Integer endDate = Integer.valueOf(diaryPreviewRequest.getEndDate());
+
+        List<Page> pageList = this.pageRepository.findByUid(uid);
+
+        List<DiaryPreviewResponse> diaryPreviewResponseList = new ArrayList<>();
+        for(Page page : pageList){
+            Integer pageDate = Integer.valueOf(page.getCreatedDate());
+
+            if(startDate <= pageDate && endDate >= pageDate){
+                String uuid = page.getUid();
+                String pid = String.valueOf(page.getPageId());
+                String date = page.getCreatedDate();
+
+                List<Component> componentList = this.componentRepository.findByPageId(Long.valueOf(pid));
+
+                for (Component component : componentList) {
+
+                    component.getComponentData();
+                    String type = component.getComponentType().toString();
+                    String title = component.getComponentData().substring(0, 10);
+                    String body = component.getComponentData();
+
+                    DiaryPreviewResponse diaryPreviewResponse = new DiaryPreviewResponse();
+                    diaryPreviewResponse.setUid(uuid);
+                    diaryPreviewResponse.setPid(pid);
+                    diaryPreviewResponse.setDate(date);
+                    diaryPreviewResponse.setType(type);
+                    diaryPreviewResponse.setTitle(title);
+                    diaryPreviewResponse.setBody(body);
+
+                    diaryPreviewResponseList.add(diaryPreviewResponse);
+                }
+            }
+        }
+
+        return diaryPreviewResponseList;
     }
 }

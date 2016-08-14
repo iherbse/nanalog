@@ -6,6 +6,7 @@ import kr.co.nanalog.api.web.diary.model.DiaryCreateRequest;
 import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
+import kr.co.nanalog.api.web.diary.model.response.DiaryPreviewResponse;
 import kr.co.nanalog.api.web.diary.service.DiaryCreateService;
 import kr.co.nanalog.api.web.diary.service.DiaryDeleteService;
 import kr.co.nanalog.api.web.diary.service.DiaryGetService;
@@ -151,5 +152,16 @@ public class DiaryController {
 
         return new ResponseEntity(HttpStatus.OK);
     }
+    @RequestMapping(value = "/preview", method = RequestMethod.GET)
+    public List<DiaryPreviewResponse> getDiaryPreviewList(@Valid DiaryPreviewRequest diaryPreviewRequest, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return new ArrayList<>();
+        }
+        List<DiaryPreviewResponse> responseList = diaryGetService.getDiaryPreviewList(diaryPreviewRequest);
+
+        return responseList;
+    }
+
 
 }

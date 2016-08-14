@@ -73,7 +73,7 @@ public class DiaryDeleteServiceImpl implements DiaryDeleteService {
             return -1;
         }
 
-        this.componentRepository.deleteComponentByComponentId(deleteComponentId);
+        this.componentRepository.delete(deleteComponentId);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         page.setModifiedDate(format.format(new Date()));
 
