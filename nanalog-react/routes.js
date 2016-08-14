@@ -1,14 +1,16 @@
 import React from 'react'
 import { Route ,IndexRoute } from 'react-router'
 import App from './containers/App'
-import DiaryPage from './containers/DiaryPage'
-import Calender from './components/Calender'
+import WeeklyPage from './containers/WeeklyPage'
+import MonthlyPage from './containers/MonthlyPage'
 
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={DiaryPage}/>
-    <Route path="/Calender"
-        component={Calender}/>
+    <IndexRoute component={MonthlyPage}/>
+    <Route path="/MonthlyPage"
+        component={MonthlyPage}/>
+    <Route path="/WeeklyPage"
+        component={WeeklyPage}/>
   </Route>
 )

@@ -4,7 +4,7 @@ import DiaryPicture from '../components/DiaryPicture'
 import WeeklyIndicator from '../components/WeeklyIndicator'
 import Indicator from '../components/Indicator'
 
-class DiaryPage extends Component {
+class WeeklyPage extends Component {
 
     render() {
         return (
@@ -18,4 +18,4 @@ class DiaryPage extends Component {
 
 }
 
-export default DiaryPage;
+export default WeeklyPage;

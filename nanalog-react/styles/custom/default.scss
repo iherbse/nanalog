@@ -30,3 +30,13 @@ html {
     background-image: linear-gradient(to top, #3859f6,#418cff), linear-gradient(#ffba43,#ffba43);
     z-index: -1;
 }
+#side-content-white {
+    width: 30%;
+    height: 100%;
+    min-width: 230.4px;
+    position: absolute;
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
