@@ -5,7 +5,7 @@ class Indicator extends Component {
     render() {
         return (
               <div className="diary-indicator">
-                Indicator
+
               </div>
         )
     };
