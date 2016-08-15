@@ -7,8 +7,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
 .diary-monthly-calendar{
-  width: 60%;
-  min-width: 345.6px;
+  width: 71.92%;
   height: 100%;
   border-radius: 3px;
   position: relative;
@@ -17,8 +16,7 @@
 
 // MonthlyLogInfo
 .diary-monthly-log-info{
-  width: 40%;
-  min-width: 230.4px;
+  width: 28.08%;
   height: 100%;
   background-image: linear-gradient(to top, #3859f6,#418cff), linear-gradient(#ffba43,#ffba43);
   border-radius: 3px;
@@ -44,7 +42,9 @@
 }
 
 // MonthlyCalendar
-
+.column{
+  border: solid red 1px;
+}
 .text-monthly-calendar-year{
   font-size: 18px;
   text-align: right;
