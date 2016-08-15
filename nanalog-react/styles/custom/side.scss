@@ -1,6 +1,7 @@
 .side {
-    position: absolute;
     max-width: 100px;
+    float: left;
+    padding-right: 1.69%;
 }
 .side > ul {
     list-style: none;
@@ -9,11 +10,10 @@
 }
 .month {
     padding-left: 0;
-    margin-top: 48px;
+    margin-bottom: 20px;
     height: 30px;
 }
 .week {
     padding-left: 0;
-    margin-top: 48px;
     height: 30px;
 }

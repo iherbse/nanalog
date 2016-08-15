@@ -1,48 +1,40 @@
 #main-content {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 3%;
+    width: 86.4%;
+    margin: 68px 6.8% 0 6.8%;
     box-sizing: border-box;
 }
 .main {
-    margin: 48px auto 0;
-    width: 75%;
-    min-width: 576px;
-    height: 576px;
+    width: 89.4%;
+    height: 553px;
     display: flex;
     align-items: center;
 }
 .main-diary-monthly {
-    margin: 48px auto 0;
-    width: 75%;
-    min-width: 576px;
-    height: 576px;
+    width: 84.49%;
+    height: 553px;
     display: flex;
     align-items: center;
 }
-.diary-indicator{
-  width: 50px;
-  height: 500px;
-  border: solid 1px red;
+.diary-indicator {
+    width: 2.84%;
+    height: 54.8%;
+    margin-left: 4.07%;
+    border: solid 1px red;
 }
-.diary-textbox{
-  width: 60%;
-  height: 100%;
-  min-width: 345.6px;
-  background-color: #ffffff;
-  position: relative;
-  float: left;
-  border-radius: 3px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+.diary-textbox {
+    width: 54.97%;
+    height: 100%;
+    background-color: #ffffff;
+    position: relative;
+    float: left;
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
-.diary-picture{
-  width: 40%;
-  min-width: 230.4px;
-  height: 90%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #000000;
-  border-radius: 3px;
-  position: relative;
-  float: left;
+.diary-picture {
+    width: 38.19%;
+    height: 91.13%;
+    background-color: #000000;
+    border-radius: 3px;
+    position: relative;
+    float: left;
 }
