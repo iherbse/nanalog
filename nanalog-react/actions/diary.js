@@ -63,18 +63,10 @@ export function fetchPreviewPage(startDate, endDate){
     return fetch('http://localhost:8000/pagedata.json')
       .then(response => response.json())
       .then(json => {
-        let pageId = null;
-        let diaryComponents= null;
-        if(json.pageId){
-          pageId = json.pageId;
-        }
-        if(json.diaryComponentGetResponseModels){
-          diaryComponents = json.diaryComponentGetResponseModels;
-        }
+        let pageList = json;
         return {
           type: types.READ_PREVIEW_PAGE,
-          pageId,
-          diaryComponents
+          pageList
         }
       })
   };
