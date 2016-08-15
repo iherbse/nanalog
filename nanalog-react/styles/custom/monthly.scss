@@ -5,12 +5,20 @@
   position: relative;
   background-image: #ffffff;
   box-shadow: 0 0 15px rgba(0,0,0,0.6);
-
-
 }
+.diary-monthly-calendar{
+  width: 60%;
+  min-width: 345.6px;
+  height: 100%;
+  border-radius: 3px;
+  position: relative;
+  float: left;
+}
+
+// MonthlyLogInfo
 .diary-monthly-log-info{
   width: 40%;
-  min-width: 345.6px;
+  min-width: 230.4px;
   height: 100%;
   background-image: linear-gradient(to top, #3859f6,#418cff), linear-gradient(#ffba43,#ffba43);
   border-radius: 3px;
@@ -33,4 +41,43 @@
 }
 .text-monthly-log-info-title{
   font-size: 18px;
+}
+
+// MonthlyCalendar
+
+.text-monthly-calendar-year{
+  font-size: 18px;
+  text-align: right;
+}
+
+.diary-monthly-month{
+  width: 480px;
+  margin: auto;
+  height: 20px;
+  text-align: center;
+}
+.text-monthly-calendar-month{
+  float: left;
+  display: table;
+  width: 40px;
+}
+.diary-monthly-day{
+  width: 420px;
+  margin: auto;
+  height: 20px;
+  text-align: center;
+}
+.text-monthly-calendar-day{
+  float: left;
+  display: table;
+  width: 60px;
+}
+.diary-monthly-date-row{
+  width: 100%;
+  height: 40px;
+}
+.diary-monthly-date-cell{
+  width: 120px;
+  height: 90px;
+  background-color: #000000;
 }
