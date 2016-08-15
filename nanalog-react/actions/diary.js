@@ -58,6 +58,27 @@ export function fetchPage(url) {
       })
   };
 }
+export function fetchPreviewPage(startDate, endDate){
+  return (dispatch, getState) => {
+    return fetch('http://localhost:8000/pagedata.json')
+      .then(response => response.json())
+      .then(json => {
+        let pageId = null;
+        let diaryComponents= null;
+        if(json.pageId){
+          pageId = json.pageId;
+        }
+        if(json.diaryComponentGetResponseModels){
+          diaryComponents = json.diaryComponentGetResponseModels;
+        }
+        return {
+          type: types.READ_PREVIEW_PAGE,
+          pageId,
+          diaryComponents
+        }
+      })
+  };
+}
 // pageId, userId, createdAt
 export function createPage(){
 
