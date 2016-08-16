@@ -1,16 +1,25 @@
 import * as types from '../constants/ActionTypes';
 
+
 export default function diary(state = null, action) {
+  console.log(action);
+  console.log(action.type);
   switch (action.type) {
     case types.READ_ALL_PAGE:
       return Object.assign({}, state, {
         date: action.date,
-        diaryPages : actions.diaryPages
+        diaryPages : action.diaryPages
       });
     case types.READ_PAGE:
       return Object.assign({}, state, {
-        pageId: actions.pageId,
-        diaryComponents: actions.diaryComponents
+        pageId: action.pageId,
+        diaryComponents: action.diaryComponents
+      });
+    case types.READ_PREVIEW_PAGE:
+    console.log("READ_PREVIEW_PAGE");
+      return Object.assign({}, state, {
+        pageList: action.pageList,
+        pageCount: action.pageCount
       });
     case types.CREATE_PAGE:
     case types.CREATE_COMPONENT:

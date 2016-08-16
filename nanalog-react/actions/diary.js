@@ -33,6 +33,7 @@ export function fetchPageList(url) {
       })
   }
 }
+
 // read month pages 랑 read weekly motn pages 필요
 
 // read page
@@ -60,15 +61,23 @@ export function fetchPage(url) {
 }
 export function fetchPreviewPage(startDate, endDate){
   return (dispatch, getState) => {
-    return fetch('http://localhost:8000/pagedata.json')
+    return fetch('http://localhost:8000/previewPageData.json')
       .then(response => response.json())
       .then(json => {
         let pageList = json;
-        return {
-          type: types.READ_PREVIEW_PAGE,
-          pageList
-        }
+        console.log("pageList");
+
+        console.log(pageList);
+        return dispatch(PreviewPage(pageList));
+
       })
+  };
+}
+export function PreviewPage(pageList) {
+  return {
+    type: types.READ_PREVIEW_PAGE,
+    pageList : pageList,
+    pageCount : pageList.length
   };
 }
 // pageId, userId, createdAt

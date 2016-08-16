@@ -4,8 +4,8 @@ import diary from './diary'
 
 
 const rootReducer = combineReducers({
-  routing,
-  diary
-})
+  diary,
+  routing
+});
 
 export default rootReducer;
