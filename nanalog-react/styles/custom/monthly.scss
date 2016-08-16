@@ -42,6 +42,16 @@
 }
 
 // MonthlyCalendar
+.Calendar-grid-day-item{
+  width: 40px;
+  height: 30px;
+  float: left;
+  position: relative;
+}
+.row-week{
+  border: solid blue 1px;
+
+}
 .column{
   border: solid red 1px;
 }
@@ -49,35 +59,13 @@
   font-size: 18px;
   text-align: right;
 }
-
-.diary-monthly-month{
-  width: 480px;
-  margin: auto;
-  height: 20px;
-  text-align: center;
-}
-.text-monthly-calendar-month{
-  float: left;
-  display: table;
-  width: 40px;
-}
-.diary-monthly-day{
-  width: 420px;
-  margin: auto;
-  height: 20px;
-  text-align: center;
-}
-.text-monthly-calendar-day{
-  float: left;
-  display: table;
-  width: 60px;
-}
-.diary-monthly-date-row{
+.diary-monthly-week-container{
   width: 100%;
-  height: 40px;
+  height: 70%;
 }
-.diary-monthly-date-cell{
-  width: 120px;
-  height: 90px;
-  background-color: #000000;
+.laquo{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  float: left;
 }

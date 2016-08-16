@@ -13,3 +13,4 @@ export const UPDATE_PAGE = 'UPDATE_PAGE';
 export const UPDATE_COMPONENT = 'UPDATE_COMPONENT';
 export const READ_ALL_PAGE = 'READ_ALL_PAGE';
 export const READ_PAGE = 'READ_PAGE';
+export const READ_PREVIEW_PAGE = 'READ_PREVIEW_PAGE';

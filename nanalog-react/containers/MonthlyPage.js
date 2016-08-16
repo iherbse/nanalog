@@ -1,15 +1,14 @@
 import React, {Component, PropTypes} from 'react';
 import MonthlyLogInfo from '../components/MonthlyLogInfo'
-import MonthlyCalendar from '../components/MonthlyCalendar'
+import Calendar from '../components/Calendar';
+import moment from 'moment';
+import 'moment/locale/nb';
 
 class MonthlyPage extends Component {
-  
+
   componentWillMount() {
-    var date = new Date()
-      this.state = {
-        year : date.getFullYear(),
-        month : date.getMonth(),
-        date : date.getDate()
+    this.state = {
+     date: moment()
       }
   }
     render() {
@@ -17,8 +16,13 @@ class MonthlyPage extends Component {
           <div >
             <div className="main-diary-monthly">
               <div className="diary-monthly">
-                <MonthlyLogInfo year = {this.state.year} month = {this.state.month} date = {this.state.date}/>
-                <MonthlyCalendar year = {this.state.year} month = {this.state.month} date = {this.state.date}/>
+              <MonthlyLogInfo/>
+                <Calendar
+                        onNextMonth={() => this.setState({ date: this.state.date.clone().add(1, 'months') }) }
+                        onPrevMonth={() => this.setState({ date: this.state.date.clone().subtract(1, 'months') }) }
+                        date={this.state.date}
+                        onPickDate={(date) => console.log(date)}
+                      />
               </div>
             </div>
           </div>

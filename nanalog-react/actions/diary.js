@@ -58,6 +58,19 @@ export function fetchPage(url) {
       })
   };
 }
+export function fetchPreviewPage(startDate, endDate){
+  return (dispatch, getState) => {
+    return fetch('http://localhost:8000/pagedata.json')
+      .then(response => response.json())
+      .then(json => {
+        let pageList = json;
+        return {
+          type: types.READ_PREVIEW_PAGE,
+          pageList
+        }
+      })
+  };
+}
 // pageId, userId, createdAt
 export function createPage(){
 

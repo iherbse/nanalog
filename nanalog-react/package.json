@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.2",
     "babel-polyfill": "^6.7.4",
@@ -23,6 +24,8 @@
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.1.0",
     "lodash": "^4.11.1",
+    "moment": "^2.14.1",
+    "node-sass": "^3.7.0",
     "nodemon": "^1.9.1",
     "normalizr": "^2.0.1",
     "radium": "^0.17.1",
@@ -39,13 +42,11 @@
     "redux-devtools-log-monitor": "^1.0.11",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
+    "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.13",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0",
-    "sass-loader": "^3.2.0",
-    "autoprefixer-loader": "^3.2.0",
-    "node-sass": "^3.7.0"
+    "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
     "babel-preset-stage-0": "^6.5.0",
