@@ -62,7 +62,7 @@ export default class Calendar extends Component {
               <div
                 key={`day-${i}`}
                 className={`Calendar-grid-item ${day.classNames || ''}`}
-                onClick={(e) => onPickDate(day.day)}
+                onClick={(e) => onPickDate({day})}
                 >
                 {renderDay(day.day)}
               </div>
@@ -75,7 +75,7 @@ export default class Calendar extends Component {
 }
 Calendar.defaultProps = {
   weekOffset: 0,
-  renderDay: day => day.format('YYYY-MM-D'),
+  renderDay: day => day.format('D')
 }
 Calendar.propTypes = {
   weekOffset: PropTypes.number.isRequired,
@@ -83,5 +83,5 @@ Calendar.propTypes = {
   renderDay: PropTypes.func,
   onNextMonth: PropTypes.func.isRequired,
   onPrevMonth: PropTypes.func.isRequired,
-  onPickDate: PropTypes.func
+  onPickDate: PropTypes.func.isRequired
 }
