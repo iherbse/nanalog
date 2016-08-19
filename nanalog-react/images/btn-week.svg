@@ -1,0 +1,9 @@
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="80px" height="38px">
+<path fill-rule="evenodd"  fill="rgb(48, 48, 48)"
+ d="M3.000,0.000 L77.000,0.000 C78.657,0.000 80.000,1.343 80.000,3.000 L80.000,35.000 C80.000,36.657 78.657,38.000 77.000,38.000 L3.000,38.000 C1.343,38.000 -0.000,36.657 -0.000,35.000 L-0.000,3.000 C-0.000,1.343 1.343,0.000 3.000,0.000 Z"/>
+<text font-family="SpoqaHanSans" fill="rgb(255, 186, 67)" font-size="12px" x="48px" y="-190.008px">&#51452;&#44036;</text>
+<image  x="12px" y="9px" width="29px" height="20px"  xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAUCAMAAABGQsb1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAolBMVEX/ukP/////ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP/ukP///+YPKFfAAAANHRSTlMAAOCWDDAVQHgcgTOPsJqCoPLCP0yMwNEBtNA8WHzBuNwDOGXjBhhbFCSkQWlQdyUeCCAOiHNvqgAAAAFiS0dEAf8CLd4AAACXSURBVCjPY2CAASYmMMWIDOCSDMzM+GQhgIWVDY8suwkHQtIEXZaTixuPLIq9cFkeXiDgwyXLLyAgICiESxYIhE1EMGSZRGGyYuISYFlJE4SsFD9UUtpEBuIqWTksJssrKOJ0M4OSiTJuHzHIq6jillXjVcceGmrsGgjbNbW0UWV1THSRY0EPVVZfxwAha2hkTEbsY0s5APhMC0uCH166AAAAAElFTkSuQmCC" />
+</svg>

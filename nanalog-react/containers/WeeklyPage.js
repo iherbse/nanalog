@@ -8,7 +8,7 @@ class WeeklyPage extends Component {
 
     render() {
         return (
-            <div className="main">
+            <div className="weekly-diary-main">
                 <DiaryTextBox/>
                 <DiaryPicture/>
                 <Indicator/>

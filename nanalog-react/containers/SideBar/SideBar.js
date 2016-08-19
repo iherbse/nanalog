@@ -14,12 +14,12 @@ class SideBar extends Component {
                 <ul>
                     <li>
                         <Link to="/MonthlyPage" href="#">
-                            <img src={require('../../images/nav-item.png')}className="month"/>
+                            <img src={require('../../images/btn-month.svg')}className="month"/>
                         </Link>
                     </li>
                     <li>
                         <Link to="/WeeklyPage" href="#">
-                            <img src={require('../../images/nav-item.png')} className="week"/>
+                            <img src={require('../../images/btn-week.svg')} className="week"/>
                         </Link>
                     </li>
                 </ul>
