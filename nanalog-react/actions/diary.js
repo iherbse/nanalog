@@ -51,13 +51,17 @@ export function fetchPage(url) {
         if(json.diaryComponentGetResponseModels){
           diaryComponents = json.diaryComponentGetResponseModels;
         }
-        return {
-          type: types.READ_PAGE,
-          pageId,
-          diaryComponents
-        }
+        return dispatch(getPage(pageId,diaryComponents));
+
       })
   };
+}
+export function getPage(pageId,diaryComponents) {
+  return {
+    type: types.READ_PAGE,
+    pageId,
+    diaryComponents
+  }
 }
 export function fetchPreviewPage(startDate, endDate){
   return (dispatch, getState) => {
@@ -65,8 +69,6 @@ export function fetchPreviewPage(startDate, endDate){
       .then(response => response.json())
       .then(json => {
         let pageList = json;
-        console.log("pageList");
-
         console.log(pageList);
         return dispatch(PreviewPage(pageList));
 

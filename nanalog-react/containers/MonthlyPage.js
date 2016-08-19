@@ -14,7 +14,7 @@ class MonthlyPage extends Component {
       this.goWeeklyPage = this.goWeeklyPage.bind(this)
     }
   componentWillMount() {
-    this.props.fetchPreviewPage("ss","ss")
+    this.props.fetchPreviewPage("ss","aa")
     this.state = {
      date: moment()
     }
@@ -24,12 +24,12 @@ class MonthlyPage extends Component {
 
   }
     render() {
-
+       let pageCount = this.props.pageCount;
         return (
           <div >
             <div className="main-diary-monthly">
               <div className="diary-monthly">
-              <MonthlyLogInfo/>
+              <MonthlyLogInfo pageCount = {pageCount}/>
                 <Calendar
                         onNextMonth={() => this.setState({ date: this.state.date.clone().add(1, 'months') }) }
                         onPrevMonth={() => this.setState({ date: this.state.date.clone().subtract(1, 'months') }) }
@@ -43,10 +43,21 @@ class MonthlyPage extends Component {
     }
 }
 function mapStateToProps(state) {
-  const { diary } = state
-  console.log(diary);
 
+
+  if(state.diary !== null ){
+    const {
+      diary: { pageCount,pageList }
+    } = state
+    return {
+      pageCount : pageCount,
+      pageList : pageList
+    }
+  }
+  console.log(state);
   return {
+    pageCount : null,
+    pageList : null
   }
 
 }
