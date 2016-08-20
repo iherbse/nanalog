@@ -38,7 +38,7 @@ export function fetchPageList(url) {
 
 // read page
 // uid, pageId
-export function fetchPage(url) {
+export function fetchPage(pageId) {
   return (dispatch, getState) => {
     return fetch('http://localhost:8000/pagedata.json')
       .then(response => response.json())

@@ -11,20 +11,16 @@ import { fetchPreviewPage }from '../actions/diary'
 class MonthlyPage extends Component {
   constructor(props) {
       super(props)
-      this.goWeeklyPage = this.goWeeklyPage.bind(this)
-    }
+  }
   componentWillMount() {
-    this.props.fetchPreviewPage("ss","aa")
+    this.props.fetchPreviewPage("startdate","lastdate")
     this.state = {
      date: moment()
     }
   }
-  goWeeklyPage(){
-    browserHistory.push(`/WeeklyPage/`)
-
-  }
     render() {
-       let pageCount = this.props.pageCount;
+        let pageCount = this.props.pageCount;
+        let pageList = this.props.pageList;
         return (
           <div >
             <div className="main-diary-monthly">
@@ -34,8 +30,7 @@ class MonthlyPage extends Component {
                         onNextMonth={() => this.setState({ date: this.state.date.clone().add(1, 'months') }) }
                         onPrevMonth={() => this.setState({ date: this.state.date.clone().subtract(1, 'months') }) }
                         date={this.state.date}
-                        onPickDate={(date) => this.goWeeklyPage()}
-                      />
+                        pageList = {pageList}/>
               </div>
             </div>
           </div>
@@ -43,8 +38,6 @@ class MonthlyPage extends Component {
     }
 }
 function mapStateToProps(state) {
-
-
   if(state.diary !== null ){
     const {
       diary: { pageCount,pageList }

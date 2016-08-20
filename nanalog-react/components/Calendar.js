@@ -1,11 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 import moment from 'moment';
 import createDateObjects from './createDateObjects';
+import CalendarDate from './CalendarDate';
 
-function getDay(day) {
-    return <div className="column">{day}</div>
+function getMonth(month) {
+    return (
+      <div className="column">
+        <div className="Calendar-day-item"> {month}</div>
+      </div>
+    )
 }
+function getDay(day) {
+  return (
+    <div className="column">
+      <div className="Calendar-day-item"> {day}</div>
+    </div>
+  )
+}
+function renderDate(day,i,props){
+    return(
+      <CalendarDate
+      key={`day-${i}`}
+      pageId = {day.pageId}
+      day = {day.day}/>
 
+    )
+
+}
 export default class Calendar extends Component {
   constructor(props) {
       super(props)
@@ -35,20 +56,27 @@ export default class Calendar extends Component {
           ]
       }
   }
+
   render() {
-    const { date, weekOffset, renderDay, onNextMonth, onPrevMonth, onPickDate } = this.props;
+    const { date, weekOffset, renderDay, onNextMonth, onPrevMonth, onPickDate,pageList } = this.props;
     return (
       <div className='Calendar'>
         <div className='Calendar-header'>
 
-        <div className='ui three column grid'>
-          <button onClick={onPrevMonth} className="laquo">&laquo;</button>
+        <div className= 'Calendar-indicator'>
+          <div className='ui three column grid'>
+          <img className="laquo"
+              src={require('../images/btn-prev.svg')}
+              onClick={onPrevMonth}/>
           <div className='Calendar-header-currentDate'>{date.format('YYYY')}</div>
-          <button onClick={onNextMonth} className="laquo">&raquo;</button>
+          <img className="laquo"
+              src={require('../images/btn-prev.svg')}
+              onClick={onNextMonth}/>
+          </div>
         </div>
 
         <div className="ui twelve column grid">
-            {this.state.monthArray.map(getDay)}
+            {this.state.monthArray.map(getMonth)}
         </div>
         <div className="ui seven column grid">
             <div className="row">
@@ -58,14 +86,8 @@ export default class Calendar extends Component {
         </div>
         <div className='Calendar-grid'>
         <div className = 'ui seven column grid'>
-          {createDateObjects(date, weekOffset).map((day, i) =>
-              <div
-                key={`day-${i}`}
-                className={`Calendar-grid-item ${day.classNames || ''}`}
-                onClick={(e) => onPickDate({day})}
-                >
-                {renderDay(day.day)}
-              </div>
+          {createDateObjects(date, weekOffset,pageList).map((day, i) =>
+            renderDate(day,i,this.props)
           )}
         </div>
         </div>
@@ -81,7 +103,7 @@ Calendar.propTypes = {
   weekOffset: PropTypes.number.isRequired,
   date: PropTypes.object.isRequired,
   renderDay: PropTypes.func,
+  pageList : PropTypes.array,
   onNextMonth: PropTypes.func.isRequired,
-  onPrevMonth: PropTypes.func.isRequired,
-  onPickDate: PropTypes.func.isRequired
+  onPrevMonth: PropTypes.func.isRequired
 }
