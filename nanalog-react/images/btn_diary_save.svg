@@ -1,0 +1,8 @@
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="109px" height="38px">
+<path fill-rule="evenodd"  stroke="rgb(90, 94, 101)" stroke-width="2px" stroke-linecap="butt" stroke-linejoin="miter" fill="rgb(255, 255, 255)"
+ d="M18.500,1.000 L89.500,1.000 C99.165,1.000 107.000,8.835 107.000,18.500 C107.000,28.165 99.165,36.000 89.500,36.000 L18.500,36.000 C8.835,36.000 1.000,28.165 1.000,18.500 C1.000,8.835 8.835,1.000 18.500,1.000 Z"/>
+<text font-family="SpoqaHanSans" fill="rgb(90, 94, 101)" font-size="16px" x="39px" y="-714.344px">&#51200;&#51109;</text>
+</svg>

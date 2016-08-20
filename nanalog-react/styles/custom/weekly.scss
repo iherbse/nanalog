@@ -1,0 +1,89 @@
+.current_diary_image {
+    position: absolute;
+    width: 19%;
+    height: 11.9%;
+    top: 44.05%;
+    left: 40.5%;
+    border: solid red 1px;
+}
+.btn_img_add {
+    position: absolute;
+    top: 82.96%;
+    left: 78.5%;
+    height: 8.73%;
+    width: 11%;
+    border: solid red 1px;
+}
+.btn_current_time {
+    position: absolute;
+    width: 3.79%;
+    height: 4.33%;
+    left: 9.82%;
+    top: 8.67%;
+    border: solid red 1px;
+}
+.btn_trash {
+    position: absolute;
+    width: 3.79%;
+    height: 4.33%;
+    left: 85%;
+    top: 8.67%;
+    border: solid red 1px;
+}
+.diary_created_date {
+    position: absolute;
+    left: 18.1%;
+    top: 9.4%;
+}
+.diary_title {
+    position: absolute;
+    left: 9.65%;
+    top: 18.62%;
+    border: none;
+}
+.seperate_title_contents {
+    position: absolute;
+    width: 6.55%;
+    top: 30.37%;
+    left: 9.65%;
+}
+.diary_contents {
+    position: absolute;
+    width: 79.48%;
+    height: 50%;
+    left: 9.65%;
+    top: 35.8%;
+    border: none;
+    resize: none;
+    overflow: scroll;
+}
+.btn_diary_edit {
+    position: absolute;
+    left: 70.51%;
+    top: 88.06%;
+    width: 18.27%;
+    height: 6.32%;
+}
+.diary-indicator ul {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+}
+.diary-indicator ul li {
+    margin-bottom: 10px;
+}
+.indicator_1,
+.indicator_2,
+.indicator_3,
+.indicator_4,
+.indicator_5,
+.indicator_6,
+.indicator_7 {
+    width: 66.67%;
+    margin: 0 16.67%;
+}
+.indicator_down,
+.indicator_up {
+    width: 100%;
+    border: solid red 1px;
+}

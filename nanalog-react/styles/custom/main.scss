@@ -3,7 +3,7 @@
     margin: 68px 6.8% 0 6.8%;
     box-sizing: border-box;
 }
-.main {
+.weekly-diary-main {
     width: 88.98%;
     height: 553px;
     display: flex;
@@ -19,22 +19,24 @@
     width: 2.84%;
     height: 54.8%;
     margin-left: 4.07%;
-    border: solid 1px red;
 }
 .diary-textbox {
     width: 55.23%;
     height: 100%;
-    background-color: #ffffff;
     position: relative;
     float: left;
     border-radius: 3px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    background-color: #ffffff;
+  	box-shadow: 0 3px 24px 0 rgba(0, 0, 0, 0.35);
+    z-index: 11;
 }
 .diary-picture {
     width: 38.09%;
     height: 91.13%;
-    background-color: #000000;
+    background-color: #e5e1e1;
+    box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.26);
     border-radius: 3px;
     position: relative;
     float: left;
+    z-index: 10;
 }
