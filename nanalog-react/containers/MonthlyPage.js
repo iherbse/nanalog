@@ -24,7 +24,8 @@ class MonthlyPage extends Component {
 
   }
     render() {
-       let pageCount = this.props.pageCount;
+        let pageCount = this.props.pageCount;
+        let pageList = this.props.pageList;
         return (
           <div >
             <div className="main-diary-monthly">
@@ -34,6 +35,7 @@ class MonthlyPage extends Component {
                         onNextMonth={() => this.setState({ date: this.state.date.clone().add(1, 'months') }) }
                         onPrevMonth={() => this.setState({ date: this.state.date.clone().subtract(1, 'months') }) }
                         date={this.state.date}
+                        pageList = {pageList}
                         onPickDate={(date) => this.goWeeklyPage()}
                       />
               </div>

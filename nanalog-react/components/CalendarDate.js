@@ -1,18 +1,30 @@
 import React, {Component, PropTypes} from 'react';
-
+function getDay(day) {
+  return (
+    <div className="column">
+      <div className="Calendar-day-item"> {day}</div>
+    </div>
+  )
+}
 class CalendarDate extends Component {
-    render() {
 
+    render() {
         return (
-          <div className="Calendar-date-item">
-            {this.props.date.toDate()}
-          </div>
+          <div
+            key={`day-${this.props.key}`}
+            className= 'Calendar-grid-item'
+            onClick={(e) => {this.props.onPickDate(this.props.pageId)}}
+            pageId = {`page-item ${this.props.pageId ||''}`}>
+          {getDay(this.props.day.format('D'))}
+        </div>
         )
     }
 }
 
 CalendarDate.propTypes = {
-  date: PropTypes.object.isRequired,
-  onPickDate: PropTypes.func
+  key : PropTypes.number,
+  pageId : PropTypes.string,
+  onPickDate: PropTypes.func,
+  day :PropTypes.object.isRequired
 }
 export default CalendarDate;

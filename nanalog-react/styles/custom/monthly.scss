@@ -25,8 +25,19 @@
   text-align: center;
   color: #ffffff;
 }
+.text-monthly-log-info-top-container{
+  margin-top: 85px;
+}
+.text-monthly-log-info-bottom-container{
+  position:absolute;
+  height: 100px;
+  text-align: center;
+  bottom:0px
+
+}
 .text-monthly-log-info-nickname{
   font-size: 26px;
+  margin: 0px;
 }
 .text-monthly-log-info-default{
   font-size: 18px;
@@ -48,7 +59,6 @@
 
 }
 .column{
-  border: solid red 1px;
   text-align: center;
 }
 .text-monthly-calendar-year{
@@ -65,8 +75,28 @@
   position: relative;
   float: left;
 }
+.Calendar-grid{
+  width: 71.92%;
+  position:absolute;
+  right: 0px;
+  padding: 20px;
+  bottom: 0px;
+}
 .Calendar-grid-item {
   width: 102px;
   height: 40px;
   text-align: center;
+}
+.Calendar-month-item{
+  text-align: center;
+  color: #5a5e65;
+}
+.Calendar-day-item{
+  text-align: center;
+  color: #5a5e65;
+}
+.Calendar-indicator{
+  float: right;
+  width: auto;;
+  height: 20px;
 }

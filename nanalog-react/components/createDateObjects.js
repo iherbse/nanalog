@@ -1,8 +1,18 @@
 import { range, takeWhile, last } from 'lodash';
 import moment from 'moment';
 
-export default function createDateObjects(date, weekOffset = 0) {
+export default function createDateObjects(date, weekOffset = 0,pageList) {
   const startOfMonth = date.startOf('month');
+  let pageId = null;
+  if(pageList!==null){
+  for(var i = 0; i< pageList.length;i++){
+    const pageDate = pageList[i].date;
+    if(pageDate === date.format('YYYYMMdd')){
+      pageId = pageList[i].pid;
+    }
+  }
+}
+
 
   let diff = startOfMonth.weekday() - weekOffset;
   if (diff < 0) diff += 7;
@@ -13,7 +23,8 @@ export default function createDateObjects(date, weekOffset = 0) {
   }));
 
   const currentMonthDays = range(1, date.daysInMonth() + 1).map(index => ({
-    day: moment([date.year(), date.month(), index])
+    day: moment([date.year(), date.month(), index]),
+    padeId : pageId
   }));
 
   const daysAdded = prevMonthDays.length + currentMonthDays.length - 1;
