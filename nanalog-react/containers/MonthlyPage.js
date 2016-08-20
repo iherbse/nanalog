@@ -11,8 +11,7 @@ import { fetchPreviewPage }from '../actions/diary'
 class MonthlyPage extends Component {
   constructor(props) {
       super(props)
-      this.goWeeklyPage = this.goWeeklyPage.bind(this)
-    }
+  }
   componentWillMount() {
     this.props.fetchPreviewPage("startdate","lastdate")
     this.state = {
