@@ -18,26 +18,14 @@ function getDay(day) {
   )
 }
 function renderDate(day,i,props){
-  if(day.classNames !== null){
     return(
       <CalendarDate
       key={`day-${i}`}
-      onPickDate = {props.onPickDate}
       pageId = {day.pageId}
       day = {day.day}/>
 
     )
-  }else{
-    return(
-      <div
-        key={`day-${i}`}
-        className={`Calendar-grid-item {day.classNames}`}
-        onClick={(e) => onPickDate({day})}
-      >
-      {renderDay(day.day)}
-    </div>
-    )
-  }
+
 }
 export default class Calendar extends Component {
   constructor(props) {
@@ -68,6 +56,7 @@ export default class Calendar extends Component {
           ]
       }
   }
+
   render() {
     const { date, weekOffset, renderDay, onNextMonth, onPrevMonth, onPickDate,pageList } = this.props;
     return (
@@ -114,8 +103,7 @@ Calendar.propTypes = {
   weekOffset: PropTypes.number.isRequired,
   date: PropTypes.object.isRequired,
   renderDay: PropTypes.func,
-  pageList : PropTypes.object,
+  pageList : PropTypes.array,
   onNextMonth: PropTypes.func.isRequired,
-  onPrevMonth: PropTypes.func.isRequired,
-  onPickDate: PropTypes.func.isRequired
+  onPrevMonth: PropTypes.func.isRequired
 }
