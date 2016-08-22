@@ -1,5 +1,6 @@
 .nav {
     width: 86.4%;
+    min-width: 768px;
     margin: 0 6.8%;
     height: 96px;
 }
@@ -7,13 +8,13 @@
     float: left;
     margin-top: 48px;
     width: 7.32%;
-    height: 27px;
+    max-height: 27px;
 }
 .mypage {
     float: right;
     margin-top: 48px;
-    width: 100px;
-    height: 27px;
+    width: 7.32%;
+    max-height: 27px;
 }
 .ui.bottom.popup{
   margin-top: 78px;

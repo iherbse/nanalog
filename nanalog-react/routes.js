@@ -13,6 +13,6 @@ export default (
     <Route path="/WeeklyPage/:pageId"
         component={WeeklyPage}/>
     <Route path="/WeeklyPage"
-        component={WeeklyWritePage}/>
+        component={WeeklyPage}/>
   </Route>
 )
