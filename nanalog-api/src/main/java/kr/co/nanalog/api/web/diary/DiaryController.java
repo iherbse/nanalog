@@ -7,10 +7,7 @@ import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPreviewResponse;
-import kr.co.nanalog.api.web.diary.service.DiaryCreateService;
-import kr.co.nanalog.api.web.diary.service.DiaryDeleteService;
-import kr.co.nanalog.api.web.diary.service.DiaryGetService;
-import kr.co.nanalog.api.web.diary.service.DiaryUpdateService;
+import kr.co.nanalog.api.web.diary.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,22 +26,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/diary")
 public class DiaryController {
-    @Autowired
-    private DiaryGetService diaryGetService;
 
     @Autowired
-    private DiaryUpdateService diaryUpdateService;
-
-    @Autowired
-    private DiaryDeleteService diaryDeleteService;
-
-    @Autowired
-    private DiaryCreateService diaryCreateService;
+    private DiaryService diaryService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ApiResponseBody<DiaryPageGetResponse> getDiaryPages(@Valid DiaryPageGetRequest diaryPageGetRequest){
 
-        DiaryPageGetResponse diaryPageGetResponse = diaryGetService.getDiaryPages(diaryPageGetRequest);
+        DiaryPageGetResponse diaryPageGetResponse = diaryService.getDiaryPages(diaryPageGetRequest);
 
         if(diaryPageGetResponse == null){
             return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
@@ -56,7 +45,7 @@ public class DiaryController {
     @RequestMapping(value = "/page", method = RequestMethod.GET)
     public ApiResponseBody<DiaryComponentGetResponse> getPageComponents(@Valid DiaryComponentGetRequest diaryComponentGetRequest){
 
-        DiaryComponentGetResponse diaryComponentGetResponse = diaryGetService.getDiaryCompoents(diaryComponentGetRequest);
+        DiaryComponentGetResponse diaryComponentGetResponse = diaryService.getDiaryCompoents(diaryComponentGetRequest);
 
         if(diaryComponentGetResponse == null){
             return new ApiResponseBody<>(HttpStatus.NOT_FOUND.value(), HttpStatus.NOT_FOUND.toString());
@@ -66,7 +55,7 @@ public class DiaryController {
     }
     @RequestMapping(value = "/page", method = RequestMethod.POST)
     public ResponseEntity createPage(@Valid DiaryPageCreateRequest diaryPageCreateRequest) {
-        int resultCode = diaryCreateService.createPage(diaryPageCreateRequest);
+        int resultCode = diaryService.createPage(diaryPageCreateRequest);
 
         if(resultCode == -1) {
             return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -77,7 +66,7 @@ public class DiaryController {
 
     @RequestMapping(value = "/component", method = RequestMethod.POST)
     public ResponseEntity createComponent(@Valid ComponentCreateRequest componentCreateRequest) {
-        int resultCode = diaryCreateService.createComponent(componentCreateRequest);
+        int resultCode = diaryService.createComponent(componentCreateRequest);
 
         if(resultCode == -1) {
             return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -88,7 +77,7 @@ public class DiaryController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createDiary(@Valid DiaryCreateRequest diaryCreateRequest) {
-        int resultCode = diaryCreateService.createDiary(diaryCreateRequest);
+        int resultCode = diaryService.createDiary(diaryCreateRequest);
 
         if(resultCode == -1) {
             return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -99,7 +88,7 @@ public class DiaryController {
 
     @RequestMapping(value = "/component", method = RequestMethod.PUT)
     public ResponseEntity updateDiary(@Valid DiaryUpdateRequest updateRequest) {
-        int resultCode = diaryUpdateService.updateComponent(updateRequest);
+        int resultCode = diaryService.updateComponent(updateRequest);
 
         if (resultCode == 0) {
             return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -112,7 +101,7 @@ public class DiaryController {
 
     @RequestMapping(value = "/page", method = RequestMethod.PUT)
     public ResponseEntity updateDiary(@Valid List<DiaryUpdateRequest> updateRequest) {
-        int resultCode = diaryUpdateService.updateDiary(updateRequest);
+        int resultCode = diaryService.updateDiary(updateRequest);
 
         if (resultCode == 0) {
             return new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -125,7 +114,7 @@ public class DiaryController {
     @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity deletePage(@Valid DiaryPageDeleteRequest diaryPageDeleteRequest, BindingResult bindingResult) {
 
-        int resultCode = diaryDeleteService.deletePage(diaryPageDeleteRequest);
+        int resultCode = diaryService.deletePage(diaryPageDeleteRequest);
 
         if(resultCode == -1){
             return  new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -137,7 +126,7 @@ public class DiaryController {
     @RequestMapping(value = "/component", method = RequestMethod.DELETE)
     public ResponseEntity deleteComponent(@Valid ComponentDeleteRequest componentDeleteRequest){
 
-        int resultCode = diaryDeleteService.deleteComponent(componentDeleteRequest);
+        int resultCode = diaryService.deleteComponent(componentDeleteRequest);
 
         if(resultCode == -1){
             return  new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
@@ -148,7 +137,7 @@ public class DiaryController {
 
     @RequestMapping(value = "/user", method = RequestMethod.DELETE)
     public ResponseEntity deleteUser(@Valid DiaryUserDeleteRequest diaryUserDeleteRequest){
-        int resultCode = diaryDeleteService.deleteUser(diaryUserDeleteRequest);
+        int resultCode = diaryService.deleteUser(diaryUserDeleteRequest);
 
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -158,7 +147,7 @@ public class DiaryController {
         if(bindingResult.hasErrors()){
             return new ArrayList<>();
         }
-        List<DiaryPreviewResponse> responseList = diaryGetService.getDiaryPreviewList(diaryPreviewRequest);
+        List<DiaryPreviewResponse> responseList = diaryService.getDiaryPreviewList(diaryPreviewRequest);
 
         return responseList;
     }

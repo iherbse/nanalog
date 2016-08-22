@@ -1,0 +1,233 @@
+<html>
+
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+    <style type="text/css">
+        body> .grid {
+            height: 100%;
+        }
+
+        .column {
+            max-width: 450px;
+        }
+
+        #login-form {
+            position: relative;
+            width: 375px;
+            height: 535px;
+            border-radius: 5px;
+            box-shadow: 2px 4px 4px 0 rgba(193, 193, 193, 0.5);
+            border: solid 1px #979797 !important;
+        }
+
+        .join-form {
+            height: 750px;
+        }
+
+        .password-search-form {
+            height: 440px;
+        }
+
+        #login-form-logo {
+            margin-top: 55px;
+            margin-bottom: 60px;
+        }
+
+        .login-form-component {
+            margin-bottom: 30px !important;
+            margin-left: 37px !important;
+            margin-right: 37px !important;
+            width: 300.4px !important;
+            height: 49.3px !important;
+            border-radius: 40px !important;
+            border: solid 1px #c1c1c1 !important;
+        }
+
+        .login-form-bottom {
+            position:absolute; bottom:0px;
+        }
+
+        .login-form-btn {
+            margin-top: 32px !important;
+            width: 375px;
+            height: 75px;
+            border-radius: 5px;
+            background-color: #969696 !important;
+            border: solid 1px #5f5f5f !important;
+        }
+
+        .login-form-btn-text {
+            margin-top: 20px;
+            margin-left: 125px;
+            width: 78.1px;
+            height: 27px;
+            font-family: NanumSquareOTFB;
+            font-size: 25px;
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        #main-intro-header {
+            width: 300px;
+            height: 78px;
+            font-family: NanumSquareOTFB;
+            font-size: 70px;
+            font-weight: 400;
+            text-align: right;
+            color: #c1c1c1;
+        }
+
+        #main-intro-body {
+            margin-left: 42px;
+            margin-top: 48px;
+            width: 312px;
+            height: 74px;
+            font-family: NanumSquareOTFR;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            color: #868686;
+        }
+
+        .main-intro-layer {
+            width: 78px;
+            font-family: YDIYGO130;
+            font-size: 90px;
+            font-weight: 400;
+            text-align: right;
+            color: #969696;
+        }
+
+        .margin-intro-bar {
+            margin-top: 47px;
+            margin-left: 40px;
+            width: 68px !important;
+            height: 3px !important;
+            border: solid 5px #969696 !important;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="ui">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                    <div class='main-intro-layer' style='margin-left:-4rem;margin-top:4rem;'>"</div>
+                    <h1 id='main-intro-header' class="ui header">오늘 하루</h1>
+                    <h1 id='main-intro-header' class="ui header" style="margin-left:12px">어땠나요?</h1>
+                    <div class='margin-intro-bar'></div>
+                    <p id='main-intro-body'>나날로그는 당신의 기록을 남길 수 있는 공간을 제공하는 서비스입니다</p>
+                    <div class='main-intro-layer' style='margin-left:22rem;margin-top:2rem;'>"</div>
+                </div>
+                <div class="six wide right floated column">
+                    <div class="ui middle aligned center aligned grid">
+                        <div class="column" style='margin-top:5rem'>
+                            <div class="ui large form">
+                                <div id='login-form'>
+                                    <div id='login-form-logo' class="field">
+                                        LOGO
+                                    </div>
+                                    <div id='main-template'>
+                                    </div>
+                                    <div class='field login-form-bottom'>
+                                        <p><a id='member-join' href="#" style='margin-right:17px'>회원가입</a> <a id='password-search' href="#">비밀번호 찾기</a></p>
+                                        <div class="ui teal submit button login-form-btn">
+                                            <div id='form-btn' class='login-form-btn-text'>로그인</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui error message"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+    <script>
+
+        var memberLoginTemplate = function(){
+          let memberLoginTemplate = '';
+          memberLoginTemplate += "<div class='field'>";
+          memberLoginTemplate += "<input class='login-form-component' type='text' name='email' placeholder='아이디'>";
+          memberLoginTemplate += "</div>";
+          memberLoginTemplate += "<div class='field'>";
+          memberLoginTemplate += "<input class='login-form-component' type='password' name='password' placeholder='비밀번호'>";
+          memberLoginTemplate += "</div>";
+          return memberLoginTemplate;
+        }
+
+        var memberJoinTemplate = function(){
+          let memberJoinTemplate = '';
+          memberJoinTemplate += "<div class='field'>"
+          memberJoinTemplate += "<input class='login-form-component' type='text' name='nickname' placeholder='닉네임'>";
+          memberJoinTemplate += "</div>";
+          memberJoinTemplate += memberLoginTemplate();
+          return memberJoinTemplate;
+        }
+
+        var passwordSearchTemplate = function(){
+          let passwordSearchTemplate = '';
+          passwordSearchTemplate += "<div class='field'>"
+          passwordSearchTemplate += "<input class='login-form-component' type='text' name='nickname' placeholder='이메일 주소'>";
+          passwordSearchTemplate += "</div>";
+          return passwordSearchTemplate;
+        }
+
+        $(document)
+            .ready(function() {
+
+                $('#main-template').html(memberLoginTemplate());
+
+                $('#password-search').click(function(e){
+                  $('#main-template').html(passwordSearchTemplate());
+                  $('#form-btn').html('찾기');
+                });
+
+                $('#member-join').click(function(e){
+                  $('#main-template').html(memberJoinTemplate());
+                  $('#form-btn').html('인증');
+                });
+
+                $('#login-form-logo').click(function(e){
+                  $('#main-template').html(memberLoginTemplate());
+                  $('#form-btn').html('로그인');
+                });
+
+                $('.ui.form')
+                    .form({
+                        fields: {
+                            email: {
+                                identifier: 'email',
+                                rules: [{
+                                    type: 'empty',
+                                    prompt: 'Please enter your e-mail'
+                                }, {
+                                    type: 'email',
+                                    prompt: 'Please enter a valid e-mail'
+                                }]
+                            },
+                            password: {
+                                identifier: 'password',
+                                rules: [{
+                                    type: 'empty',
+                                    prompt: 'Please enter your password'
+                                }, {
+                                    type: 'length[6]',
+                                    prompt: 'Your password must be at least 6 characters'
+                                }]
+                            }
+                        }
+                    });
+            });
+    </script>
+</body>
+
+</html>
