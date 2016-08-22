@@ -5,6 +5,7 @@ export default function diary(state = null, action) {
   console.log(action);
   console.log(action.type);
   switch (action.type) {
+    // action에서 넘겨준 data들을 action type에 따라서 구분하고 return(실제로 store에 저장 될 데이터)
     case types.READ_ALL_PAGE:
       return Object.assign({}, state, {
         date: action.date,
