@@ -3,6 +3,8 @@ import moment from 'moment';
 import createDateObjects from './createDateObjects';
 import CalendarDate from './CalendarDate';
 
+// npm의 package인데 custom해야 될 부분들이 있어서 가져온 component
+
 function getMonth(month) {
     return (
       <div className="column">
@@ -17,6 +19,7 @@ function getDay(day) {
     </div>
   )
 }
+// createDateObjects 에서  return된 date를 renderDate
 function renderDate(day,i,props){
     return(
       <CalendarDate
@@ -58,6 +61,9 @@ export default class Calendar extends Component {
   }
 
   render() {
+    // < 2016 >   (laquo, date.format('YYYY'), laquo)
+    // createDateObjects = 이번달 달력에 들어갈 date들을 계산하고 return해주는 function
+    // return된 date를 가지고 renderDate
     const { date, weekOffset, renderDay, onNextMonth, onPrevMonth, onPickDate,pageList } = this.props;
     return (
       <div className='Calendar'>
