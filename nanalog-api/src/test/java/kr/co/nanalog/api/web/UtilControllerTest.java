@@ -14,6 +14,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -46,5 +49,18 @@ public class UtilControllerTest {
                 .param("village", "도곡동"))
                 .andExpect(status().isOk())
                 .andDo(print());
+    }
+
+    @Test
+    public void 날짜테스트(){
+        String startDate = getCurrentDate(1);
+        String endDate = getCurrentDate(5);
+        String currentDate = getCurrentDate(3);
+
+        System.out.println(Integer.valueOf(startDate) < Integer.valueOf(currentDate));
+    }
+
+    private String getCurrentDate(int mon){
+        return LocalDateTime.now().plusMonths(mon).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
 }

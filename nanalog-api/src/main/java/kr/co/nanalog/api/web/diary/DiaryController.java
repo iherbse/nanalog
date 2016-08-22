@@ -162,6 +162,4 @@ public class DiaryController {
 
         return responseList;
     }
-
-
 }
