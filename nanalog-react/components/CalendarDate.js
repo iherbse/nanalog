@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router'
 function getDay(day) {
   return (
     <div className="column">
-      <div className="Calendar-day-item"> {day}</div>
+      <div className="Calendar-day-item"><div> {day}</div></div>
     </div>
   )
 }

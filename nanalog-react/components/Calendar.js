@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 import moment from 'moment';
 import createDateObjects from './createDateObjects';
 import CalendarDate from './CalendarDate';
@@ -7,109 +7,105 @@ import CalendarDate from './CalendarDate';
 
 function getMonth(month) {
     return (
-      <div className="column">
-        <div className="Calendar-day-item"> {month}</div>
-      </div>
+        <div className="column">
+            <div className="Calendar-day-item">
+                {month}</div>
+        </div>
     )
 }
 function getDay(day) {
-  return (
-    <div className="column">
-      <div className="Calendar-day-item"> {day}</div>
-    </div>
-  )
+    return (
+        <div className="column">
+            <div className="Calendar-day-item">
+                {day}</div>
+        </div>
+    )
 }
 // createDateObjects 에서  return된 date를 renderDate
-function renderDate(day,i,props){
-    return(
-      <CalendarDate
-      key={`day-${i}`}
-      pageId = {day.pageId}
-      day = {day.day}/>
-
-    )
+function renderDate(day, i, props) {
+    return (<CalendarDate key={`day-${i}`} pageId={day.pageId} day={day.day}/>)
 
 }
 export default class Calendar extends Component {
-  constructor(props) {
-      super(props)
-      this.state = {
-          monthArray: [
-              'JAN',
-              'FEB',
-              'MAR',
-              'APR',
-              'MAY',
-              'JUN',
-              'JUL',
-              'AUG',
-              'SEP',
-              'OCT',
-              'NOV',
-              'DEC'
-          ],
-          dayArray: [
-              'MON',
-              'TUE',
-              'WED',
-              'THU',
-              'FRI',
-              'SAT',
-              'SUN'
-          ]
-      }
-  }
+    constructor(props) {
+        super(props)
+        this.state = {
+            monthArray: [
+                'JAN',
+                'FEB',
+                'MAR',
+                'APR',
+                'MAY',
+                'JUN',
+                'JUL',
+                'AUG',
+                'SEP',
+                'OCT',
+                'NOV',
+                'DEC'
+            ],
+            dayArray: [
+                'MON',
+                'TUE',
+                'WED',
+                'THU',
+                'FRI',
+                'SAT',
+                'SUN'
+            ]
+        }
+    }
 
-  render() {
-    // < 2016 >   (laquo, date.format('YYYY'), laquo)
-    // createDateObjects = 이번달 달력에 들어갈 date들을 계산하고 return해주는 function
-    // return된 date를 가지고 renderDate
-    const { date, weekOffset, renderDay, onNextMonth, onPrevMonth, onPickDate,pageList } = this.props;
-    return (
-      <div className='Calendar'>
-        <div className='Calendar-header'>
-
-        <div className= 'Calendar-indicator'>
-          <div className='ui three column grid'>
-          <img className="laquo"
-              src={require('../images/btn-prev.svg')}
-              onClick={onPrevMonth}/>
-          <div className='Calendar-header-currentDate'>{date.format('YYYY')}</div>
-          <img className="laquo"
-              src={require('../images/btn-prev.svg')}
-              onClick={onNextMonth}/>
-          </div>
-        </div>
-
-        <div className="ui twelve column grid">
-            {this.state.monthArray.map(getMonth)}
-        </div>
-        <div className="ui seven column grid">
-            <div className="row">
-                {this.state.dayArray.map(getDay)}
+    render() {
+        // < 2016 >   (laquo, date.format('YYYY'), laquo)
+        // createDateObjects = 이번달 달력에 들어갈 date들을 계산하고 return해주는 function
+        // return된 date를 가지고 renderDate
+        const {
+            date,
+            weekOffset,
+            renderDay,
+            onNextMonth,
+            onPrevMonth,
+            onPickDate,
+            pageList
+        } = this.props;
+        return (
+            <div className='Calendar'>
+                <div className='Calendar-header'>
+                    <div className='Calendar-indicator'>
+                        <div className='ui three column grid'>
+                            <img className="laquo" src={require('../images/btn-prev.svg')} onClick={onPrevMonth}/>
+                            <div className='Calendar-header-currentDate'>{date.format('YYYY')}</div>
+                            <img className="laquo" src={require('../images/btn-prev.svg')} onClick={onNextMonth}/>
+                        </div>
+                    </div>
+                    <div className="ui twelve column grid">
+                        {this.state.monthArray.map(getMonth)}
+                    </div>
+                    <div className="ui seven column grid">
+                        <div className="row">
+                            {this.state.dayArray.map(getDay)}
+                        </div>
+                    </div>
+                </div>
+                <div className='Calendar-grid'>
+                    <div className='ui seven column grid'>
+                        {createDateObjects(date, weekOffset, pageList).map((day, i) => renderDate(day, i, this.props))}
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        <div className='Calendar-grid'>
-        <div className = 'ui seven column grid'>
-          {createDateObjects(date, weekOffset,pageList).map((day, i) =>
-            renderDate(day,i,this.props)
-          )}
-        </div>
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 Calendar.defaultProps = {
-  weekOffset: 0,
-  renderDay: day => day.format('D')
+    weekOffset: 0,
+    renderDay: day => day.format('D')
 }
 Calendar.propTypes = {
-  weekOffset: PropTypes.number.isRequired,
-  date: PropTypes.object.isRequired,
-  renderDay: PropTypes.func,
-  pageList : PropTypes.array,
-  onNextMonth: PropTypes.func.isRequired,
-  onPrevMonth: PropTypes.func.isRequired
+    weekOffset: PropTypes.number.isRequired,
+    date: PropTypes.object.isRequired,
+    renderDay: PropTypes.func,
+    pageList: PropTypes.array,
+    onNextMonth: PropTypes.func.isRequired,
+    onPrevMonth: PropTypes.func.isRequired
 }
