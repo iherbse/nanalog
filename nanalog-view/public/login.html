@@ -72,6 +72,7 @@
         #main-intro-header {
             width: 300px;
             height: 78px;
+            margin-bottom: 10rem;
             font-family: NanumSquareOTFB;
             font-size: 70px;
             font-weight: 400;
@@ -108,6 +109,13 @@
             border: solid 5px #969696 !important;
         }
 
+        .typed-cursor{
+          display: none;
+            opacity: 1;
+            -webkit-animation: blink 0.7s infinite;
+            -moz-animation: blink 0.7s infinite;
+            animation: blink 0.7s infinite;
+        }
     </style>
 </head>
 
@@ -117,8 +125,7 @@
             <div class="row">
                 <div class="eight wide column">
                     <div class='main-intro-layer' style='margin-left:-4rem;margin-top:4rem;'>"</div>
-                    <h1 id='main-intro-header' class="ui header">오늘 하루</h1>
-                    <h1 id='main-intro-header' class="ui header" style="margin-left:12px">어땠나요?</h1>
+                    <h1 id='main-intro-header' class="ui header">오늘 하루 어땠나요?</h1>
                     <div class='margin-intro-bar'></div>
                     <p id='main-intro-body'>나날로그는 당신의 기록을 남길 수 있는 공간을 제공하는 서비스입니다</p>
                     <div class='main-intro-layer' style='margin-left:22rem;margin-top:2rem;'>"</div>
@@ -151,6 +158,7 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
     <script>
 
         var memberLoginTemplate = function(){
@@ -183,6 +191,15 @@
 
         $(document)
             .ready(function() {
+              // $("#main-intro-header").typed({
+              //             strings: ["오늘 하루 어땠나요?"],
+              //             typeSpeed: 150
+              //         });
+
+              $("#main-intro-body").typed({
+                          strings: ["나날로그는 당신의 기록을 남길 수 있는 공간을 제공하는 서비스입니다."],
+                          typeSpeed: 150
+                      });
 
                 $('#main-template').html(memberLoginTemplate());
 
