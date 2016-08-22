@@ -32,26 +32,37 @@ class CalendarDate extends Component {
       // pageId가 없는 경우 => 일기 안씀 => 기본 칸
       const {pageId} = this.props;
       console.log(pageId);
-      if(pageId){
-        return (
-          <div
-            key={`day-${this.props.key}`}
-            className= 'Calendar-grid-item-write'
-            onClick={this.goToWeeklyPage}
-            pageId = {`page-item ${this.props.pageId ||''}`}>
-          {getDay(this.props.day.format('D'))}
-        </div>
+      if(pageId === -1){
+        return(
+            <div
+              key={`day-${this.props.key}`}
+              className= 'Calendar-grid-item-unwrite'
+              pageId = {`page-item ${this.props.pageId ||''}`}>
+            {getDay(' ')}
+          </div>
         )
       }else{
-        return (
-          <div
-            key={`day-${this.props.key}`}
-            className= 'Calendar-grid-item-unwrite'
-            onClick={this.goToWeeklyPage}
-            pageId = {`page-item ${this.props.pageId ||''}`}>
-          {getDay(this.props.day.format('D'))}
-        </div>
-      )
+        if(pageId){
+          return (
+            <div
+              key={`day-${this.props.key}`}
+              className= 'Calendar-grid-item-write'
+              onClick={this.goToWeeklyPage}
+              pageId = {`page-item ${this.props.pageId ||''}`}>
+            {getDay(this.props.day.format('D'))}
+          </div>
+          )
+        }else{
+          return (
+            <div
+              key={`day-${this.props.key}`}
+              className= 'Calendar-grid-item-unwrite'
+              onClick={this.goToWeeklyPage}
+              pageId = {`page-item ${this.props.pageId ||''}`}>
+            {getDay(this.props.day.format('D'))}
+          </div>
+        )
+        }
       }
     }
 }

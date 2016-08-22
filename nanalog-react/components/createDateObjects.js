@@ -16,7 +16,7 @@ export default function createDateObjects(date, weekOffset = 0,pageList) {
   const prevMonthDays = range(0, diff).map(n => ({
     day: startOfMonth.clone().subtract(diff - n, 'days'),
     classNames: 'prevMonth',
-    pageId : getPageId(pageList,moment([date.year(), date.month()-1, startOfMonth.clone().subtract(diff - n, 'days')]))
+    pageId : -1
   }));
 // 이번달 date들을 구함.
   const currentMonthDays = range(1, date.daysInMonth() + 1).map(index => ({
@@ -27,14 +27,14 @@ export default function createDateObjects(date, weekOffset = 0,pageList) {
   const daysAdded = prevMonthDays.length + currentMonthDays.length - 1;
 
   // 예를 들어서 이번 달 마지막 일이 수요일부터 끝난다면 다음 달의 첫 주 목,금,토,일 의 date들을 구함. (다음 달이라도 달력에 표시하기 위함)
-  const nextMonthDays = takeWhile(range(1, 7), n => (daysAdded + n) % 7 !== 0).map((n) => ({
-    day: last(currentMonthDays).day.clone().add(n, 'days'),
-    classNames: 'nextMonth',
-    pageId : getPageId(pageList,moment([date.year(), date.month()+1, last(currentMonthDays).day.clone().add(n, 'days')]))
-  }));
+  // const nextMonthDays = takeWhile(range(1, 7), n => (daysAdded + n) % 7 !== 0).map((n) => ({
+  //   day: last(currentMonthDays).day.clone().add(n, 'days'),
+  //   classNames: 'nextMonth',
+  //   pageId : getPageId(pageList,moment([date.year(), date.month()+1, last(currentMonthDays).day.clone().add(n, 'days')]))
+  // }));
 
 // 앞에서 구한 date들을 순서대로 return.
-  return [...prevMonthDays, ...currentMonthDays, ...nextMonthDays];
+  return [...prevMonthDays, ...currentMonthDays];
 }
 // pageList = fetchPreviewPage를 통해 가져온 이번 달 preview page list.
 // getPageId는 pageList의 date와 현재 date를 비교해서 date가 같다면 pageId를 return, 아니라면 return null
