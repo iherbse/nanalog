@@ -21,9 +21,9 @@ class CalendarDate extends Component {
   // pageId가 없는 경우 => 일기 안씀 => /WeeklyPage/ (작성 창)
   goToWeeklyPage(){
     if(this.props.pageId){
-      browserHistory.push(`/WeeklyPage/${this.props.pageId}`)
+      browserHistory.push(`/WeeklyPage/${this.props.day.format('YYYYMMDD')}/${this.props.pageId}`)
     }else{
-      browserHistory.push(`/WeeklyPage/`)
+      browserHistory.push(`/WeeklyPage/${this.props.day.format('YYYYMMDD')}`)
     }
 
   }

@@ -16,7 +16,7 @@ function loadWeekPreviewPage(props) {
 }
 
 class WeeklyPage extends Component {
-  //component가 mount되기 전에 date들을 load, loadWeekPreviewPage도 호출해야됨(우선 주석으로 추가!)
+  //component가 mount되기 전에 date들을 load, loadWeekPreviewPage도 호출해야됨(우선 주석으로 추가했습니)
   componentWillMount() {
      loadPage(this.props)
      //loadWeekPreviewPage(this.props)
@@ -44,17 +44,19 @@ class WeeklyPage extends Component {
 // WeeklyPage같은 경우에는 그 날의 page의 상세정보와 Indicator에서 필요한 그 주의 page preview가 필요하기 때문에
 // fetchPage, fetchPreviewPage를 하고, READ_PAGE, READ_PREVIEW_PAGE에 해당되는 data들이 store에 저장될 것(state)
 function mapStateToProps(state, ownProps) {
-  const { pageId } = ownProps.params
+  const { pageId , day} = ownProps.params
   if(state.diary !== null ){
     const { diaryComponents, pageList } = state;
     return{
       pageId : pageId,
+      day : day,
       diaryComponents : diaryComponents,
       weekDiaryList : pageList
     }
   }else{
     return {
-      pageId : pageId
+      pageId : pageId,
+      day : day
     }
   }
 }

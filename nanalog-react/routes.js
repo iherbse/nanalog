@@ -10,8 +10,10 @@ export default (
     <IndexRoute component={MonthlyPage}/>
     <Route path="/MonthlyPage"
         component={MonthlyPage}/>
-    <Route path="/WeeklyPage/:pageId"
+    <Route path="/WeeklyPage/:day"
         component={WeeklyPage}/>
+        <Route path="/WeeklyPage/:day/:pageId"
+            component={WeeklyPage}/>
     <Route path="/WeeklyPage"
         component={WeeklyPage}/>
   </Route>
