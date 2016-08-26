@@ -59,6 +59,8 @@
     top: 88.06%;
     width: 18.27%;
     height: 6.32%;
+    background-color: #418cff;
+    border-radius: 17.5px;
 }
 .diary-indicator ul {
     list-style: none;
@@ -81,4 +83,17 @@
 .indicator_down,
 .indicator_up {
     width: 100%;
+}
+.indicator_down{
+  transform: rotate(180deg);
+}
+.indicator_1:hover,
+.indicator_2:hover,
+.indicator_3:hover,
+.indicator_4:hover,
+.indicator_5:hover,
+.indicator_6:hover,
+.indicator_7:hover{
+  box-shadow: 1px 1px 5px #888888;
+  background-color: #888888;
 }

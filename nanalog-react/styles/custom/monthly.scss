@@ -19,6 +19,9 @@
     margin: 0 !important;
     float: right;
 }
+.Calender-current-month{
+  color: #ffba43;
+}
 .Calendar-header-currentDate,
 .laquo {
     float: right !important;
@@ -83,7 +86,6 @@
     height: 32%;
     position: relative;
     padding:0 !important;
-    border: solid red 1px;
 }
 .Calendar-header-currentDate{
   padding: 0 !important;

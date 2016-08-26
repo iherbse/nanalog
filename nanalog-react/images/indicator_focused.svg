@@ -1,7 +1,1 @@
-<svg 
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
- width="15px" height="15px">
-<path fill-rule="evenodd"  fill="rgb(255, 186, 67)"
- d="M2.000,0.000 L13.000,0.000 C14.105,0.000 15.000,0.896 15.000,2.000 L15.000,13.000 C15.000,14.105 14.105,15.000 13.000,15.000 L2.000,15.000 C0.895,15.000 0.000,14.105 0.000,13.000 L0.000,2.000 C0.000,0.896 0.895,0.000 2.000,0.000 Z"/>
-</svg>
+<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><defs><style>.cls-1{fill:#fdb94f;}</style></defs><title>container_indicator-box_y</title><rect class="cls-1" width="15" height="15" rx="2" ry="2"/></svg>

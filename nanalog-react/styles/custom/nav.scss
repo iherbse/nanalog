@@ -16,6 +16,15 @@
     width: 7.32%;
     max-height: 27px;
 }
-.ui.bottom.popup{
-  margin-top: 78px;
+.mypage >div{
+  width: 100%;
+  height: 100%;
+}
+.mypage >div>.default{
+  width: 100%;
+  height: 100%;
+
+}
+.mypage >div>.default>img{
+  max-height: 27px;
 }
