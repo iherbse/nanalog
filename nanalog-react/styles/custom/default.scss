@@ -5,14 +5,18 @@
 // src: url('폰트 업로드 주소/SeoulNamsanM.ttf');
 // src: url('폰트 업로드 주소/SeoulNamsanM.woff');
 // }
-
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+* {
+    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+    font-size: 16px;
+}
 body,
 html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    font-family:'SeoulNamsanM' !important;
+    font-family: 'SeoulNamsanM' !important;
 }
 #root {
     width: 100%;

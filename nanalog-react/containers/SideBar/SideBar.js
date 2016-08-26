@@ -3,19 +3,6 @@ import {Link} from 'react-router';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
 
- function today(){
-
-        var date = new Date();
-
-        var year  = date.getFullYear();
-        var month = date.getMonth() + 1; // 0부터 시작하므로 1더함 더함
-        var day   = date.getDate();
-
-        if (("" + month).length == 1) { month = "0" + month; }
-        if (("" + day).length   == 1) { day   = "0" + day;   }
-
-        return year+""+month+""+day;
-    }
 
 class SideBar extends Component {
     constructor(props) {
@@ -34,11 +21,12 @@ class SideBar extends Component {
                 <ul>
                     <li>
                         <Link to="/MonthlyPage" href="#">
-                            <img src={require('../../images/btn-month.svg')}className="month"/>
+                            <div className="month_1" id="month"></div>
                         </Link>
                     </li>
                     <li>
-                         <img src={require('../../images/btn-week.svg')} onClick={this.goToWeeklyPage} className="week"/>
+                        <div className="week_2" id="week" onClick={this.goToWeeklyPage}>
+                         </div>
                     </li>
                 </ul>
             </div>

@@ -17,6 +17,18 @@
                 $('.ui.small.modal')
                     .modal('show');
             });
+            $("#month").click(function() {
+                $("#month").removeClass("month_2");
+                $("#week").removeClass("week_1");
+                $("#month").addClass("month_1");
+                $("#week").addClass("week_2");
+            });
+            $("#week").click(function() {
+                $("#month").removeClass("month_1");
+                $("#week").removeClass("week_2");
+                $("#month").addClass("month_2");
+                $("#week").addClass("week_1");
+            });
         });
     </script>
 </head>

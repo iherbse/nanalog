@@ -26,13 +26,12 @@ function renderTodayPage(title,content,image,today,todayPage) {
   if(typeof todayPage !== "undefined"){
   if(todayPage.length>0){
   return(
-    <div className="diary-textbox">
+    <div>
         <span className="diary_created_date">{today}</span>
         <img src={require('../images/btn_current_time.svg')} className="btn_current_time"></img>
         <img src={require('../images/btn_trash.svg')} className="btn_trash"></img>
         <input type="text" className="diary_title" value={title}></input>
         <hr className="seperate_title_contents" value = {content}></hr>
-
         <div className="btn_diary_edit"></div>
 
         <div className="ui small modal">
@@ -50,7 +49,7 @@ function renderTodayPage(title,content,image,today,todayPage) {
   )
 }else{
   return(
-    <div className="diary-textbox">
+    <div >
         <span className="diary_created_date">{today}</span>
         <img src={require('../images/btn_current_time.svg')} className="btn_current_time"></img>
         <img src={require('../images/btn_trash.svg')} className="btn_trash"></img>
@@ -68,6 +67,7 @@ function renderTodayPage(title,content,image,today,todayPage) {
             <div className="actions">
                 <div className="negative ui button">삭제</div>
                 <div className="ui button">취소</div>
+
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@ class DiaryTextBox extends Component {
       const {title,content,image, today, todayPage} = this.props;
       console.log(todayPage);
         return(
-          <div>
+          <div className="diary-textbox">
           {renderTodayPage(title,content,image,today,todayPage)}
           </div>
         )

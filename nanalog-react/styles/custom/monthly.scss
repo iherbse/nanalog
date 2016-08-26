@@ -6,11 +6,16 @@
 .Calendar-header {
     height: 236px;
     width: 100%;
+
+}
+.Calendar-day-item{
+  font-size: 0.75rem;
 }
 .Calendar-indicator {
     width: 25.97% !important;
-    height: 50px !important;
+    height: 12.65% !important;
     margin: 0 auto;
+    margin-top: 8.86%;
     float: right;
 }
 .Calendar-indicator > div {
@@ -18,21 +23,25 @@
     height: 100%;
     margin: 0 !important;
     float: right;
+    display: flex;
+    align-items: center !important;
 }
 .Calender-current-month{
   color: #ffba43;
+  text-decoration: underline;
 }
 .Calendar-header-currentDate,
 .laquo {
     float: right !important;
     display: flex;
+    margin-right: 18px;
 }
 .Calendar-indicator+div {
     position: absolute;
     left: 36.5%;
-    top: 18.8% !important;
+    top: 20.79% !important;
     width: 55%;
-    margin: 0;
+    margin: 0 !important;
 }
 .Calendar-header > div:nth-child(3) {
     position: absolute;
@@ -55,7 +64,6 @@
     width: 28%;
     height: 100%;
     background-image: linear-gradient(to top, #3859f6,#418cff), linear-gradient(#ffba43,#ffba43);
-    border-radius: 3px;
     position: relative;
     float: left;
     text-align: center;
@@ -67,12 +75,18 @@
     width: 100%;
     text-align: center;
 }
+.text-monthly-log-info-nickname{
+  font-size: 1.5625rem;
+}
 .text-monthly-log-info-bottom-container {
     position: absolute;
     width: 100%;
     text-align: center;
     bottom: 0;
     margin-bottom: 63px;
+}
+.text-monthly-log-info-log >span{
+  font-size: 1.5625rem;
 }
 .column {
     text-align: center;
@@ -89,6 +103,7 @@
 }
 .Calendar-header-currentDate{
   padding: 0 !important;
+  font-size: 1.5625rem;
 }
 .Calendar-grid {
     position: absolute;

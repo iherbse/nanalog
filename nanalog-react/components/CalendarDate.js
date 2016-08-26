@@ -13,7 +13,6 @@ class CalendarDate extends Component {
   constructor(props) {
       super(props)
       this.goToWeeklyPage = this.goToWeeklyPage.bind(this)
-
   }
   // date칸을 눌렀을 때 click event function
   // pageId가 있는 경우 => 일기 씀 => /WeeklyPage/${this.props.pageId} (보는 창, 이 보는 창 component에서는 pageId로 getPage를 호출해서

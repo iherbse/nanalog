@@ -4,16 +4,34 @@
     padding-right: 1.69%;
 }
 .side > ul {
+    width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.month {
+.month_1 {
     padding-left: 0;
     margin-bottom: 20px;
+    width: 60px;
     height: 30px;
+    background: url('../../images/btn-month.svg') no-repeat;
 }
-.week {
+.month_2 {
     padding-left: 0;
+    margin-bottom: 20px;
+    width: 60px;
     height: 30px;
+    background: url('../../images/btn-month2.svg') no-repeat;
+}
+.week_2 {
+    padding-left: 0;
+    width: 60px;
+    height: 30px;
+    background: url('../../images/btn-week2.svg') no-repeat;
+}
+.week_1 {
+    padding-left: 0;
+    width: 60px;
+    height: 30px;
+    background: url('../../images/btn-week.svg') no-repeat;
 }
