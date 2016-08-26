@@ -1,6 +1,20 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
+import { browserHistory } from 'react-router';
 
+ function today(){
+
+        var date = new Date();
+
+        var year  = date.getFullYear();
+        var month = date.getMonth() + 1; // 0부터 시작하므로 1더함 더함
+        var day   = date.getDate();
+
+        if (("" + month).length == 1) { month = "0" + month; }
+        if (("" + day).length   == 1) { day   = "0" + day;   }
+
+        return year+""+month+""+day;
+    }
 
 class SideBar extends Component {
     constructor(props) {

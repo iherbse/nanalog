@@ -5,11 +5,29 @@ import CalendarDate from './CalendarDate';
 
 // npm의 package인데 custom해야 될 부분들이 있어서 가져온 component
 
-function getMonth(month) {
+function getMonth(month, current_month) {
+    let return_val = [];
+    console.log(month);
+    for (let i = 0; i < 12; i++) {
+        if (i == (current_month - 1)) {
+          return_val.push(
+              <div className="column">
+                  <div className="Calendar-day-item Calender-current-month" >
+                      {month[i]}</div>
+              </div>
+          );
+        } else {
+            return_val.push(
+                <div className="column">
+                    <div className="Calendar-day-item">
+                        {month[i]}</div>
+                </div>
+            );
+        }
+    }
     return (
-        <div className="column">
-            <div className="Calendar-day-item">
-                {month}</div>
+        <div className="ui twelve column grid">
+            {return_val}
         </div>
     )
 }
@@ -76,12 +94,12 @@ export default class Calendar extends Component {
                         <div className='ui three column grid'>
                             <img className="laquo" src={require('../images/btn-prev.svg')} onClick={onPrevMonth}/>
                             <div className='Calendar-header-currentDate'>{date.format('YYYY')}</div>
-                            <img className="laquo" src={require('../images/btn-prev.svg')} onClick={onNextMonth}/>
+                            <img className="laquo" src={require('../images/btn-next.svg')} onClick={onNextMonth}/>
                         </div>
                     </div>
-                    <div className="ui twelve column grid">
-                        {this.state.monthArray.map(getMonth)}
-                    </div>
+
+                    {getMonth(this.state.monthArray, date.format('MM'))}
+
                     <div className="ui seven column grid">
                         <div className="row">
                             {this.state.dayArray.map(getDay)}

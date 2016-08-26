@@ -1,7 +1,1 @@
-<svg 
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
- width="16.5px" height="16.5px">
-<path fill-rule="evenodd"  stroke="rgb(48, 48, 48)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
- d="M2.500,0.500 L13.500,0.500 C14.605,0.500 15.500,1.395 15.500,2.500 L15.500,13.500 C15.500,14.605 14.605,15.500 13.500,15.500 L2.500,15.500 C1.395,15.500 0.500,14.605 0.500,13.500 L0.500,2.500 C0.500,1.395 1.395,0.500 2.500,0.500 Z"/>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><defs><style>.cls-1{fill:#fff;}</style></defs><title>container_indicator-box</title><rect class="cls-1" width="15" height="15" rx="2" ry="2"/><path d="M13,1a1,1,0,0,1,1,1V13a1,1,0,0,1-1,1H2a1,1,0,0,1-1-1V2A1,1,0,0,1,2,1H13m0-1H2A2,2,0,0,0,0,2V13a2,2,0,0,0,2,2H13a2,2,0,0,0,2-2V2a2,2,0,0,0-2-2h0Z"/></svg>

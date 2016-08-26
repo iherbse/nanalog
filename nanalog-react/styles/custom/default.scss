@@ -1,9 +1,18 @@
+// @font-face {
+// font-family: 'SeoulNamsanM';
+// font-style: normal;
+// src: url('폰트 업로드 주소/SeoulNamsanM.eot');
+// src: url('폰트 업로드 주소/SeoulNamsanM.ttf');
+// src: url('폰트 업로드 주소/SeoulNamsanM.woff');
+// }
+
 body,
 html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
+    font-family:'SeoulNamsanM' !important;
 }
 #root {
     width: 100%;

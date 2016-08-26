@@ -1,6 +1,1 @@
-<svg 
- xmlns="http://www.w3.org/2000/svg"
- xmlns:xlink="http://www.w3.org/1999/xlink"
- width="8px" height="8px">
-<image  x="0px" y="0px" width="8px" height="8px"  xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAPFBMVEX///+ysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrL///+KSv0ZAAAAEnRSTlMAtPqmJPyZG/eMENbZkBIdtqPvGDVjAAAAAWJLR0QAiAUdSAAAADFJREFUCNdjYGRiZmEAASEhIVY2dghDSIiDkwvCEBLihjF4oFK8fBDF/EDFAkyCYO0AYnYCz0yGrNAAAAAASUVORK5CYII=" />
-</svg>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3.06 3.74"><defs><style>.cls-1{fill:#b2b2b2;}</style></defs><title>month_indicator-next</title><path class="cls-1" d="M1,1.39V3.71c0,0.64.23,0.9,0.78,0.58s1.34-.84,1.89-1.16S4.17,2.29,3.62,2,2.36,1.13,1.81.82,1,0.76,1,1.39Z" transform="translate(-1 -0.68)"/></svg>

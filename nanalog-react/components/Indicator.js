@@ -14,7 +14,7 @@ class Indicator extends Component {
                   <li><img src={require('../images/indicator_unfilled.svg')} className="indicator_5"></img></li>
                   <li><img src={require('../images/indicator_unfilled.svg')} className="indicator_6"></img></li>
                   <li><img src={require('../images/indicator_unfilled.svg')} className="indicator_7"></img></li>
-                  <li><img src={require('../images/indicator_down.svg')} className="indicator_down"></img></li>
+                  <li><img src={require('../images/indicator_up.svg')} className="indicator_down"></img></li>
                 </ul>
               </div>
         )
