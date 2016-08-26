@@ -1,153 +1,284 @@
-<!-- index.html -->
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+    <style type="text/css">
+        body> .grid {
+            height: 100%;
+        }
+
+        .column {
+            max-width: 450px;
+        }
+
+        #login-form {
+            position: relative;
+            width: 375px;
+            height: 535px;
+            border-radius: 5px;
+            box-shadow: 2px 4px 4px 0 rgba(193, 193, 193, 0.5);
+            border: solid 1px #979797 !important;
+        }
+
+        .join-form {
+            height: 750px;
+        }
+
+        .password-search-form {
+            height: 440px;
+        }
+
+        #login-form-logo {
+            margin-top: 55px;
+            margin-bottom: 60px;
+        }
+
+        .login-form-component {
+            margin-bottom: 30px !important;
+            margin-left: 37px !important;
+            margin-right: 37px !important;
+            width: 300.4px !important;
+            height: 49.3px !important;
+            border-radius: 40px !important;
+            border: solid 1px #c1c1c1 !important;
+        }
+
+        .login-form-bottom {
+            position: absolute;
+            bottom: 0px;
+        }
+
+        .login-form-btn {
+            margin-top: 32px !important;
+            width: 375px;
+            height: 75px;
+            border-radius: 5px;
+            background-color: #969696 !important;
+            border: solid 1px #5f5f5f !important;
+        }
+
+        .login-form-btn-text {
+            margin-top: 20px;
+            margin-left: 125px;
+            width: 78.1px;
+            height: 27px;
+            font-family: NanumSquareOTFB;
+            font-size: 25px;
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        #main-intro-header {
+            width: 300px;
+            height: 78px;
+            margin-bottom: 10rem;
+            font-family: NanumSquareOTFB;
+            font-size: 70px;
+            font-weight: 400;
+            text-align: right;
+            color: #c1c1c1;
+        }
+
+        #main-intro-body {
+            margin-left: 42px;
+            margin-top: 48px;
+            width: 312px;
+            height: 74px;
+            font-family: NanumSquareOTFR;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            color: #868686;
+        }
+
+        .main-intro-layer {
+            width: 78px;
+            font-family: YDIYGO130;
+            font-size: 90px;
+            font-weight: 400;
+            text-align: right;
+            color: #969696;
+        }
+
+        .margin-intro-bar {
+            margin-top: 47px;
+            margin-left: 40px;
+            width: 68px !important;
+            height: 3px !important;
+            border: solid 5px #969696 !important;
+        }
+
+        .typed-cursor {
+            display: none;
+            opacity: 1;
+            -webkit-animation: blink 0.7s infinite;
+            -moz-animation: blink 0.7s infinite;
+            animation: blink 0.7s infinite;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="main ui container" id="example1">
-        <div class="ui grid">
-            <div class="main-grid-column two wide column"></div>
-            <div class="main-grid-column two wide column">
-                <div class="row">
-                    <input type="image" id="logo" src="img/logo.png"></input>
+    <div class="ui">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                    <div class='main-intro-layer' style='margin-left:-4rem;margin-top:4rem;'>"</div>
+                    <h1 id='main-intro-header' class="ui header">오늘 하루 어땠나요?</h1>
+                    <div class='margin-intro-bar'></div>
+                    <p id='main-intro-body'>나날로그는 당신의 기록을 남길 수 있는 공간을 제공하는 서비스입니다</p>
+                    <div class='main-intro-layer' style='margin-left:22rem;margin-top:2rem;'>"</div>
                 </div>
-                <div class="month-list-set row">
-                    <div class="month-list row" id="month-list-01">01</div>
-                    <div class="month-list row" id="month-list-02">02</div>
-                    <div class="month-list row" id="month-list-03">03</div>
-                    <div class="month-list row" id="month-list-04">04</div>
-                    <div class="month-list row" id="month-list-05">05</div>
-                    <div class="month-list row" id="month-list-06">06</div>
-                    <div class="month-list row" id="month-list-07">07</div>
-                    <div class="month-list row" id="month-list-08">08</div>
-                    <div class="month-list row" id="month-list-09">09</div>
-                    <div class="month-list row" id="month-list-10">10</div>
-                    <div class="month-list row" id="month-list-11">11</div>
-                    <div class="month-list row" id="month-list-12">12</div>
-                </div>
-            </div>
-            <div class="main-grid-column two wide column">
-                <div class='.month-week-btn-set'>
-                    <input type="image" class="diary-view-type" id="view-type-month" value="month" />
-                    <input type="image" class="diary-view-type" id="view-type-week" value="week" style="margin-left:-3px;" />
-                </div>
-                <div class="ui sticky fixed">
-                    <p id='selected-year'>2016</p>
-                    <p id="selected-month">08</p>
-                    <input type="image" id="bad" src="img/badthings.png" />
-                </div>
-            </div>
-            <div class="main-grid-column ten wide column">
-                <div id="diary-view-board" class="ui five column grid">
+                <div class="six wide right floated column">
+                    <div class="ui middle aligned center aligned grid">
+                        <div class="column" style='margin-top:5rem'>
+                            <div class="ui large form">
+                                <div id='login-form'>
+                                    <div id='login-form-logo' class="field">
+                                        LOGO
+                                    </div>
+                                    <div id='main-template'>
+                                    </div>
+                                    <div class='field login-form-bottom'>
+                                        <p><a id='member-join' href="#" style='margin-right:17px'>회원가입</a> <a id='password-search' href="#">비밀번호 찾기</a></p>
+                                        <div id='login-btn' class="ui teal submit button login-form-btn">
+                                            <div id='login-btn-name' class='login-form-btn-text'>로그인</div>
+                                        </div>
 
-                </div>
-                <div>
-                    <!-- <div class="ui standard modal transition visible active scrolling" style="display: block !important; top: 208px;">
-                            <div class="header">
-                                Title
+                                        <div id='join-btn' class="ui teal submit button login-form-btn" style='display:none'>
+                                            <div id='join-btn-name' class='login-form-btn-text'>가입</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui error message"></div>
                             </div>
-                            <div class="image content">
-                                <div class="ui medium image">
-                                    <img src="/images/avatar2/large/rachel.png">
-                                </div>
-                                <div class="description">
-                                    <div class="ui header">Default Profile Image</div>
-                                    <p>We've found the following <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your e-mail address.</p>
-                                    <p>Is it okay to use this photo?</p>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <div class="ui black deny button">
-                                    Nope
-                                </div>
-                                <div class="ui positive right labeled icon button">
-                                    Yep, that's me
-                                    <i class="checkmark icon"></i>
-                                </div>
-                            </div>
-                        </div> -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--
-    <div id='diary-create-modal' class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Test modal
-  </div>
-  <div class="image content">
-    <div class="description">
-      <div class="ui header">Header</div>
-      <p>Body</p>
-    </div>
-    <div class="ui medium image">
-      <img src="">
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black button">
-      No
-    </div>
-    <div class="ui positive button">
-      Yes
-    </div>
-  </div>
-</div>
--->
-
-    <!-- 여기 부터 작성창 -->
-    <div class="ui modal" id="diary-create-modal">
-        <div class="textContent">
-            <div class="currentTime">
-                <div id="current-date"></div>
-            </div>
-
-            <div class="writingStatus">
-                <div id="writing-status">writing...</div>
-            </div>
-
-            <div class="text content header">
-                <input type="text" id="text-header" placeholder="오늘 하루" />
-            </div>
-            <div class="text content body">
-                <textarea id="text-body" placeholder="어떤 것을 남기고 싶나요?" maxlength="1000"></textarea>
-            </div>
-            <div class="limitedWordCnt">
-                <span id="current-word-cnt"></span><span> / 1000</span>
-            </div>
-        </div>
-
-        <div class="imageContent">
-            <div class="add image">
-                <input type="button" id="addImgBtn" value="+">
-            </div>
-
-            <div class="write page buttons">
-                <input type="button" id="cancleBtn" value="취소">
-                <input type="button" id="completeBtn" value="확인">
-            </div>
-        </div>
-    </div>
-
-    <div class="ui modal" id="diary-store-modal">
-        <input type="button" id="storeBtn" value="저장">
-    </div>
-    <!-- 여기까지 작성창 -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
-    <script type="text/javascript" src="bundle.js"></script>
-    <script type="text/javascript">
-        $('.ui.sticky')
-            .sticky({
-                context: '#example1'
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
+    <script>
+        const serverUrl = 'http://localhost:8080/';
+
+        var memberLoginTemplate = function() {
+            let memberLoginTemplate = '';
+            memberLoginTemplate += "<div class='field'>";
+            memberLoginTemplate += "<input class='login-form-component' id = 'login-form-id' type='text' name='email' placeholder='아이디'>";
+            memberLoginTemplate += "</div>";
+            memberLoginTemplate += "<div class='field'>";
+            memberLoginTemplate += "<input class='login-form-component' id = 'login-form-password' type='password' name='password' placeholder='비밀번호'>";
+            memberLoginTemplate += "</div>";
+            return memberLoginTemplate;
+        }
+
+        var memberJoinTemplate = function() {
+            let memberJoinTemplate = '';
+            memberJoinTemplate += "<div class='field'>"
+            memberJoinTemplate += "<input class='login-form-component' id = 'login-form-nick'  type='text' name='nickname' placeholder='닉네임'>";
+            memberJoinTemplate += "</div>";
+            memberJoinTemplate += memberLoginTemplate();
+            return memberJoinTemplate;
+        }
+
+        var passwordSearchTemplate = function() {
+            let passwordSearchTemplate = '';
+            passwordSearchTemplate += "<div class='field'>"
+            passwordSearchTemplate += "<input class='login-form-component' type='text' name='nickname' placeholder='이메일 주소'>";
+            passwordSearchTemplate += "</div>";
+            return passwordSearchTemplate;
+        }
+
+        var loginButtonClickEventHandler = function() {
+            $('#login-btn').click(function(e) {
+                let uid = document.getElementById("login-form-id").value;
+                let password = document.getElementById("login-form-password").value;
+
+                $.post(serverUrl + 'v1/user/login', {
+                        uid: uid,
+                        password: password
+                    },
+                    function(data) {
+                      console.log(data);
+                        if (data.uid == '' || data.uid == null) {
+                            alert("로그인 실패");
+                        } else {
+                            alert("로그인 성공");
+                            location.href = './main.html#'+data.uid;
+                            /*
+                              메인페이지 분기
+                            */
+                        }
+                    }).fail(function(e){
+                      alert("로그인 서버 요청 실패");
+                    });
+            });
+        }
+
+
+        var passwordSearchButtonClickEventHandler = function() {
+            let email = document.getElementById('login-form-email').value;
+        }
+
+        var joinButtonClickEventHandler = function() {
+            $('#join-btn').click(function(e) {
+                let uid = document.getElementById("login-form-id").value;
+                let password = document.getElementById("login-form-password").value;
+                let nick = document.getElementById('login-form-nick').value;
+
+
+                $.post(serverUrl + 'v1/user', {
+                        uid: uid,
+                        name: nick,
+                        password: password
+                    },
+                    function(data) {
+                      alert("회원 가입 성공");
+                      $('#login-form-logo').trigger('click');
+                    }).fail(function(e){
+                      alert("회원 가입 실패");
+                    });
+            });
+        }
+
+        $(document)
+            .ready(function() {
+
+                $("#main-intro-body").typed({
+                    strings: ["나날로그는 당신의 기록을 남길 수 있는 공간을 제공하는 서비스입니다."],
+                    typeSpeed: 150
+                });
+
+                $('#join-btn').css('display', 'none');
+                $('#login-btn').css('display', 'block');
+                $('#main-template').html(memberLoginTemplate());
+
+                $('#login-form-logo').click(function(e) {
+                  $('#member-login').css('display', 'none');
+                  $('#member-join').css('display', 'inline-block');
+                  $('#join-btn').css('display', 'none');
+                  $('#login-btn').css('display', 'inline-block');
+                  $('#main-template').html(memberLoginTemplate());
+                });
+
+                loginButtonClickEventHandler();
+
+                $('#member-join').click(function(e) {
+                    $('#member-login').css('display', 'inline-block');
+                    $('#member-join').css('display', 'none');
+                    $('#login-btn').css('display', 'none');
+                    $('#join-btn').css('display', 'inline-block');
+                    $('#main-template').html(memberJoinTemplate());
+                });
+
+                joinButtonClickEventHandler();
             });
     </script>
 </body>

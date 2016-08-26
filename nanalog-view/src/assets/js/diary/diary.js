@@ -1,5 +1,7 @@
 (function() {
 
+    const serverUrl = 'http://localhost:8080/';
+
     var diaryService = function() {
         this.init();
     };
@@ -147,6 +149,47 @@
             $('#diary-store-modal').transition('slide down');
             $('#diary-create-modal').transition('slide up');
             alert('data 저장');
+
+            let title = $("#text-header").val();
+            let currentDate = (new Date()).yyyymmdd();
+            let sentence = $("#text-body").val();
+            let imageUrl = 'http://img.naver.net/static/www/u/2013/0731/nmms_224940510.gif';
+
+            $.post(serverUrl + 'v1/diary', {
+                uid: '1111',
+                date: currentDate,
+                type: 'TITLE',
+                data: title
+            }, function(result) {
+                console.log(result);
+                alert("제목 등록 성공");
+
+                $.post(serverUrl + 'v1/diary', {
+                    uid: '1111',
+                    date: currentDate,
+                    type: 'IMAGE',
+                    data: imageUrl
+                }, function(result) {
+                    console.log(result);
+                    alert("이미지 등록 성공");
+
+                    $.post(serverUrl + 'v1/diary', {
+                        uid: '1111',
+                        date: currentDate,
+                        type: 'SENTENCE',
+                        data: sentence
+                    }, function(result) {
+                        console.log(result);
+                        alert("내용 등록 성공");
+                    }).fail(function(e) {
+                        alert("내용 등록 실패");
+                    });
+                }).fail(function(e) {
+                    alert("이미지 등록 실패");
+                });
+            }).fail(function(e) {
+                alert("제목 등록 실패");
+            });
         });
     }
 
@@ -181,7 +224,17 @@
         $('#selected-month').css("visibility", "hidden");
         $('#view-type-month').attr("src", "img/nonSelectedMonthBtn.png");
         $('#view-type-week').attr("src", "img/selectedWeekBtn.png");
-        $.get('/get_diary_list.json', {}, function(data) {
+
+        let baseDate = new Date().yyyymmdd();
+        let beforeDate = calDay(-7);
+
+
+        $.get(serverUrl + 'v1/diary/preview', {
+            uid: '1111',
+            startDate: beforeDate,
+            endDate: baseDate
+        }, function(data) {
+            console.log(data);
             $('#diary-view-board').html(createDiaryPreviewForm() + createDiaryWeekTemplate(data));
             $('#week-preview-prev').click(function(e) {
                 //            let dt = new Date();
@@ -220,29 +273,41 @@
             $('.week-btn-list').click(function(e) {
                 let selectValue = e.target.value;
 
-                $.get('/get_diary.json', {}, function(data) {
+
+                alert(selectValue);
+
+                $.get(serverUrl + '/v1/diary/preview', {
+                    uid: '1111',
+                    startDate: dt,
+                    endDate: dt
+                }, function(data) {
                     $('#selected-day').css("text-decoration", "none");
 
-                    let top = "<div class='weekPageYearMonth'>"+data.date.substring(0, 4) + "_" + data.date.substring(4, 6) + "</div>";
-                    let bottom = "<div class='weekPageDay'>DAY_" + data.date.substring(6, 8) + "</div>";
+                    let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
+                    let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
 
-                    $('#selected-day').html(top+bottom);
-                    $('#diary-view-week-header').html(data.header + selectValue);
-                    $('#diary-view-week-description').html(data.data);
-                    $('#diary-view-week-img').attr('src', data.img);
+                    $('#selected-day').html(top + bottom);
+                    $('#diary-view-week-header').html(data[data.length - 1].title);
+                    $('#diary-view-week-description').html(data[data.length - 1].body);
+                    $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
                 });
             });
 
-            $.get('/get_diary.json', {}, function(data) {
+            let dt = data[data.length - 1].date;
+            $.get(serverUrl + '/v1/diary/preview', {
+                uid: '1111',
+                startDate: dt,
+                endDate: dt
+            }, function(data) {
                 $('#selected-day').css("text-decoration", "none");
 
-                let top = "<div class='weekPageYearMonth'>"+data.date.substring(0, 4) + "_" + data.date.substring(4, 6) + "</div>";
-                let bottom = "<div class='weekPageDay'>DAY_" + data.date.substring(6, 8) + "</div>";
+                let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
+                let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
 
-                $('#selected-day').html(top+bottom);
-                $('#diary-view-week-header').html(data.header);
-                $('#diary-view-week-description').html(data.data);
-                $('#diary-view-week-img').attr('src', data.img);
+                $('#selected-day').html(top + bottom);
+                $('#diary-view-week-header').html(data[data.length - 1].title);
+                $('#diary-view-week-description').html(data[data.length - 1].body);
+                $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
             });
         });
     }
@@ -253,27 +318,38 @@
         $('#selected-month').css("visibility", "visible");
         $('#view-type-month').attr("src", "img/selectedMonthBtn.png");
         $('#view-type-week').attr("src", "img/nonSelectedWeekBtn.png");
-        $.get('/get_diary_list.json', {}, function(data) {
+
+        let currentDate = new Date().yyyymmdd();
+
+        $.get(serverUrl + '/v1/diary/preview', {
+            uid: '1111',
+            startDate: calDay(-30),
+            endDate: currentDate
+        }, function(data) {
             $("#diary-view-board").html(createDiaryMonthTemplate());
             diaryCardInit(data);
-
         });
     };
 
     var diaryCardInit = function(data) {
 
         let chkArray = new Array();
-        for (let i = 0; i < data.length; i++) {
-            let diaryCardHtml = createDiaryCard(data[i].header, data[i].data);
-            var date = data[i].date;
-            let day = date.substring(date.length - 2, date.length);
-            chkArray.push(day);
-            $("#diary-card-" + day).html(diaryCardHtml);
-        }
-        let month = date.substring(date.length - 4, date.length - 2);
+        let month;
+        if (data.length != 0) {
+            for (let i = 0; i < data.length; i++) {
+                let diaryCardHtml = createDiaryCard(data[i].title, data[i].body);
+                var date = data[i].date;
+                let day = date.substring(date.length - 2, date.length);
+                chkArray.push(day);
+                $("#diary-card-" + day).html(diaryCardHtml);
+            }
+            month = date.substring(date.length - 4, date.length - 2);
 
+        }
         let currentCount = 0;
         if (month == getMonth()) {
+            currentCount = getDay();
+        } else if (data.length == 0) {
             currentCount = getDay();
         } else {
             currentCount = data.length;
@@ -289,7 +365,6 @@
                     $("#diary-card-" + day).addClass('today-card');
                     $("#diary-card-" + day).html("<div class='today'>DAY<br/>" + getDay() + "</div>");
                     $('#diary-card-' + day).click(function(e) {
-
                         $('#diary-create-modal').transition('slide down');
                     });
                 } else {
@@ -394,12 +469,14 @@
             chk = 0;
             for (let j = data.length - 1; j >= 0; j--) {
                 if (dtArr[i] == data[j].date) {
+                    // true 인 경우
                     chk++;
-                    buttonRectangleTemplate += "<p><input type='image' class='week-btn-list' src='img/weekSelectBtn.png'/></p>";
+                    buttonRectangleTemplate += "<p><input type='image' class='week-btn-list' src='img/weekSelectBtn.png' value='" + data[j].date + "'/></p>";
                 }
             }
             if (chk < 1) {
-                buttonRectangleTemplate += "<p><input type='image' class='week-btn-list' src='img/weekNonSelectBtn.png'/></p>";
+                // false 인 경우
+                buttonRectangleTemplate += "<p><input type='image' class='week-btn-list' src='img/weekNonSelectBtn.png' value='" + dtArr[i] + "'/></p>";
             }
         }
 
@@ -518,6 +595,15 @@
 
         result = y + '' + m + '' + d;
         return result;
+    }
+
+    var calDay = function(calDay) {
+        let date = new Date();
+        let yyyy = date.getFullYear().toString();
+        let mm = (date.getMonth() + 1).toString();
+        let dd = date.getDate().toString();
+
+        return calDate(yyyy, mm, dd, calDay);
     }
 
     Date.prototype.yyyymmdd = function() {

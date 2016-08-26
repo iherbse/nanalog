@@ -78,6 +78,8 @@ public class DiaryServiceImpl implements DiaryService{
     @Override
     public Integer createDiary(DiaryCreateRequest diaryCreateRequest) {
 
+        System.out.println(diaryCreateRequest.toString());
+
         // 1. 이 유저가 오늘 다이어리 만들었나 봄
         String uid = diaryCreateRequest.getUid();
         String date = diaryCreateRequest.getDate();
@@ -103,10 +105,10 @@ public class DiaryServiceImpl implements DiaryService{
 
         Component component = new Component();
         component.setPageId(pageId);
-        if(type.equals(Component.ComponentType.TITLE)){
+        if(type.equals(Component.ComponentType.TITLE.toString())){
             component.setComponentType(Component.ComponentType.TITLE);
         }
-        else if(type.equals(Component.ComponentType.IMAGE)){
+        else if(type.equals(Component.ComponentType.IMAGE.toString())){
             component.setComponentType(Component.ComponentType.IMAGE);
         }
         else{
@@ -194,23 +196,29 @@ public class DiaryServiceImpl implements DiaryService{
 
                 List<Component> componentList = this.componentRepository.findByPageId(Long.valueOf(pid));
 
+                DiaryPreviewResponse diaryPreviewResponse = new DiaryPreviewResponse();
+                diaryPreviewResponse.setUid(uuid);
+                diaryPreviewResponse.setPid(pid);
+                diaryPreviewResponse.setDate(date);
+
                 for (Component component : componentList) {
+
+                    System.out.println(component.toString());
 
                     component.getComponentData();
                     String type = component.getComponentType().toString();
-                    String title = component.getComponentData().substring(0, 10);
-                    String body = component.getComponentData();
 
-                    DiaryPreviewResponse diaryPreviewResponse = new DiaryPreviewResponse();
-                    diaryPreviewResponse.setUid(uuid);
-                    diaryPreviewResponse.setPid(pid);
-                    diaryPreviewResponse.setDate(date);
-                    diaryPreviewResponse.setType(type);
-                    diaryPreviewResponse.setTitle(title);
-                    diaryPreviewResponse.setBody(body);
-
-                    diaryPreviewResponseList.add(diaryPreviewResponse);
+                    if(Component.ComponentType.TITLE.toString().equals(type)){
+                        diaryPreviewResponse.setTitle(component.getComponentData().toString());
+                    }
+                    else if(Component.ComponentType.SENTENCE.toString().equals(type)){
+                        diaryPreviewResponse.setBody(component.getComponentData().toString());
+                    }
+                    else if(Component.ComponentType.IMAGE.toString().equals(type)){
+                        diaryPreviewResponse.setImageUrl(component.getComponentData().toString());
+                    }
                 }
+                diaryPreviewResponseList.add(diaryPreviewResponse);
             }
         }
 
@@ -228,7 +236,7 @@ public class DiaryServiceImpl implements DiaryService{
             return -1;
         }
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         page.setModifiedDate(format.format(new Date()));
 
         pageRepository.save(page);
@@ -290,7 +298,7 @@ public class DiaryServiceImpl implements DiaryService{
             }
         }
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         page.setModifiedDate(format.format(new Date()));
         pageRepository.save(page);
 
@@ -342,7 +350,7 @@ public class DiaryServiceImpl implements DiaryService{
         }
 
         this.componentRepository.delete(deleteComponentId);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         page.setModifiedDate(format.format(new Date()));
 
         return 1;
