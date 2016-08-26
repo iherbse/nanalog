@@ -26,21 +26,18 @@ class DiaryTextBox extends Component {
                 <span className="diary_created_date">{today()}</span>
                 <img src={require('../images/btn_current_time.svg')} className="btn_current_time"></img>
                 <img src={require('../images/btn_trash.svg')} className="btn_trash"></img>
-                <input type="text" className="diary_title" disabled placeholder="제목을 입력하세요"></input>
+                <input type="text" className="diary_title" disabled placeholder="오늘 하루"></input>
                 <hr className="seperate_title_contents"></hr>
-                <textarea className="diary_contents" disabled placeholder="작가님, 커피 한 잔에 글 쓰기 좋은 저녁이네요.
-이렇게 글자를 입력하고 드래그하면 메뉴를 더 볼 수 있어요."></textarea>
-                <div className="btn_diary_edit"></div>
+                <textarea className="diary_contents" disabled placeholder="어떤 것을 남기고 싶나요?"></textarea>
+                <div className="btn_diary_edit">편집</div>
 
                 <div className="ui small modal">
-                    <i className="close icon"></i>
                     <div className="header">
                         정말 일기를 삭제하시겠습니까?
                     </div>
-
                     <div className="actions">
                         <div className="negative ui button">삭제</div>
-                        <div className="ui button">취소</div>
+                        <div className="ui cancel button">취소</div>
                     </div>
                 </div>
             </div>

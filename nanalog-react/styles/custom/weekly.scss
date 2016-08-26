@@ -30,12 +30,14 @@
     position: absolute;
     left: 18.1%;
     top: 9.4%;
+    font-size: 1.25rem;
 }
 .diary_title {
     position: absolute;
     left: 9.65%;
     top: 18.62%;
     border: none;
+    font-size: 2.4375rem;
 }
 .seperate_title_contents {
     position: absolute;
@@ -54,6 +56,18 @@
     overflow: scroll;
 }
 .btn_diary_edit {
+    display: inline-block;
+    position: absolute;
+    left: 70.51%;
+    top: 88.06%;
+    width: 18.27%;
+    height: 6.32%;
+    border: solid 2px #5a5e65;
+    border-radius: 17.5px;
+    text-align: center;
+    vertical-align: middle;
+}
+.btn_diary_editing {
     position: absolute;
     left: 70.51%;
     top: 88.06%;
@@ -61,6 +75,7 @@
     height: 6.32%;
     background-color: #418cff;
     border-radius: 17.5px;
+    text-align: center;
 }
 .diary-indicator ul {
     list-style: none;
@@ -84,8 +99,8 @@
 .indicator_up {
     width: 100%;
 }
-.indicator_down{
-  transform: rotate(180deg);
+.indicator_down {
+    transform: rotate(180deg);
 }
 .indicator_1:hover,
 .indicator_2:hover,
@@ -93,7 +108,16 @@
 .indicator_4:hover,
 .indicator_5:hover,
 .indicator_6:hover,
-.indicator_7:hover{
-  box-shadow: 1px 1px 5px #888888;
-  background-color: #888888;
+.indicator_7:hover {
+    box-shadow: 1px 1px 5px #888888;
+    background-color: #888888;
+    transform: scale(1.1);
+}
+.btn_current_time:hover,
+.btn_trash:hover,
+.indicator_up:hover {
+    transform: scale(1.3);
+}
+.indicator_down:hover {
+    transform: scale(1.3) rotate(180deg);
 }

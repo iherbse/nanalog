@@ -99,7 +99,7 @@ export default class Calendar extends Component {
                     </div>
 
                     {getMonth(this.state.monthArray, date.format('MM'))}
-
+                    
                     <div className="ui seven column grid">
                         <div className="row">
                             {this.state.dayArray.map(getDay)}
