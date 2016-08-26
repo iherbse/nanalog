@@ -88,8 +88,8 @@ public class DiaryServiceImpl implements DiaryService{
         if(page == null){
             Page createPage = new Page();
             createPage.setUid(uid);
-            createPage.setCreatedDate(getCurrentDate());
-            createPage.setModifiedDate(getCurrentDate());
+            createPage.setCreatedDate(date);
+            createPage.setModifiedDate(date);
             this.pageRepository.save(createPage);
             page = this.pageRepository.findByUidAndDate(uid, date);
         }

@@ -8,6 +8,7 @@
 
     var selectedMonth;
     var currentPreview;
+    var selectedDay;
 
     diaryService.prototype = {
         init: function() {
@@ -151,13 +152,13 @@
             alert('data 저장');
 
             let title = $("#text-header").val();
-            let currentDate = (new Date()).yyyymmdd();
+//            let currentDate = (new Date()).yyyymmdd();
             let sentence = $("#text-body").val();
             let imageUrl = 'http://img.naver.net/static/www/u/2013/0731/nmms_224940510.gif';
 
             $.post(serverUrl + 'v1/diary', {
                 uid: '1111',
-                date: currentDate,
+                date: selectedDay,
                 type: 'TITLE',
                 data: title
             }, function(result) {
@@ -166,7 +167,7 @@
 
                 $.post(serverUrl + 'v1/diary', {
                     uid: '1111',
-                    date: currentDate,
+                    date: selectedDay,
                     type: 'IMAGE',
                     data: imageUrl
                 }, function(result) {
@@ -175,12 +176,13 @@
 
                     $.post(serverUrl + 'v1/diary', {
                         uid: '1111',
-                        date: currentDate,
+                        date: selectedDay,
                         type: 'SENTENCE',
                         data: sentence
                     }, function(result) {
                         console.log(result);
                         alert("내용 등록 성공");
+                        monthViewInit();
                     }).fail(function(e) {
                         alert("내용 등록 실패");
                     });
@@ -357,6 +359,12 @@
 
         for (let i = 1; i <= currentCount; i++) {
             if (!arrContains(chkArray, i)) {
+              let date = new Date();
+              let yyyy = date.getFullYear();
+              let mm = date.getMonth() + 1;
+              if(mm < 10){
+                mm = '0'+mm;
+              }
                 if (i == new Date().getDate()) {
                     let day = i;
                     if (day < 10) {
@@ -366,6 +374,7 @@
                     $("#diary-card-" + day).html("<div class='today'>DAY<br/>" + getDay() + "</div>");
                     $('#diary-card-' + day).click(function(e) {
                         $('#diary-create-modal').transition('slide down');
+                        selectedDay = new String(yyyy)+new String(mm)+new String(e.target.id.substring(11,13));
                     });
                 } else {
                     let day = i;
@@ -375,7 +384,8 @@
                     $('#diary-card-' + day).html("<div class='plus'>+</div>");
                     $('#diary-card-' + day).click(function(e) {
                         $('#diary-create-modal').transition('slide up');
-                    });
+                                              selectedDay = new String(yyyy)+new String(mm)+new String(e.target.id.substring(11,13));
+                                            });
                 }
             }
         }
