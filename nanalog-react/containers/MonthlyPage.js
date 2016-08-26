@@ -11,6 +11,8 @@ import { fetchPreviewPage }from '../actions/diary'
 class MonthlyPage extends Component {
   constructor(props) {
       super(props)
+      this.addMonth = this.addMonth.bind(this);
+      this.subtractMonth = this.subtractMonth.bind(this);
   }
   // component가 mount되기 전에 date들을 load. 이 달의 startdate와 lastdate를 구해서  YYYYMMdd format으로 넘겨줘야함.
   // moment() -> moment js의 현재시간을 구해주는 function
@@ -19,6 +21,13 @@ class MonthlyPage extends Component {
     this.state = {
      date: moment()
     }
+  }
+  addMonth(index){
+    console.log("addMonth!");
+    this.state.date.clone().add(index,'months');
+  }
+  subtractMonth(index){
+    this.state.date.clone().subtract(index,'months');
   }
   // MonthlyLogInfo에는 총 남긴 로그 수에 들어갈 pageCount만 prop으로 넘겨줌.
   // Calendar에는 이전달, 이번달 date, pageList를 prop으로 넘겨줌.
@@ -31,6 +40,8 @@ class MonthlyPage extends Component {
               <div className="diary-monthly">
               <MonthlyLogInfo pageCount = {pageCount}/>
                 <Calendar
+                        addMonth = {this.addMonth}
+                        subtractMonth = {this.subtractMonth}
                         onNextMonth={() => this.setState({ date: this.state.date.clone().add(1, 'months') }) }
                         onPrevMonth={() => this.setState({ date: this.state.date.clone().subtract(1, 'months') }) }
                         date={this.state.date}

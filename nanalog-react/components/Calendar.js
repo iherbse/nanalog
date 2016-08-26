@@ -2,34 +2,12 @@ import React, {Component, PropTypes} from 'react';
 import moment from 'moment';
 import createDateObjects from './createDateObjects';
 import CalendarDate from './CalendarDate';
+import { connect } from 'react-redux'
+
 
 // npm의 package인데 custom해야 될 부분들이 있어서 가져온 component
 
-function getMonth(month, current_month) {
-    let return_val = [];
-    for (let i = 0; i < 12; i++) {
-        if (i == (current_month - 1)) {
-          return_val.push(
-              <div className="column">
-                  <div className="Calendar-day-item Calender-current-month" >
-                      {month[i]}</div>
-              </div>
-          );
-        } else {
-            return_val.push(
-                <div className="column">
-                    <div className="Calendar-day-item">
-                        {month[i]}</div>
-                </div>
-            );
-        }
-    }
-    return (
-        <div className="ui twelve column grid">
-            {return_val}
-        </div>
-    )
-}
+
 function getDay(day) {
     return (
         <div className="column">
@@ -43,9 +21,10 @@ function renderDate(day, i, props) {
     return (<CalendarDate key={`day-${i}`} pageId={day.pageId} day={day.day}/>)
 
 }
-export default class Calendar extends Component {
+class Calendar extends Component {
     constructor(props) {
         super(props)
+        this.getMonth = this.getMonth.bind(this);
         this.state = {
             monthArray: [
                 'JAN',
@@ -72,6 +51,33 @@ export default class Calendar extends Component {
             ]
         }
     }
+    getMonth(month, current_month,props) {
+        let return_val = [];
+        for (let i = 0; i < 12; i++) {
+          var diff = -((current_month-1)-(i+1));
+            if (i == (current_month - 1)) {
+              return_val.push(
+                  <div className="column">
+                      <div className="Calendar-day-item Calender-current-month" onClick={this.props.addMonth(diff)} >
+                          {month[i]}</div>
+                  </div>
+              );
+            } else {
+                return_val.push(
+                    <div className="column">
+                        <div className="Calendar-day-item" onClick={this.props.addMonth(diff)}>
+                            {month[i]}</div>
+                    </div>
+                );
+            }
+        }
+        return (
+            <div className="ui twelve column grid">
+                {return_val}
+            </div>
+        )
+    }
+
 
     render() {
         // < 2016 >   (laquo, date.format('YYYY'), laquo)
@@ -84,7 +90,8 @@ export default class Calendar extends Component {
             onNextMonth,
             onPrevMonth,
             onPickDate,
-            pageList
+            pageList,
+            addMonth
         } = this.props;
         return (
             <div className='Calendar'>
@@ -97,8 +104,8 @@ export default class Calendar extends Component {
                         </div>
                     </div>
 
-                    {getMonth(this.state.monthArray, date.format('MM'))}
-                    
+                    {this.getMonth(this.state.monthArray, date.format('MM'),this.props)}
+
                     <div className="ui seven column grid">
                         <div className="row">
                             {this.state.dayArray.map(getDay)}
@@ -118,11 +125,21 @@ Calendar.defaultProps = {
     weekOffset: 0,
     renderDay: day => day.format('D')
 }
+
 Calendar.propTypes = {
     weekOffset: PropTypes.number.isRequired,
     date: PropTypes.object.isRequired,
     renderDay: PropTypes.func,
     pageList: PropTypes.array,
     onNextMonth: PropTypes.func.isRequired,
-    onPrevMonth: PropTypes.func.isRequired
+    onPrevMonth: PropTypes.func.isRequired,
+    subtractMonth: PropTypes.func.isRequired,
+    addMonth : PropTypes.func.isRequired
 }
+function mapStateToProps(state, ownProps) {
+  var month = ownProps.date.month()
+  return{
+    month:month
+  }
+}
+export default connect(mapStateToProps)(Calendar);
