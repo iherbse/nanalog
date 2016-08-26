@@ -9,14 +9,20 @@ import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPreviewResponse;
 import kr.co.nanalog.api.web.diary.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +35,17 @@ public class DiaryController {
 
     @Autowired
     private DiaryService diaryService;
+
+    private final ResourceLoader resourceLoader;
+
+    @Autowired
+    public DiaryController(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
+
+
+
+    public static final String imageRoot = "/image";
 
     @RequestMapping(method = RequestMethod.GET)
     public ApiResponseBody<DiaryPageGetResponse> getDiaryPages(@Valid DiaryPageGetRequest diaryPageGetRequest){
@@ -151,4 +168,25 @@ public class DiaryController {
 
         return responseList;
     }
+
+    @RequestMapping(value = "/image" ,method = RequestMethod.POST)
+    public ResponseEntity setDiaryImage(@RequestParam("file")MultipartFile file, Long pageid){
+        String fileName = file.getOriginalFilename();
+        String filePath = Paths.get(imageRoot, fileName).toString();
+        System.out.println();
+        if(!file.isEmpty()){
+            try{
+                Files.copy(file.getInputStream(), Paths.get(imageRoot, file.getOriginalFilename()));
+                System.out.println(Paths.get(imageRoot, file.getOriginalFilename()));
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+        else {
+            new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }
