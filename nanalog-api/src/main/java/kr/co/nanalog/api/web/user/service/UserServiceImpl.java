@@ -199,7 +199,27 @@ public class UserServiceImpl implements UserService {
         return 1;
     }
 
+    @Override
+    public User login(String uid, String password){
+
+        User user = this.userRepository.findByUid(uid);
+
+        if(user == null){
+            return null;
+        }
+
+        if(user.getPassword().equals(password)){
+            return null;
+        }
+
+        return user;
+    }
+
+
     private String getCurrentDate(){
         return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
+
+
+
 }

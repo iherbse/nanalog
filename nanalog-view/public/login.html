@@ -143,8 +143,8 @@
                                     </div>
                                     <div class='field login-form-bottom'>
                                         <p><a id='member-join' href="#" style='margin-right:17px'>회원가입</a> <a id='password-search' href="#">비밀번호 찾기</a></p>
-                                        <div class="ui teal submit button login-form-btn">
-                                            <div id='form-btn' class='login-form-btn-text'>로그인</div>
+                                        <div id='form-btn' class="ui teal submit button login-form-btn">
+                                            <div  class='login-form-btn-text'>로그인</div>
                                         </div>
                                     </div>
                                 </div>
@@ -161,14 +161,15 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
     <script>
+    const serverUrl = 'http://localhost:8080/';
 
         var memberLoginTemplate = function(){
           let memberLoginTemplate = '';
           memberLoginTemplate += "<div class='field'>";
-          memberLoginTemplate += "<input class='login-form-component' type='text' name='email' placeholder='아이디'>";
+          memberLoginTemplate += "<input class='login-form-component' id = 'login-form-id' type='text' name='email' placeholder='아이디'>";
           memberLoginTemplate += "</div>";
           memberLoginTemplate += "<div class='field'>";
-          memberLoginTemplate += "<input class='login-form-component' type='password' name='password' placeholder='비밀번호'>";
+          memberLoginTemplate += "<input class='login-form-component' id = 'login-form-password' type='password' name='password' placeholder='비밀번호'>";
           memberLoginTemplate += "</div>";
           return memberLoginTemplate;
         }
@@ -176,7 +177,7 @@
         var memberJoinTemplate = function(){
           let memberJoinTemplate = '';
           memberJoinTemplate += "<div class='field'>"
-          memberJoinTemplate += "<input class='login-form-component' type='text' name='nickname' placeholder='닉네임'>";
+          memberJoinTemplate += "<input class='login-form-component' id = 'login-form-nick'  type='text' name='nickname' placeholder='닉네임'>";
           memberJoinTemplate += "</div>";
           memberJoinTemplate += memberLoginTemplate();
           return memberJoinTemplate;
@@ -189,6 +190,51 @@
           passwordSearchTemplate += "</div>";
           return passwordSearchTemplate;
         }
+
+        var loginButtonClickEventHandler = function(){
+          let uid = document.getElementById("login-form-id").value;
+          let password = document.getElementById("login-form-password").value;
+
+
+          $.post(serverUrl + 'v1/user/login',
+          {
+              uid : uid,
+              password : password
+          },
+          function(data) {
+            alert(data);
+          });
+        }
+
+
+        var passwordSearchButtonClickEventHandler = function(){
+          let email = document.getElementById('login-form-email').value;
+        }
+
+        var joinButtonClickEventHandler =  function() {
+
+
+              let uid = document.getElementById("login-form-id").value;
+              let password = document.getElementById("login-form-password").value;
+              let nick = document.getElementById('login-form-nick').value;
+
+
+              $.post(serverUrl + 'v1/user',
+              {
+                  uid : uid,
+                  name : nick,
+                  password : password
+              },
+             function(data) {
+              alert(data);
+            });
+
+        }
+
+
+
+
+
 
         $(document)
             .ready(function() {
@@ -207,46 +253,29 @@
                 $('#password-search').click(function(e){
                   $('#main-template').html(passwordSearchTemplate());
                   $('#form-btn').html('찾기');
+                  $('#form-btn').click(function(e){
+                    passwordSearchButtonClickEventHandler();
+                  });
                 });
 
                 $('#member-join').click(function(e){
                   $('#main-template').html(memberJoinTemplate());
-                  $('#form-btn').html('인증');
+                  $('#form-btn').html('가입');
+                  $('#form-btn').click(function(e){
+                    alert("check");
+                    joinButtonClickEventHandler();
+                  });
                 });
 
                 $('#login-form-logo').click(function(e){
                   $('#main-template').html(memberLoginTemplate());
                   $('#form-btn').html('로그인');
+                  $('#form-btn').click(function(e){
+                    loginButtonClickEventHandler();
+                  });
                 });
-
-                $('.ui.form')
-                    .form({
-                        fields: {
-                            email: {
-                                identifier: 'email',
-                                rules: [{
-                                    type: 'empty',
-                                    prompt: 'Please enter your e-mail'
-                                }, {
-                                    type: 'email',
-                                    prompt: 'Please enter a valid e-mail'
-                                }]
-                            },
-                            password: {
-                                identifier: 'password',
-                                rules: [{
-                                    type: 'empty',
-                                    prompt: 'Please enter your password'
-                                }, {
-                                    type: 'length[6]',
-                                    prompt: 'Your password must be at least 6 characters'
-                                }]
-                            }
-                        }
-                    });
             });
     </script>
-<script type="text/javascript" src="bundle.js"></script>
 
 </body>
 
