@@ -12,7 +12,7 @@
             <div class="main-grid-column two wide column"></div>
             <div class="main-grid-column two wide column">
                 <div class="row">
-                    LOGO
+                    <!--input type="image" id="logo" src="../src/img/logo.png" /-->logo
                 </div>
                 <div class="month-list-set row">
                     <div class="month-list row" id="month-list-01">01</div>
@@ -44,7 +44,7 @@
 
                 </div>
                 <div>
-                        <!-- <div class="ui standard modal transition visible active scrolling" style="display: block !important; top: 208px;">
+                    <!-- <div class="ui standard modal transition visible active scrolling" style="display: block !important; top: 208px;">
                             <div class="header">
                                 Title
                             </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-
+    <!--
     <div id='diary-create-modal' class="ui modal">
   <i class="close icon"></i>
   <div class="header">
@@ -96,6 +96,46 @@
     </div>
   </div>
 </div>
+-->
+
+    <!-- 여기 부터 작성창 -->
+    <div class="ui modal" id="diary-create-modal">
+        <div class="textContent">
+            <div class="currentTime">
+                <div id="current-date"></div>
+            </div>
+
+            <div class="writingStatus">
+                <div id="writing-status">writing...</div>
+            </div>
+
+            <div class="text content header">
+                <input type="text" id="text-header" placeholder="오늘 하루" />
+            </div>
+            <div class="text content body">
+                <textarea id="text-body" placeholder="어떤 것을 남기고 싶나요?" maxlength="1000"></textarea>
+            </div>
+            <div class="limitedWordCnt">
+                <span id="current-word-cnt"></span><span> / 1000</span>
+            </div>
+        </div>
+
+        <div class="imageContent">
+            <div class="add image">
+                <input type="button" id="addImgBtn" value="+">
+            </div>
+
+            <div class="write page buttons">
+                <input type="button" id="cancleBtn" value="취소">
+                <input type="button" id="completeBtn" value="확인">
+            </div>
+        </div>
+    </div>
+
+    <div class="ui modal" id="diary-store-modal">
+        <input type="button" id="storeBtn" value="저장">
+    </div>
+    <!-- 여기까지 작성창 -->
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
