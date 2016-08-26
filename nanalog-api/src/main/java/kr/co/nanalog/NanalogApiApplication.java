@@ -32,16 +32,16 @@ public class NanalogApiApplication extends ResourceServerConfigurerAdapter {
 		};
 	}
 
-	/*
+
 	@Bean
 	public ResourceServerConfigurerAdapter resourceServerConfigurerAdapter() {
 		return new ResourceServerConfigurerAdapter() {
 			@Override
 			public void configure(HttpSecurity http) throws Exception {
 				http.headers().frameOptions().disable();
-				http.authorizeRequests().antMatchers("/api/**").authenticated();
+				http.authorizeRequests().antMatchers("/dd/api/**").authenticated();
 			}
 		};
 	}
-	*/
+
 }
