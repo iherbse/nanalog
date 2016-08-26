@@ -1,6 +1,4 @@
 package kr.co.nanalog.api.web.diary.service;
-
-import kr.co.nanalog.api.web.diary.model.DiaryCreateRequest;
 import kr.co.nanalog.api.web.diary.model.request.*;
 import kr.co.nanalog.api.web.diary.model.response.DiaryComponentGetResponse;
 import kr.co.nanalog.api.web.diary.model.response.DiaryPageGetResponse;

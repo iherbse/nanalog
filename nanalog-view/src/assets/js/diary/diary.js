@@ -177,6 +177,9 @@
 
 
     var weekViewInit = function() {
+        console.log("week page init");
+        $('#selected-month').empty();
+        $('#selected-year').empty();
         $.get('/get_diary_list.json', {}, function(data) {
             $('#diary-view-board').html(createDiaryPreviewForm() + createDiaryWeekTemplate(data));
             $('#week-preview-prev').click(function(e) {

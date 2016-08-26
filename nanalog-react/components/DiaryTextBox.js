@@ -1,8 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import { createComponent, createPage ,deletePage} from '../actions/diary'
-import { connect } from 'react-redux'
-
-
+import {createComponent, createPage, deletePage} from '../actions/diary'
+import {connect} from 'react-redux'
 
 function today() {
 
@@ -118,12 +116,10 @@ function mapStateToProps(state, ownProps) {
   }
 }
 DiaryTextBox.propTypes = {
-  pageId : PropTypes.number,
-  title : PropTypes.string,
-  content: PropTypes.string,
-  image : PropTypes.string,
-  today : PropTypes.string
+    pageId: PropTypes.number,
+    title: PropTypes.string,
+    content: PropTypes.string,
+    image: PropTypes.string,
+    today: PropTypes.string
 }
-export default connect(mapStateToProps,{
-  createComponent,createPage,deletePage
-})(DiaryTextBox);
+export default connect(mapStateToProps, {createComponent, createPage, deletePage})(DiaryTextBox);

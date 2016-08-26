@@ -1,5 +1,6 @@
 package kr.co.nanalog.api.web.user.service;
 
+import kr.co.nanalog.api.web.user.model.entity.User;
 import kr.co.nanalog.api.web.user.model.entity.UserDeleteQueue;
 import kr.co.nanalog.api.web.user.model.request.UserCreateRequest;
 import kr.co.nanalog.api.web.user.model.request.UserDeleteRequest;
@@ -25,4 +26,6 @@ public interface UserService {
     UserDeleteQueue readUserActiveState(String uid);
 
     Integer deleteUserDeleteQueue(String uid);
+
+    User login(String uid, String password);
 }
