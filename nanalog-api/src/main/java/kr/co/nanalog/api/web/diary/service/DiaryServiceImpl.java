@@ -1,6 +1,6 @@
 package kr.co.nanalog.api.web.diary.service;
 
-import kr.co.nanalog.api.web.diary.model.DiaryCreateRequest;
+import kr.co.nanalog.api.web.diary.model.request.DiaryCreateRequest;
 import kr.co.nanalog.api.web.diary.model.entity.Component;
 import kr.co.nanalog.api.web.diary.model.entity.Page;
 import kr.co.nanalog.api.web.diary.model.request.*;

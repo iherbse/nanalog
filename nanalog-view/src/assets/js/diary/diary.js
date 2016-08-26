@@ -27,7 +27,14 @@
         },
         monthListClickEventHandler: function() {
             $('.month-list').click(function(e) {
+              let classList = e.target.classList;
+               for(let i=0;i<classList.length;i++){
+                 if(classList[i] == "month-list-selected"){
+                   return;
+                 }
+               }
                 let selectedMonthValue = e.target.innerText;
+
                 changeMonthListClass(selectedMonth, selectedMonthValue);
                 selectedMonth = selectedMonthValue
 
