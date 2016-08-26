@@ -1,4 +1,4 @@
-package kr.co.nanalog.api.web.diary.model;
+package kr.co.nanalog.api.web.diary.model.request;
 
 /**
  * Created by choijinjoo on 2016. 8. 14..

@@ -200,24 +200,125 @@
     opacity: 1 !important;
 }
 
-/*.diary-view-week-btn div{
-  float: right !important;
-}*/
+.textContent {
+  width: 750px;
+	height: 600px;
+	background-color: #ffffff;
+	box-shadow: 0 2px 4px 2px rgba(173, 173, 173, 0.5);
+  float: left;
+  margin-left : -150px;
+  margin-top : -300px;
+}
 
+.imageContent {
+  width: 450px;
+	height: 600px;
+	background-color: rgba(224, 224, 238, 1);
+  box-shadow: 0 2px 4px 2px rgba(173, 173, 173, 0.5);
+  margin-left : 600px;
+  margin-top : -300px;
+}
 
-/*
-  #diary-view-week-description{
-    width: 311.5px;
-    height: 130px;
-    font-family: NanumSquareOTFR;
-    font-size: 11.5px;
-    font-weight: 400;
-    color: #5f5f5f;
-  }
+.currentTime {
+  font-size: 20px;
+	color: #8499ba;
+	margin-top: 17px;
+  margin-left: 100px;
+}
 
-  #diary-view-week-img {
-    margin-top: 10px;
-    margin-left: 101px;
-    width: 125px;
-    height: 115.3px;
-  }*/
+.writingStatus {
+  font-size: 13px;
+  height: auto;
+	color: #ffffff;
+  margin-left: 650px;
+  margin-top: -17px;
+}
+
+#text-header {
+  font-size: 30px;
+  color: #d3d3d3;
+  margin-top: 80px;
+  margin-left: 100px;
+  border : 0px;
+  text-decoration: underline;
+  resize : none;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-left: 10px;
+}
+
+#text-body {
+  font-size: 13px;
+	color: #d3d3d3;
+  margin-top: 90px;
+  margin-left: 100px;
+  border: 0px;
+  text-decoration: underline;
+  width: 550px;
+  height: 250px;
+  padding: 10px;
+  resize : none;
+  overflow: scroll;
+}
+
+.limitedWordCnt {
+  color: #d3d3d3;
+  margin-top: 20px;
+  margin-left: 600px;
+}
+
+#addImgBtn {
+  width: 250px;
+	height: 250px;
+	border: solid 2px #a39ed1;
+  background-color: rgba(0, 0, 0, 0);
+  color : #a39ed1;
+  font-size: 60px;
+  margin-top: 150px;
+  margin-left: 100px;
+}
+
+#cancleBtn {
+  width: 90px;
+	height: 40px;
+	border-radius: 40px;
+	border: solid 2px #a39ed1;
+  background-color: rgba(0, 0, 0, 0);
+  color : #a39ed1;
+  margin-top: 130px;
+  margin-left: 200px;
+}
+
+#completeBtn {
+  width: 90px;
+	height: 40px;
+	border-radius: 40px;
+	border: solid 2px #a39ed1;
+  background-color: rgba(0, 0, 0, 0);
+  color : #a39ed1;
+  margin-left: 15px;
+}
+
+#diary-store-modal {
+  width: 1200px;
+	height: 600px;
+	background-color: rgba(224, 224, 238, 0.6);
+  margin-left : -600px;
+  margin-top : -300px;
+}
+
+#storeBtn {
+  width: 150px;
+	height: 50px;
+	border-radius: 40px;
+	background-color: #bbb8d6;
+	border: solid 1px #bbb8d6;
+  color : #ffffff;
+  font-size: 30px;
+  margin-top: 275px;
+  margin-left: 525px
+}
+
+#logo {
+  src: url("/img/logo.png");
+}
