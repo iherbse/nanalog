@@ -1,5 +1,7 @@
 console.log("user");
 
+const serverUrl = 'http://localhost:8080/';
+
 (function() {
 
     var userService = function() {
@@ -13,11 +15,12 @@ console.log("user");
             console.log('==============>>> user service Init ...');
             this.loginButtonClickEventHandler();
             this.mypageSaveButtonClickEventHandler();
-            joinButtonClickEventHandler();
+            ab();
             passwordSearchButtonClickEventHandler();
         },
 
         loginButtonClickEventHandler: function() {
+          alert("Check");
             $('#form-btn').click(function(e) {
                 let uid = document.getElementById("login-form-id").value;
                 let password = document.getElementById("login-form-password").value;
@@ -46,14 +49,42 @@ console.log("user");
         run: function() {}
       };
 
+      function ab(){
+        $('#main-template').html(memberLoginTemplate());
+
+        $('#password-search').click(function(e){
+          $('#main-template').html(passwordSearchTemplate());
+          $('#form-btn').html('찾기');
+        });
+
+        $('#member-join').click(function(e){
+          $('#main-template').html(memberJoinTemplate());
+          $('#form-btn').html('인증');
+          joinButtonClickEventHandler();
+        });
+
+        $('#login-form-logo').click(function(e){
+          $('#main-template').html(memberLoginTemplate());
+          $('#form-btn').html('로그인');
+        });
+      }
+
       function joinButtonClickEventHandler(){
         $('#form-btn').click(function(e) {
+          alert("CHECK");
           let uid = document.getElementById("login-form-id").value;
           let password = document.getElementById("login-form-password").value;
           let nick = document.getElementById('login-form-nick').value;
 
-          console.log('login-form-id : ' + uid + ' login-form-password : ' + password + ' login-form-nick : ' + nick);
-
+          $.post(serverUrl + '/v1/user',
+          {
+              uid : uid,
+              name : nick,
+              password : password
+          },
+          function(data) {
+            alert(data);
+          });
         });
       }
 

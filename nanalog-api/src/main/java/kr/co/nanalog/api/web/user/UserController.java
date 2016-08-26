@@ -1,6 +1,7 @@
 package kr.co.nanalog.api.web.user;
 
 import kr.co.nanalog.api.web.common.domain.ApiResponseBody;
+import kr.co.nanalog.api.web.user.model.entity.User;
 import kr.co.nanalog.api.web.user.model.entity.UserDeleteQueue;
 import kr.co.nanalog.api.web.user.model.request.UserCreateRequest;
 import kr.co.nanalog.api.web.user.model.request.UserDeleteRequest;
@@ -134,5 +135,13 @@ public class UserController {
         }
 
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public User login(@RequestParam(required = true) String uid, String password){
+
+        User result = this.userService.login(uid, password);
+
+        return result;
     }
 }
