@@ -37,13 +37,13 @@ public class UserController {
         LOGGER.debug("======>>> createUser :: " + userCreateRequest.toString());
 
         if(bindingResult.hasErrors()) {
-            return new ResponseEntity("에러 메시지", HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity("에러가 났어요", HttpStatus.NOT_ACCEPTABLE);
         }
 
         int resultCode = userService.createUser(userCreateRequest);
 
         if(resultCode == -1){
-            return new ResponseEntity("에러 메시지", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity("회원가입에 실패했어요", HttpStatus.UNAUTHORIZED);
         }
 
 

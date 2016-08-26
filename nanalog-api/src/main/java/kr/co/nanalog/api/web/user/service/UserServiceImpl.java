@@ -205,11 +205,11 @@ public class UserServiceImpl implements UserService {
         User user = this.userRepository.findByUid(uid);
 
         if(user == null){
-            return null;
+            return new User();
         }
 
-        if(user.getPassword().equals(password)){
-            return null;
+        if(!(user.getPassword().equals(password))){
+            return new User();
         }
 
         return user;
@@ -217,9 +217,6 @@ public class UserServiceImpl implements UserService {
 
 
     private String getCurrentDate(){
-        return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return LocalDateTime.now().plusMonths(1).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
     }
-
-
-
 }

@@ -15,7 +15,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-//@EnableResourceServer
+@EnableResourceServer
 @SpringBootApplication
 public class NanalogApiApplication extends ResourceServerConfigurerAdapter {
 
