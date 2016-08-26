@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div>
+    <form id='fileForm' method="POST" enctype="multipart/form-data" action="http://localhost:8080/v1/diary/image">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+        </table>
+    </form>
+
+
+    <tr><td></td><td><button id="test-btn" value="Upload" /></td></tr>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+<script>
+
+        $(document).ready(function(){
+            $('#test-btn').click(function(e){
+                $('#fileForm').ajaxForm({
+                    url: "http://localhost:8080/v1/diary/image",
+                    enctype: "multipart/form-data",
+                    success: function(result){
+                    alert(result);
+                    }
+                    });
+
+                    $("#fileForm").submit();
+            });
+        });
+
+    </script>
+</body>
+</html>
