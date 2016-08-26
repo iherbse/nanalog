@@ -27,12 +27,12 @@
         },
         monthListClickEventHandler: function() {
             $('.month-list').click(function(e) {
-              let classList = e.target.classList;
-               for(let i=0;i<classList.length;i++){
-                 if(classList[i] == "month-list-selected"){
-                   return;
-                 }
-               }
+                let classList = e.target.classList;
+                for (let i = 0; i < classList.length; i++) {
+                    if (classList[i] == "month-list-selected") {
+                        return;
+                    }
+                }
                 let selectedMonthValue = e.target.innerText;
 
                 changeMonthListClass(selectedMonth, selectedMonthValue);
@@ -46,7 +46,6 @@
                 let type = e.target.id;
 
                 if (type == 'view-type-month') {
-                    //$("#diary-view-board").html(createDiaryMonthTemplate());
                     monthViewInit();
                 } else {
                     currentPreview = (new Date()).yyyymmdd();
@@ -177,6 +176,11 @@
 
 
     var weekViewInit = function() {
+        console.log("week page start");
+        $('#selected-year').css("visibility", "hidden");
+        $('#selected-month').css("visibility", "hidden");
+        $('#view-type-month').attr("src", "img/nonSelectedMonthBtn.png");
+        $('#view-type-week').attr("src", "img/selectedWeekBtn.png");
         $.get('/get_diary_list.json', {}, function(data) {
             $('#diary-view-board').html(createDiaryPreviewForm() + createDiaryWeekTemplate(data));
             $('#week-preview-prev').click(function(e) {
@@ -217,7 +221,12 @@
                 let selectValue = e.target.value;
 
                 $.get('/get_diary.json', {}, function(data) {
-                    $('#selected-day').html(data.date.substring(6, 8));
+                    $('#selected-day').css("text-decoration", "none");
+
+                    let top = "<div class='weekPageYearMonth'>"+data.date.substring(0, 4) + "_" + data.date.substring(4, 6) + "</div>";
+                    let bottom = "<div class='weekPageDay'>DAY_" + data.date.substring(6, 8) + "</div>";
+
+                    $('#selected-day').html(top+bottom);
                     $('#diary-view-week-header').html(data.header + selectValue);
                     $('#diary-view-week-description').html(data.data);
                     $('#diary-view-week-img').attr('src', data.img);
@@ -225,7 +234,12 @@
             });
 
             $.get('/get_diary.json', {}, function(data) {
-                $('#selected-day').html(data.date.substring(6, 8));
+                $('#selected-day').css("text-decoration", "none");
+
+                let top = "<div class='weekPageYearMonth'>"+data.date.substring(0, 4) + "_" + data.date.substring(4, 6) + "</div>";
+                let bottom = "<div class='weekPageDay'>DAY_" + data.date.substring(6, 8) + "</div>";
+
+                $('#selected-day').html(top+bottom);
                 $('#diary-view-week-header').html(data.header);
                 $('#diary-view-week-description').html(data.data);
                 $('#diary-view-week-img').attr('src', data.img);
@@ -234,9 +248,15 @@
     }
 
     var monthViewInit = function() {
+        console.log("month page start");
+        $('#selected-year').css("visibility", "visible");
+        $('#selected-month').css("visibility", "visible");
+        $('#view-type-month').attr("src", "img/selectedMonthBtn.png");
+        $('#view-type-week').attr("src", "img/nonSelectedWeekBtn.png");
         $.get('/get_diary_list.json', {}, function(data) {
             $("#diary-view-board").html(createDiaryMonthTemplate());
             diaryCardInit(data);
+
         });
     };
 
@@ -269,7 +289,7 @@
                     $("#diary-card-" + day).addClass('today-card');
                     $("#diary-card-" + day).html("<div class='today'>DAY<br/>" + getDay() + "</div>");
                     $('#diary-card-' + day).click(function(e) {
-                        console.log("@@@@!");
+
                         $('#diary-create-modal').transition('slide down');
                     });
                 } else {
@@ -279,7 +299,6 @@
                     }
                     $('#diary-card-' + day).html("<div class='plus'>+</div>");
                     $('#diary-card-' + day).click(function(e) {
-                        console.log("@@@@#");
                         $('#diary-create-modal').transition('slide up');
                     });
                 }
@@ -341,19 +360,19 @@
         diaryRectangleTemplate += "<div class='ui two column doubling grid'><div id='diary-view-week-description' class='two column'></div>";
         //      diaryRectangleTemplate += "<div class='ui header'>header</div>";
         //      diaryRectangleTemplate += "<p>body</p>";
-        diaryRectangleTemplate += "<div class='one column'><img id='diary-view-week-img' src=''/></div>";
+        diaryRectangleTemplate += "<div class='weekPageBackgroundImg'><div class='one column'><img id='diary-view-week-img' src=''/></div></div>";
         //      diaryRectangleTemplate += "<div><p>a</p><p>b</p><p>c</p><p>d</p></div>";
         diaryRectangleTemplate += "</div>";
         diaryRectangleTemplate += "<div class='diary-view-week-btn'>";
-        diaryRectangleTemplate += "<button>삭제</button>";
-        diaryRectangleTemplate += "<button>수정</button></div>";
+        diaryRectangleTemplate += "<button id='weekPageDeleteBtn'>삭제</button>";
+        diaryRectangleTemplate += "<button id='weekPageEditBtn'>수정</button></div>";
         diaryRectangleTemplate += "</div>";
         diaryRectangleTemplate += "</div>";
         return diaryRectangleTemplate;
     }
 
     var buttonListRectangle = function(data) {
-        let buttonRectangleTemplate = "<div class='diary-view-btn-list one column'><button id='week-preview-prev'>prev</button>";
+        let buttonRectangleTemplate = "<div class='diary-view-btn-list one column'><p><input type='image' id='week-preview-prev' src='img/uparrow.png' /></p>";
 
         let yyyy = currentPreview.substring(0, 4);
         let mm = currentPreview.substring(4, 6);
@@ -376,18 +395,18 @@
             for (let j = data.length - 1; j >= 0; j--) {
                 if (dtArr[i] == data[j].date) {
                     chk++;
-                    buttonRectangleTemplate += "<button class='week-btn-list' value='" + data[j].date + "'>" + data[j].date + 'ture' + "</button>";
+                    buttonRectangleTemplate += "<p><input type='image' class='week-btn-list' src='img/weekSelectBtn.png'/></p>";
                 }
             }
             if (chk < 1) {
-                buttonRectangleTemplate += "<button class='week-btn-list' value='" + dtArr[i] + "'>" + dtArr[i] + 'false' + "</button>";
+                buttonRectangleTemplate += "<p><input type='image' class='week-btn-list' src='img/weekNonSelectBtn.png'/></p>";
             }
         }
 
         // for (let i = 0; i < data.length; i++) {
         //     buttonRectangleTemplate += "<button class='week-btn-list' value='" + data[i].date + "'>" + data[i].date + "</button>";
         // }
-        buttonRectangleTemplate += "<button id='week-preview-next'>next</button></div>";
+        buttonRectangleTemplate += "<p><input type='image' id='week-preview-next' src='img/downarrow.png' /></p></div>";
 
         return buttonRectangleTemplate;
     }
