@@ -7,9 +7,9 @@ public class DiaryPreviewResponse {
     private String uid;
     private String pid;
     private String date;
-    private String type;
     private String title;
     private String body;
+    private String imageUrl;
 
     public String getUid() {
         return uid;
@@ -35,14 +35,6 @@ public class DiaryPreviewResponse {
         this.date = date;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -59,15 +51,23 @@ public class DiaryPreviewResponse {
         this.body = body;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public String toString() {
         return "DiaryPreviewResponse{" +
                 "uid='" + uid + '\'' +
                 ", pid='" + pid + '\'' +
                 ", date='" + date + '\'' +
-                ", type='" + type + '\'' +
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

@@ -1,4 +1,5 @@
 .main-grid-column {
+  margin-top : 20px;
     border-left: 1px solid #F6F6F6;
 }
 .diary-grid-row {
@@ -16,10 +17,17 @@
 .diary-card:last-child {
     height: 75px !important;
 }
+.diary-card:hover {
+  background-color: rgba(183, 179, 220, 0.4);
+}
+/*.plus {
+  pointer-events: none;
+}*/
 .month-list-set {
-    margin-top: 104px;
+    margin-top: 60px;
 }
 .month-list {
+    font-family: 'Roboto Mono', monospace;
     margin-top: 23px;
     width: 8px;
     height: 9px;
@@ -39,35 +47,34 @@
     color: #8596ae;
 }
 #selected-year {
-    padding-top: 101px;
+    padding-top: 50px;
     width: 44px;
     height: 18px;
-    font-family: Dinreg;
+
+    font-family: 'Roboto Mono', monospace;
     font-size: 15px;
     font-weight: 400;
     color: #8499ba;
 }
 #selected-month {
-    padding-top: -20px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: reqular;
+    padding-top: -10px;
+    margin-top: -15px;
     width: 128px;
     height: 91px;
-    font-family: Dinmed;
     font-size: 70px;
     font-weight: 400;
     color: #8499ba;
     text-decoration: underline;
 }
 .ui[class*="two column"].grid>.column:not(.row), .ui[class*="two column"].grid>.row>.column {
-    width: 40%;
+    width: 60%;
+    margin-top: 20px;
 }
 .diary-view-btn-list {
-    /*margin-left: 50px;
-  margin-top: 270px;
-  width: 40%;
-  height: 320px;
-  border: solid 1px black;
-  vertical-align: text-top;*/
-    margin-top: 180px;
+    margin-top: 255px;
+    margin-left: 10px;
     float: right;
     z-index: 1002;
 }
@@ -145,7 +152,7 @@
     color: #b7b3dc;
 }
 #diary-view-week-header {
-    margin-top: 70px;
+    margin-top: 20px;
     width: 300px;
     height: 39px;
     font-family: NanumSquareOTFB;
@@ -154,7 +161,7 @@
     color: #5f5f5f;
 }
 #diary-view-week-description {
-    max-width: 300px;
+    max-width: 600px;
     font-family: NanumSquareOTFR;
     font-size: 11.5px;
     font-weight: 400;
@@ -168,17 +175,27 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.weekPageBackgroundImg {
+  margin-top: -220px;
+  margin-left: 250px;
+  width: 300px;
+	height: 300px;
+	background-color: rgba(224, 224, 238, 0.6);
+  z-index: -1;
+}
+
 #diary-view-week-img {
-    margin-left: 60px;
-    width: 180px;
-    height: 180px;
+    margin-left: 110px;
+    margin-top: 67px;
+    width: 150px;
+    height: 150px;
+    z-index: 9999;
 }
 .diary-view-week-btn {
-    margin-top: 20px;
-    margin-right: 20%;
+    margin-top: -20px;
 }
 #selected-day {
-    margin-top: 180px;
+    margin-top: 90px;
     width: 92px;
     height: 40px;
     font-family: Ayuthaya;
@@ -320,5 +337,67 @@
 }
 
 #logo {
-  src: url("/img/logo.png");
+  width: 60px;
+  height: auto;
+}
+
+.diary-view-btn-list input{
+
+  width: 10px;
+  height: auto;
+}
+
+.week-preview-prev {
+  width: 12px;
+  height: auto;
+}
+
+.diary-view-type {
+  width: 35px;
+  height: auto;
+}
+
+.weekPageYearMonth {
+  font-size: 11px;
+  margin-top: -30px;
+  margin-left: 15px;
+}
+
+.weekPageDay {
+  font-size: 27px;
+  margin-top:-34px;
+  margin-left:15px;
+}
+
+#weekPageDeleteBtn {
+  width: 57px;
+	height: 20px;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-top: -14px;
+  color: #a39ed1;
+  background-color: rgba(224, 224, 238, 0);
+	border-radius: 20px;
+	border: solid 1px #a39ed1;
+  z-index: 2px;
+}
+
+#weekPageEditBtn {
+  width: 57px;
+	height: 20px;
+  float: left;
+  font-size: 12px;
+  margin-left: 390px;
+  margin-top: -14px;
+  color: #a39ed1;
+  background-color: rgba(224, 224, 238, 0);
+	border-radius: 20px;
+	border: solid 1px #a39ed1;
+  z-index: 2px;
+}
+
+#bad {
+  width: 110px;
+  height: auto;
+  margin-top: -60px;
 }

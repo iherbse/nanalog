@@ -44,7 +44,7 @@ public class DiaryController {
 
 
 
-    public static final String imageRoot = "/image";
+    public static final String imageRoot = "/Users/1002731/Documents/img_test";
 
     @RequestMapping(method = RequestMethod.GET)
     public ApiResponseBody<DiaryPageGetResponse> getDiaryPages(@Valid DiaryPageGetRequest diaryPageGetRequest){
