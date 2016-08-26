@@ -53,6 +53,8 @@ export function fetchPage(pageId) {
         if(json.diaryComponentGetResponseModels){
           diaryComponents = json.diaryComponentGetResponseModels;
         }
+        console.log("diaryComponents");
+        console.log(diaryComponents);
         //reducer에게 전달 될 값들을 리턴해주는 함수 dispatch
         return dispatch(getPage(pageId,diaryComponents));
 
@@ -76,7 +78,6 @@ export function fetchPreviewPage(startDate, endDate){
       .then(json => {
         // 받아온 json에서 필요한 값을 추출
         let pageList = json;
-        console.log(pageList);
 
         //reducer에게 전달 될 값들을 리턴해주는 함수 dispatch
         return dispatch(PreviewPage(pageList));
@@ -84,8 +85,31 @@ export function fetchPreviewPage(startDate, endDate){
       })
   };
 }
+export function fetchTodayPage(startDate, endDate){
+  return (dispatch, getState) => {
+    return fetch('http://localhost:8000/previewTodayPage.json')
+      .then(response => response.json())
+      .then(json => {
+        // 받아온 json에서 필요한 값을 추출
+        let pageList = json;
+
+        //reducer에게 전달 될 값들을 리턴해주는 함수 dispatch
+        return dispatch(PreviewTodayPage(pageList));
+
+      })
+  };
+}
 // reducer에게 전달되는 액션타입, 데이터 return
-// pageCount = 총 남긴 로그 수에 들어갈 수를 계산 
+// pageCount = 총 남긴 로그 수에 들어갈 수를 계산
+export function PreviewTodayPage(pageList) {
+  return {
+    type: types.READ_TODAY_PAGE,
+    pageList : pageList,
+    pageCount : pageList.length
+  };
+}
+// reducer에게 전달되는 액션타입, 데이터 return
+// pageCount = 총 남긴 로그 수에 들어갈 수를 계산
 export function PreviewPage(pageList) {
   return {
     type: types.READ_PREVIEW_PAGE,

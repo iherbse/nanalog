@@ -10,7 +10,6 @@ class MonthlyLogInfo extends Component {
 
     render() {
       let pageCount = this.props.pageCount;
-      console.log(this.props);
         return (
           <div className="diary-monthly-log-info">
             <div className="text-monthly-log-info-top-container">

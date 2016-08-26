@@ -22,6 +22,12 @@ export default function diary(state = null, action) {
         pageList: action.pageList,
         pageCount: action.pageCount
       });
+    case types.READ_TODAY_PAGE:
+    console.log("READ_TODAY_PAGE");
+      return Object.assign({}, state, {
+        todayPage: action.pageList,
+        pageCount: action.pageCount
+      });
     case types.CREATE_PAGE:
     case types.CREATE_COMPONENT:
     case types.DELETE_PAGE:

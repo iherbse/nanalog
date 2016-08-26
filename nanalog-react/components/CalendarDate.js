@@ -25,13 +25,11 @@ class CalendarDate extends Component {
     }else{
       browserHistory.push(`/WeeklyPage/${this.props.day.format('YYYYMMDD')}`)
     }
-
   }
     render() {
       // pageId가 있는 경우 => 일기 씀 => 노란 칸
       // pageId가 없는 경우 => 일기 안씀 => 기본 칸
       const {pageId} = this.props;
-      console.log(pageId);
       if(pageId === -1){
         return(
             <div

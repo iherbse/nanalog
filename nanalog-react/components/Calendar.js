@@ -7,7 +7,6 @@ import CalendarDate from './CalendarDate';
 
 function getMonth(month, current_month) {
     let return_val = [];
-    console.log(month);
     for (let i = 0; i < 12; i++) {
         if (i == (current_month - 1)) {
           return_val.push(

@@ -47,8 +47,8 @@ public class DiaryControllerTest {
 
     @Autowired
     private WebApplicationContext context;
-    @Autowired
-    private DiaryCreateService diaryCreateService;
+//    @Autowired
+//    private DiaryCreateService diaryCreateService;
     @Autowired
     private PageRepository pageRepository;
     @Autowired

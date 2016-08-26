@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import { browserHistory } from 'react-router';
+import moment from 'moment';
 
  function today(){
 
@@ -19,8 +20,13 @@ import { browserHistory } from 'react-router';
 class SideBar extends Component {
     constructor(props) {
       super(props)
+      this.goToWeeklyPage = this.goToWeeklyPage.bind(this)
     }
 
+    goToWeeklyPage(){
+      var today = moment().format('YYYYMMDD');
+        browserHistory.push(`/WeeklyPage/${today}`)
+    }
 
     render() {
         return (
@@ -32,9 +38,7 @@ class SideBar extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/WeeklyPage" href="#">
-                            <img src={require('../../images/btn-week.svg')} className="week"/>
-                        </Link>
+                         <img src={require('../../images/btn-week.svg')} onClick={this.goToWeeklyPage} className="week"/>
                     </li>
                 </ul>
             </div>

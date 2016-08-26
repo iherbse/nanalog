@@ -4,9 +4,21 @@
   "diaryComponentGetResponseModels" :[
    {
     "componentId" : "99",
-    "componentType" : "type1",
+    "componentType" : "1",
     "componentPosition" : "position1",
-    "componentData" : "abcdef"
-    }
+    "componentData" : "제목이다"
+  },
+  {
+   "componentId" : "98",
+   "componentType" : "2",
+   "componentPosition" : "position1",
+   "componentData" : "일기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+ },
+ {
+  "componentId" : "97",
+  "componentType" : "3",
+  "componentPosition" : "position1",
+  "componentData" : "이미지"
+}
   ]
 }
