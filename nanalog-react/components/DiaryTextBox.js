@@ -20,7 +20,7 @@ function today() {
     return year + "." + month + "." + day;
 }
 
-function renderTodayPage(title,content,image,today,todayPage) {
+function renderTodayPage(title,content,image,today,todayPage,props) {
   if(typeof todayPage !== "undefined"){
   if(todayPage.length>0){
     console.log("length!!!");
@@ -36,6 +36,7 @@ function renderTodayPage(title,content,image,today,todayPage) {
         <div className="btn_diary_edit">편집</div>
 
         <div className="ui small modal">
+            <i className="close icon"></i>
             <div className="header">
                 정말 일기를 삭제하시겠습니까?
             </div>
@@ -53,11 +54,12 @@ function renderTodayPage(title,content,image,today,todayPage) {
         <span className="diary_created_date">{today}</span>
         <img src={require('../images/btn_current_time.svg')} className="btn_current_time"></img>
         <img src={require('../images/btn_trash.svg')} className="btn_trash"></img>
-        <input type="text" className="diary_title"  placeholder="오늘 하루"></input>
+        <input type="text" className="diary_title"  placeholder="제목을 입력하세요"></input>
         <hr className="seperate_title_contents"></hr>
         <textarea className="diary_contents" placeholder="어떤 것을 남기고 싶나요?"></textarea>
-        <div className="btn_diary_edit">편집</div>
+        <div className="btn_diary_save" >저장</div>
         <div className="ui small modal">
+            <i className="close icon"></i>
             <div className="header">
                 정말 일기를 삭제하시겠습니까?
             </div>
@@ -75,6 +77,12 @@ function renderTodayPage(title,content,image,today,todayPage) {
 }
 
 class DiaryTextBox extends Component {
+  constructor(props) {
+      super(props)
+  }
+  shouldComponentUpdate ( nextProps, nextState){
+    return true;
+  }
     render() {
       const {title,content,image, today, todayPage} = this.props;
         return(

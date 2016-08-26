@@ -17,12 +17,15 @@ function loadWeekPreviewPage(props) {
 }
 
 class WeeklyPage extends Component {
+
   //component가 mount되기 전에 date들을 load, loadWeekPreviewPage도 호출해야됨(우선 주석으로 추가했습니)
   componentWillMount() {
      loadPage(this.props)
      loadWeekPreviewPage(this.props)
   }
-
+  shouldComponentUpdate ( nextProps, nextState){
+    return true;
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.text !== this.props.text) {
       loadPage(nextProps)
@@ -37,7 +40,7 @@ class WeeklyPage extends Component {
             <div className="weekly-diary-main">
                 <DiaryTextBox todayPage = {todayPage} pageId = {this.props.pageId} today = {day}/>
                 <DiaryPicture todayPage = {todayPage}/>
-                <Indicator pageList = {this.props.pageList}/>
+                <Indicator pageList = {this.props.pageList} today = {day}/>
             </div>
         )
     };
