@@ -10,25 +10,34 @@
     <!-- <script type="text/javascript" src="/nanalog_jquery.js"></script> -->
     <script>
         $(document).ready(function() {
-            $('.ui.dropdown')
-                .dropdown();
+            $('.ui.dropdown').dropdown();
 
-            $(".btn_trash").click(function() {
-                $('.ui.small.modal')
-                    .modal('show');
+            // $('.btn_trash').click(function() {
+            //     $('.ui.small.modal')
+            //         .modal('show');
+            // });
+            $(".btn_trash").click(function(){
+                console.log("test")
             });
+
             $("#month").click(function() {
                 $("#month").removeClass("month_2");
                 $("#week").removeClass("week_1");
                 $("#month").addClass("month_1");
                 $("#week").addClass("week_2");
             });
+
             $("#week").click(function() {
                 $("#month").removeClass("month_1");
                 $("#week").removeClass("week_2");
                 $("#month").addClass("month_2");
                 $("#week").addClass("week_1");
             });
+
+            $(".btn_diary_edit").click(function(){
+                //이거는 데이터가 가져와져야 할 수 있는 작업 
+            });
+
         });
     </script>
 </head>
