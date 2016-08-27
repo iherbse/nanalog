@@ -3,9 +3,12 @@
     const serverUrl = 'http://localhost:8080/';
 
     var diaryService = function() {
+        var locationHash = location.hash;
+        uid = locationHash.substring(1, locationHash.length);
         this.init();
     };
 
+    var uid;
     var selectedMonth;
     var currentPreview;
     var selectedDay;
@@ -123,7 +126,15 @@
     /* 여기부터 작성창 버튼 이벤트 */
     function addImgBtnEvent() {
         $('#addImgBtn').click(function() {
-            alert('Add Image');
+            $('#fileForm').ajaxForm({
+                url: "http://localhost:8080/v1/diary/image",
+                enctype: "multipart/form-data",
+                success: function(result){
+                console.log(result);
+                }
+                });
+
+                $("#fileForm").submit();
         });
     }
 
@@ -149,7 +160,6 @@
             console.log("storeBtn clicked");
             $('#diary-store-modal').transition('slide down');
             $('#diary-create-modal').transition('slide up');
-            alert('data 저장');
 
             let title = $("#text-header").val();
 //            let currentDate = (new Date()).yyyymmdd();
@@ -157,31 +167,27 @@
             let imageUrl = 'http://img.naver.net/static/www/u/2013/0731/nmms_224940510.gif';
 
             $.post(serverUrl + 'v1/diary', {
-                uid: '1111',
+                uid: uid,
                 date: selectedDay,
                 type: 'TITLE',
                 data: title
             }, function(result) {
                 console.log(result);
-                alert("제목 등록 성공");
-
                 $.post(serverUrl + 'v1/diary', {
-                    uid: '1111',
+                    uid: uid,
                     date: selectedDay,
                     type: 'IMAGE',
                     data: imageUrl
                 }, function(result) {
                     console.log(result);
-                    alert("이미지 등록 성공");
 
                     $.post(serverUrl + 'v1/diary', {
-                        uid: '1111',
+                        uid: uid,
                         date: selectedDay,
                         type: 'SENTENCE',
                         data: sentence
                     }, function(result) {
                         console.log(result);
-                        alert("내용 등록 성공");
                         monthViewInit();
                     }).fail(function(e) {
                         alert("내용 등록 실패");
@@ -239,7 +245,7 @@
         }
 
         $.get(serverUrl + 'v1/diary/preview', {
-            uid: '1111',
+            uid: uid,
             startDate: calDate(yyyy, mm, dd, -7),
             endDate: currentPreview
         }, function(data) {
@@ -264,7 +270,7 @@
             $('#week-preview-next').click(function(e) {
                 //            let dt = new Date();
                 if (currentPreview == (new Date()).yyyymmdd()) {
-                    alert('오늘 이후의 값');
+//                    alert('오늘 이후의 값');
                     return;
                 }
                 let yyyy = currentPreview.substring(0, 4);
@@ -291,11 +297,11 @@
 
     var weekViewDetailInit = function(dt) {
       $.get(serverUrl + '/v1/diary/preview', {
-          uid: '1111',
+          uid: uid,
           startDate: dt,
           endDate: dt
       }, function(data) {
-          alert(data);
+          //alert(data);
           $('#selected-day').css("text-decoration", "none");
 
           let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
@@ -318,7 +324,7 @@
         let currentDate = new Date().yyyymmdd();
 
         $.get(serverUrl + '/v1/diary/preview', {
-            uid: '1111',
+            uid: uid,
             startDate: calDay(-30),
             endDate: currentDate
         }, function(data) {
@@ -338,6 +344,31 @@
                 let day = date.substring(date.length - 2, date.length);
                 chkArray.push(day);
                 $("#diary-card-" + day).html(diaryCardHtml);
+
+                $('#diary-card-' + day).click(function(e) {
+                  selectedDay = new String($('#selected-year').html())+$('#selected-month').html()+new String(day);
+                  $('#diary-create-modal').transition('slide up');
+                    $.get(serverUrl + '/v1/diary/preview', {
+                        uid: uid,
+                        startDate: selectedDay,
+                        endDate: selectedDay
+                    }, function(data) {
+                        //alert(data);
+                        console.log(data);
+                        $('#text-header').html(data[0].title);
+                        $('#text-body').html(data[0].body);
+
+                        $('#selected-day').css("text-decoration", "none");
+
+                        let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
+                        let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
+
+                        $('#selected-day').html(top + bottom);
+                        $('#diary-view-week-header').html(data[data.length - 1].title);
+                        $('#diary-view-week-description').html(data[data.length - 1].body);
+                        $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
+                    });
+                  });
             }
             month = date.substring(date.length - 4, date.length - 2);
 
@@ -399,9 +430,9 @@
         diaryCardHtml += "<div class='header'>";
         diaryCardHtml += title;
         diaryCardHtml += "</div><div class='description'>" + body + "</div>";
-        diaryCardHtml += "<i class='ellipsis horizontal icon bottom-btn'></i>";
-        diaryCardHtml += "<input type='image' class='ellipsis horizontal icon bottom-btn' src='img/weekPageEditBtn.png' />";
-        diaryCardHtml += "<input type='image' class='ellipsis horizontal icon bottom-btn' src='img/weekPageDeleteBtn.png' />";
+        // diaryCardHtml += "<i class='ellipsis horizontal icon bottom-btn'></i>";
+        // diaryCardHtml += "<input type='image' class='ellipsis horizontal icon bottom-btn' src='img/weekPageEditBtn.png' />";
+        // diaryCardHtml += "<input type='image' class='ellipsis horizontal icon bottom-btn' src='img/weekPageDeleteBtn.png' />";
         return diaryCardHtml;
     }
 

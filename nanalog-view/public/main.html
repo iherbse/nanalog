@@ -126,7 +126,9 @@
 
         <div class="imageContent">
             <div class="add image">
-                <input type="button" id="addImgBtn" value="+">
+              <form id='fileForm' method="POST" enctype="multipart/form-data" action="http://localhost:8080/v1/diary/image">
+                  <input type="file" name="file" /><input type="button" id="addImgBtn" value="+">
+              </form>
             </div>
 
             <div class="write page buttons">
@@ -143,6 +145,8 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
     <script type="text/javascript" src="bundle.js"></script>
     <script type="text/javascript">
         $('.ui.sticky')
