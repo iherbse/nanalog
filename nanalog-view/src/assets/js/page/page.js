@@ -19,7 +19,6 @@ const serverUrl = 'http:\/\/localhost:8080\/';
 
               $('#main-body').html($('#myPage-div').html())
               myPageInit();
-              alert("CHECK");
             });
         },
         run: function() {}

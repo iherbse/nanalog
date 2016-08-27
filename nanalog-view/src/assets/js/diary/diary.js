@@ -131,7 +131,9 @@
                 enctype: "multipart/form-data",
                 success: function(result) {
                     console.log(result);
+                    $('#file-rectangle').css('display', 'none');
                     $('#img-rectangle').html('<img id="diaryImageTag" src="' + serverUrl+"v1/diary/image?filePath="+result +'"/>');
+                    $('#img-rectangle').css('display', 'block');
                 }
             });
 
@@ -146,6 +148,8 @@
             $('#text-body').val('');
             $('#current-word-cnt').empty();
             $('#writing-status').css("color", "#ffffff");
+            $('#file-rectangle').css('display', 'block');
+            $('#img-rectangle').css('display', 'none');
         });
     }
 
@@ -290,6 +294,23 @@
             $('.week-btn-list').click(function(e) {
                 let selectValue = e.target.value;
 
+                let srcType = e.target.src;
+
+                if(srcType == 'http://localhost:7777/img/weekNonSelectBtn.png'){
+                  $('#diary-create-modal').transition('slide up');
+
+                  $('#text-header').val('');
+                  $('#text-body').val('');
+                  $('#current-word-cnt').empty();
+                  $('#writing-status').css("color", "#ffffff");
+                  $('#file-rectangle').css('display', 'block');
+                  $('#img-rectangle').css('display', 'none');
+
+                  selectedDay = new String(yyyy) + new String(mm) + new String(e.target.id.substring(11, 13));
+
+                  return;
+                }
+
                 weekViewDetailInit(selectValue);
             });
             weekViewDetailInit(currentPreview);
@@ -410,6 +431,14 @@
                     $('#diary-card-' + day).html("<div class='plus'>+</div>");
                     $('#diary-card-' + day).click(function(e) {
                         $('#diary-create-modal').transition('slide up');
+
+                        $('#text-header').val('');
+                        $('#text-body').val('');
+                        $('#current-word-cnt').empty();
+                        $('#writing-status').css("color", "#ffffff");
+                        $('#file-rectangle').css('display', 'block');
+                        $('#img-rectangle').css('display', 'none');
+
                         selectedDay = new String(yyyy) + new String(mm) + new String(e.target.id.substring(11, 13));
                     });
                 }

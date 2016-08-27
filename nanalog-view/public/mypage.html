@@ -1,208 +1,231 @@
-<!-- CSS -->
-<style>
-    .logo {
-      width: 100px;
-      margin-left: 30px;
-      margin-top: 20px;
-    }
+<!-- index.html -->
+<html>
 
-    .mypage {
-        position: static;
-        width: 1000px;
-        height: 545px;
-        border-radius: 5px;
-        background-color: #ffffff;
-        box-shadow: 2px 4px 4px 0 rgba(193, 193, 193, 0.5);
-        border: solid 1px #979797;
-        margin: auto;
-        margin-top: 50px;
-    }
+<head>
+    <title>Nanalog</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 
-    .mypageTitle {
-        position: relative;
-        text-align: center;
-        width: 70px;
-        margin: auto;
-        margin-top: 40px;
-        border: solid 1px #5f5f5f;
-        color: #5f5f5f;
-    }
+</head>
 
-    .mypageTxt {
-        position: relative;
-        position: static;
-        float: left;
-        margin-left: 130px;
-        margin-top: 5px;
+<body>
+
+  <!-- CSS -->
+  <style>
+      .logo {
         width: 100px;
-        text-align: center;
-        color: #5f5f5f;
-    }
-
-    .setNickname {
-        position: static;
-        margin-top: 40px;
-    }
-
-    #input-nickname {
-        position: relative;
         margin-left: 30px;
-        width: 240px;
-        height: 25px;
-        border-radius: 2px;
-        border: solid 1px #c1c1c1;
-    }
+        margin-top: 20px;
+      }
 
-    .setEmail {
-        position: static;
-        margin-top: 40px;
-        color: #5f5f5f;
-    }
+      .mypage {
+          position: static;
+          width: 1000px;
+          height: 545px;
+          border-radius: 5px;
+          background-color: #ffffff;
+          box-shadow: 2px 4px 4px 0 rgba(193, 193, 193, 0.5);
+          border: solid 1px #979797;
+          margin: auto;
+          margin-top: 50px;
+      }
 
-    #input-email {
-        position: relative;
-        margin-left: 30px;
-        width: 240px;
-        height: 25px;
-        border-radius: 2px;
-        border: solid 1px #c1c1c1;
-    }
+      .mypageTitle {
+          position: relative;
+          text-align: center;
+          width: 70px;
+          margin: auto;
+          margin-top: 40px;
+          border: solid 1px #5f5f5f;
+          color: #5f5f5f;
+      }
 
-    #re-input-email {
-        position: relative;
-        width: 300px;
-        height: 25px;
-        border-radius: 2px;
-        border: solid 1px #c1c1c1;
-    }
+      .mypageTxt {
+          position: relative;
+          position: static;
+          float: left;
+          margin-left: 130px;
+          margin-top: 5px;
+          width: 100px;
+          text-align: center;
+          color: #5f5f5f;
+      }
 
-    .setPassword {
-        position: static;
-        margin-top: 40px;
-    }
+      .setNickname {
+          position: static;
+          margin-top: 40px;
+      }
 
-    #input-pw {
-        position: relative;
-        margin-left: 30px;
-        width: 240px;
-        height: 25px;
-        border-radius: 2px;
-        border: solid 1px #c1c1c1;
-        color: #969696;
-        text-align: center;
-    }
+      #input-nickname {
+          position: relative;
+          margin-left: 30px;
+          width: 240px;
+          height: 25px;
+          border-radius: 2px;
+          border: solid 1px #c1c1c1;
+      }
 
-    #re-input-pw {
-        position: relative;
-        margin-left: 260px;
-        margin-top: 10px;
-        width: 240px;
-        height: 25px;
-        border-radius: 2px;
-        border: solid 1px #c1c1c1;
-        color: #969696;
-        text-align: center;
-    }
+      .setEmail {
+          position: static;
+          margin-top: 40px;
+          color: #5f5f5f;
+      }
 
-    .mypageLine {
-        width: 850px;
-        margin: auto;
-        margin-top: 50px;
-        border-bottom: solid 1px #cccccc;
-    }
+      #input-email {
+          position: relative;
+          margin-left: 30px;
+          width: 240px;
+          height: 25px;
+          border-radius: 2px;
+          border: solid 1px #c1c1c1;
+      }
 
-    .setThema {
-        position: static;
-        margin-top: 40px;
-    }
+      #re-input-email {
+          position: relative;
+          width: 300px;
+          height: 25px;
+          border-radius: 2px;
+          border: solid 1px #c1c1c1;
+      }
 
-    #grid-thema-radio {
-        position: relative;
-        float: left;
-        margin-left: 30px;
-        margin-top: 5px;
-    }
+      .setPassword {
+          position: static;
+          margin-top: 40px;
+      }
 
-    .themaTxt {
-        position: relative;
-        float: left;
-        margin-left: 10px;
-        margin-top: 4px;
-    }
+      #input-pw {
+          position: relative;
+          margin-left: 30px;
+          width: 240px;
+          height: 25px;
+          border-radius: 2px;
+          border: solid 1px #c1c1c1;
+          color: #969696;
+          text-align: center;
+      }
 
-    #card-thema-radio {
-        position: relative;
-        float: left;
-        margin-left: 140px;
-        margin-top: 5px;
-    }
+      #re-input-pw {
+          position: relative;
+          margin-left: 260px;
+          margin-top: 10px;
+          width: 240px;
+          height: 25px;
+          border-radius: 2px;
+          border: solid 1px #c1c1c1;
+          color: #969696;
+          text-align: center;
+      }
 
-    .mypageStoreBtn {
-        position: static;
-        margin: auto;
-        margin-top: 110px;
-    }
+      .mypageLine {
+          width: 850px;
+          margin: auto;
+          margin-top: 50px;
+          border-bottom: solid 1px #cccccc;
+      }
 
-    #mypage-store-btn {
-        position: relative;
-        margin-left: 350px;
-        width: 300px;
-        height: 50px;
-        border: solid 1px #969696;
-        border-radius: 2px;
-        background-color: #969696;
-        color: #ffffff;
-    }
-</style>
+      .setThema {
+          position: static;
+          margin-top: 40px;
+      }
+
+      #grid-thema-radio {
+          position: relative;
+          float: left;
+          margin-left: 30px;
+          margin-top: 5px;
+      }
+
+      .themaTxt {
+          position: relative;
+          float: left;
+          margin-left: 10px;
+          margin-top: 4px;
+      }
+
+      #card-thema-radio {
+          position: relative;
+          float: left;
+          margin-left: 140px;
+          margin-top: 5px;
+      }
+
+      .mypageStoreBtn {
+          position: static;
+          margin: auto;
+          margin-top: 110px;
+      }
+
+      #mypage-store-btn {
+          position: relative;
+          margin-left: 350px;
+          width: 300px;
+          height: 50px;
+          border: solid 1px #969696;
+          border-radius: 2px;
+          background-color: #969696;
+          color: #ffffff;
+      }
+  </style>
 
 
-<!-- html -->
-<input type="image" class="logo" src="img/blackLogo.png" />
+  <!-- html -->
+  <input type="image" class="logo" src="img/blackLogo.png" />
 
-<div class="mypage">
-    <div class="setUserInfo">
-        <div class="mypageTitle">Mypage</div>
+  <div class="mypage">
+      <div class="setUserInfo">
+          <div class="mypageTitle">Mypage</div>
 
-        <div class="setNickname">
-            <div class="mypageTxt">닉네임</div>
-            <input id="input-nickname" type="text" />
-        </div>
+          <div class="setNickname">
+              <div class="mypageTxt">닉네임</div>
+              <input id="input-nickname" type="text" />
+          </div>
 
-        <div class="setEmail">
-            <div class="mypageTxt">이메일 주소</div>
-            <input id="input-email" type="text" /> @
-            <input id="re-input-email" type="text" />
-        </div>
+          <div class="setEmail">
+              <div class="mypageTxt">이메일 주소</div>
+              <input id="input-email" type="text" /> @
+              <input id="re-input-email" type="text" />
+          </div>
 
-        <div class="setPassword">
-            <div class="mypageTxt">비밀번호</div>
-            <input id="input-pw" type="text" value="변경할 비밀번호" />
-            <br>
-            <input id="re-input-pw" type="text" value="변경할 비밀번호 재입력" />
-        </div>
-    </div>
+          <div class="setPassword">
+              <div class="mypageTxt">비밀번호</div>
+              <input id="input-pw" type="text" placeholder="비밀번호를 입력하세요" />
+              <br>
+              <input id="re-input-pw" type="text" placeholder="비밀번호를 입력하세요"/>
+          </div>
+      </div>
 
-    <div class="mypageLine"></div>
+      <div class="mypageLine"></div>
 
-    <div class="setThema">
-        <div class="mypageTxt">테마</div>
+      <div class="setThema">
+          <div class="mypageTxt">테마</div>
 
-        <div class="selectGridThema">
-            <input id="grid-thema-radio" type="radio"  name="select-thema" checked="checked"/>
-            <div class="themaTxt">그리드 테마</div>
-        </div>
+          <div class="selectGridThema">
+              <input id="grid-thema-radio" type="radio"  name="select-thema" checked="checked"/>
+              <div class="themaTxt">그리드테마</div>
+          </div>
 
-        <div class="selectCardThema">
-            <input id="card-thema-radio" type="radio" name="select-thema"/>
-            <div class="themaTxt">카드 테마</div>
-        </div>
-    </div>
+          <div class="selectCardThema">
+              <input id="card-thema-radio" type="radio" name="select-thema"/>
+              <div class="themaTxt">카드테마</div>
+          </div>
+      </div>
 
-    <div class="mypageStoreBtn">
-        <input id="mypage-store-btn" type="button" value="저장" />
-    </div>
-</div>
+      <div class="mypageStoreBtn">
+          <input id="mypage-store-btn" type="button" value="저장" />
+      </div>
+  </div>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
-<script type="text/javascript" src="bundle.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+  <script type="text/javascript" src="bundle.js"></script>
+  <script type="text/javascript">
+
+$('#mypage-store-btn').click(function(e){
+  location.href = 'http://localhost:8000/';
+});
+  </script>
+</body>
+
+</html>

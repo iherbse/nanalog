@@ -1,6 +1,7 @@
 <html>
 
 <head>
+  <title>Nanalog</title>
     <!-- Standard Meta -->
     <meta charset="utf-8" />
 
@@ -262,6 +263,7 @@
                 $('#login-form-logo').click(function(e) {
                   $('#member-login').css('display', 'none');
                   $('#member-join').css('display', 'inline-block');
+                                      $('#password-search').css('display', 'inline-block');
                   $('#join-btn').css('display', 'none');
                   $('#login-btn').css('display', 'inline-block');
                   $('#main-template').html(memberLoginTemplate());
@@ -272,6 +274,7 @@
                 $('#member-join').click(function(e) {
                     $('#member-login').css('display', 'inline-block');
                     $('#member-join').css('display', 'none');
+                    $('#password-search').css('display', 'none');
                     $('#login-btn').css('display', 'none');
                     $('#join-btn').css('display', 'inline-block');
                     $('#main-template').html(memberJoinTemplate());

@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title>Nanalog</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -40,7 +41,7 @@
                 <div class="ui sticky fixed">
                     <p id='selected-year'>2016</p>
                     <p id="selected-month">08</p>
-                    <input type="image" id="bad" src="img/badthings.png" />
+                    <!-- <input type="image" id="bad" src="img/badthings.png" /> -->
                 </div>
             </div>
             <div class="main-grid-column ten wide column">
@@ -125,11 +126,12 @@
         </div>
 
         <div class="imageContent">
-            <div class="add image" id="img-rectangle">
+            <div class="add image" id="file-rectangle">
               <form id='fileForm' method="POST" enctype="multipart/form-data" action="http://localhost:8080/v1/diary/image">
                   <input type="file" name="file" /><input type="button" id="addImgBtn" value="+">
               </form>
-              <img id='diary-image' src=""></img>
+            </div>
+            <div class="add image" id="img-rectangle" style='display:none'>
             </div>
 
             <div class="write page buttons">
@@ -154,6 +156,11 @@
             .sticky({
                 context: '#example1'
             });
+
+            $("#logo").click(function(e){
+                location.href = "./mypage.html";
+            });
+
     </script>
 </body>
 
