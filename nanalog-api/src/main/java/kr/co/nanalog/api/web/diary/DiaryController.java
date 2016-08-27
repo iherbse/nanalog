@@ -10,6 +10,7 @@ import kr.co.nanalog.api.web.diary.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -168,15 +169,26 @@ public class DiaryController {
         return responseList;
     }
 
-    @RequestMapping(value = "/image" ,method = RequestMethod.POST)
-    public ResponseEntity setDiaryImage(@RequestParam("file")MultipartFile file, Long pageid){
-        String fileName = file.getOriginalFilename();
+    @RequestMapping(value = "/image" ,method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] getImage(@RequestParam("filePath") String filePath){
+        try {
+            return Files.readAllBytes(Paths.get(imageRoot, filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/image" ,method = RequestMethod.POST, produces = MediaType.IMAGE_JPEG_VALUE)
+    public String setDiaryImage(@RequestParam("file")MultipartFile file){
+
+        String fileName = "IMG"+System.currentTimeMillis();
         String filePath = Paths.get(imageRoot, fileName).toString();
         System.out.println();
         if(!file.isEmpty()){
             try{
-                Files.copy(file.getInputStream(), Paths.get(imageRoot, file.getOriginalFilename()));
-                System.out.println(Paths.get(imageRoot, file.getOriginalFilename()));
+                Files.copy(file.getInputStream(), Paths.get(imageRoot, fileName));
+                return fileName;
             }catch (IOException e){
                 e.printStackTrace();
             }
@@ -184,8 +196,6 @@ public class DiaryController {
         else {
             new ResponseEntity("에러 메시지", HttpStatus.NOT_FOUND);
         }
-
-        return new ResponseEntity(HttpStatus.OK);
+        return null;
     }
-
 }

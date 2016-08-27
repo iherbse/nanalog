@@ -129,12 +129,13 @@
             $('#fileForm').ajaxForm({
                 url: "http://localhost:8080/v1/diary/image",
                 enctype: "multipart/form-data",
-                success: function(result){
-                console.log(result);
+                success: function(result) {
+                    console.log(result);
+                    $('#img-rectangle').html('<img id="diaryImageTag" src="' + serverUrl+"v1/diary/image?filePath="+result +'"/>');
                 }
-                });
+            });
 
-                $("#fileForm").submit();
+            $("#fileForm").submit();
         });
     }
 
@@ -162,9 +163,9 @@
             $('#diary-create-modal').transition('slide up');
 
             let title = $("#text-header").val();
-//            let currentDate = (new Date()).yyyymmdd();
+            //            let currentDate = (new Date()).yyyymmdd();
             let sentence = $("#text-body").val();
-            let imageUrl = 'http://img.naver.net/static/www/u/2013/0731/nmms_224940510.gif';
+            let imageUrl = $("#diaryImageTag").attr('src');
 
             $.post(serverUrl + 'v1/diary', {
                 uid: uid,
@@ -270,7 +271,7 @@
             $('#week-preview-next').click(function(e) {
                 //            let dt = new Date();
                 if (currentPreview == (new Date()).yyyymmdd()) {
-//                    alert('오늘 이후의 값');
+                    //                    alert('오늘 이후의 값');
                     return;
                 }
                 let yyyy = currentPreview.substring(0, 4);
@@ -296,22 +297,22 @@
     }
 
     var weekViewDetailInit = function(dt) {
-      $.get(serverUrl + '/v1/diary/preview', {
-          uid: uid,
-          startDate: dt,
-          endDate: dt
-      }, function(data) {
-          //alert(data);
-          $('#selected-day').css("text-decoration", "none");
+        $.get(serverUrl + '/v1/diary/preview', {
+            uid: uid,
+            startDate: dt,
+            endDate: dt
+        }, function(data) {
+            //alert(data);
+            $('#selected-day').css("text-decoration", "none");
 
-          let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
-          let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
+            let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
+            let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
 
-          $('#selected-day').html(top + bottom);
-          $('#diary-view-week-header').html(data[data.length - 1].title);
-          $('#diary-view-week-description').html(data[data.length - 1].body);
-          $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
-      });
+            $('#selected-day').html(top + bottom);
+            $('#diary-view-week-header').html(data[data.length - 1].title);
+            $('#diary-view-week-description').html(data[data.length - 1].body);
+            $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
+        });
     }
 
     var monthViewInit = function() {
@@ -346,8 +347,8 @@
                 $("#diary-card-" + day).html(diaryCardHtml);
 
                 $('#diary-card-' + day).click(function(e) {
-                  selectedDay = new String($('#selected-year').html())+$('#selected-month').html()+new String(day);
-                  $('#diary-create-modal').transition('slide up');
+                    selectedDay = new String($('#selected-year').html()) + $('#selected-month').html() + new String(day);
+                    $('#diary-create-modal').transition('slide up');
                     $.get(serverUrl + '/v1/diary/preview', {
                         uid: uid,
                         startDate: selectedDay,
@@ -368,7 +369,7 @@
                         $('#diary-view-week-description').html(data[data.length - 1].body);
                         $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
                     });
-                  });
+                });
             }
             month = date.substring(date.length - 4, date.length - 2);
 
@@ -384,12 +385,12 @@
 
         for (let i = 1; i <= currentCount; i++) {
             if (!arrContains(chkArray, i)) {
-              let date = new Date();
-              let yyyy = date.getFullYear();
-              let mm = date.getMonth() + 1;
-              if(mm < 10){
-                mm = '0'+mm;
-              }
+                let date = new Date();
+                let yyyy = date.getFullYear();
+                let mm = date.getMonth() + 1;
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
                 if (i == new Date().getDate()) {
                     let day = i;
                     if (day < 10) {
@@ -399,7 +400,7 @@
                     $("#diary-card-" + day).html("<div class='today'>DAY<br/>" + getDay() + "</div>");
                     $('#diary-card-' + day).click(function(e) {
                         $('#diary-create-modal').transition('slide down');
-                        selectedDay = new String(yyyy)+new String(mm)+new String(e.target.id.substring(11,13));
+                        selectedDay = new String(yyyy) + new String(mm) + new String(e.target.id.substring(11, 13));
                     });
                 } else {
                     let day = i;
@@ -409,8 +410,8 @@
                     $('#diary-card-' + day).html("<div class='plus'>+</div>");
                     $('#diary-card-' + day).click(function(e) {
                         $('#diary-create-modal').transition('slide up');
-                                              selectedDay = new String(yyyy)+new String(mm)+new String(e.target.id.substring(11,13));
-                                            });
+                        selectedDay = new String(yyyy) + new String(mm) + new String(e.target.id.substring(11, 13));
+                    });
                 }
             }
         }
@@ -484,8 +485,8 @@
     }
 
     var buttonListRectangle = function(data) {
-      console.log("#");
-      console.log(data);
+        console.log("#");
+        console.log(data);
         let buttonRectangleTemplate = "<div class='diary-view-btn-list one column'><p><input type='image' id='week-preview-prev' src='img/uparrow.png' /></p>";
 
         let yyyy = currentPreview.substring(0, 4);

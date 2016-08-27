@@ -295,6 +295,17 @@
   margin-left: 100px;
 }
 
+#diaryImageTag {
+  width: 250px;
+	height: 250px;
+	border: solid 2px #a39ed1;
+  background-color: rgba(0, 0, 0, 0);
+  color : #a39ed1;
+  font-size: 60px;
+  margin-top: 150px;
+  margin-left: 100px;
+}
+
 #cancleBtn {
   width: 90px;
 	height: 40px;
