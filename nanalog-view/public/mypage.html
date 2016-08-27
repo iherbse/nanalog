@@ -1,8 +1,9 @@
 <!-- CSS -->
 <style>
     .logo {
-      width: 1000px;
-      margin: auto;
+      width: 100px;
+      margin-left: 30px;
+      margin-top: 20px;
     }
 
     .mypage {
@@ -156,9 +157,7 @@
 
 
 <!-- html -->
-<div class="logo">
-    logo
-</div>
+<input type="image" class="logo" src="img/blackLogo.png" />
 
 <div class="mypage">
     <div class="setUserInfo">
@@ -189,12 +188,12 @@
         <div class="mypageTxt">테마</div>
 
         <div class="selectGridThema">
-            <input id="grid-thema-radio" type="radio" />
+            <input id="grid-thema-radio" type="radio"  name="select-thema" checked="checked"/>
             <div class="themaTxt">그리드 테마</div>
         </div>
 
         <div class="selectCardThema">
-            <input id="card-thema-radio" type="radio" />
+            <input id="card-thema-radio" type="radio" name="select-thema"/>
             <div class="themaTxt">카드 테마</div>
         </div>
     </div>
