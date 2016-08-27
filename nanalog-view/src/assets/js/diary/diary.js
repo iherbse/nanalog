@@ -227,14 +227,21 @@
         $('#view-type-month').attr("src", "img/nonSelectedMonthBtn.png");
         $('#view-type-week').attr("src", "img/selectedWeekBtn.png");
 
-        let baseDate = new Date().yyyymmdd();
-        let beforeDate = calDay(-7);
+        let yyyy = currentPreview.substring(0, 4);
+        let mm = currentPreview.substring(4, 6);
+        let dd = currentPreview.substring(6, 8);
 
+        if (mm.substring(0, 1) == '0') {
+            mm = mm.substring(1, 2);
+        }
+        if (dd.substring(0, 1) == '0') {
+            dd = dd.substring(1, 2);
+        }
 
         $.get(serverUrl + 'v1/diary/preview', {
             uid: '1111',
-            startDate: beforeDate,
-            endDate: baseDate
+            startDate: calDate(yyyy, mm, dd, -7),
+            endDate: currentPreview
         }, function(data) {
             console.log(data);
             $('#diary-view-board').html(createDiaryPreviewForm() + createDiaryWeekTemplate(data));
@@ -251,6 +258,7 @@
                     dd = dd.substring(1, 2);
                 }
                 currentPreview = calDate(yyyy, mm, dd, -7);
+
                 weekViewInit();
             });
             $('#week-preview-next').click(function(e) {
@@ -275,43 +283,29 @@
             $('.week-btn-list').click(function(e) {
                 let selectValue = e.target.value;
 
-
-                alert(selectValue);
-
-                $.get(serverUrl + '/v1/diary/preview', {
-                    uid: '1111',
-                    startDate: dt,
-                    endDate: dt
-                }, function(data) {
-                    $('#selected-day').css("text-decoration", "none");
-
-                    let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
-                    let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
-
-                    $('#selected-day').html(top + bottom);
-                    $('#diary-view-week-header').html(data[data.length - 1].title);
-                    $('#diary-view-week-description').html(data[data.length - 1].body);
-                    $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
-                });
+                weekViewDetailInit(selectValue);
             });
-
-            let dt = data[data.length - 1].date;
-            $.get(serverUrl + '/v1/diary/preview', {
-                uid: '1111',
-                startDate: dt,
-                endDate: dt
-            }, function(data) {
-                $('#selected-day').css("text-decoration", "none");
-
-                let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
-                let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
-
-                $('#selected-day').html(top + bottom);
-                $('#diary-view-week-header').html(data[data.length - 1].title);
-                $('#diary-view-week-description').html(data[data.length - 1].body);
-                $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
-            });
+            weekViewDetailInit(currentPreview);
         });
+    }
+
+    var weekViewDetailInit = function(dt) {
+      $.get(serverUrl + '/v1/diary/preview', {
+          uid: '1111',
+          startDate: dt,
+          endDate: dt
+      }, function(data) {
+          alert(data);
+          $('#selected-day').css("text-decoration", "none");
+
+          let top = "<div class='weekPageYearMonth'>" + data[data.length - 1].date.substring(0, 4) + "_" + data[data.length - 1].date.substring(4, 6) + "</div>";
+          let bottom = "<div class='weekPageDay'>DAY_" + data[data.length - 1].date.substring(6, 8) + "</div>";
+
+          $('#selected-day').html(top + bottom);
+          $('#diary-view-week-header').html(data[data.length - 1].title);
+          $('#diary-view-week-description').html(data[data.length - 1].body);
+          $('#diary-view-week-img').attr('src', data[data.length - 1].imageUrl);
+      });
     }
 
     var monthViewInit = function() {
@@ -406,6 +400,8 @@
         diaryCardHtml += title;
         diaryCardHtml += "</div><div class='description'>" + body + "</div>";
         diaryCardHtml += "<i class='ellipsis horizontal icon bottom-btn'></i>";
+        diaryCardHtml += "<input type='image' class='ellipsis horizontal icon bottom-btn' src='img/weekPageEditBtn.png' />";
+        diaryCardHtml += "<input type='image' class='ellipsis horizontal icon bottom-btn' src='img/weekPageDeleteBtn.png' />";
         return diaryCardHtml;
     }
 
@@ -457,6 +453,8 @@
     }
 
     var buttonListRectangle = function(data) {
+      console.log("#");
+      console.log(data);
         let buttonRectangleTemplate = "<div class='diary-view-btn-list one column'><p><input type='image' id='week-preview-prev' src='img/uparrow.png' /></p>";
 
         let yyyy = currentPreview.substring(0, 4);
